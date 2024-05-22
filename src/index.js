@@ -7,13 +7,17 @@ import { persistor, store } from "./store/store";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import Loader from "components/Loader/Loader";
+import { ThemeProvider } from "@mui/material";
+import theme from "components/Theme";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <BrowserRouter basename="/events-app">
-      <PersistGate persistor={persistor} loading={<Loader />}>
-        <App />
-      </PersistGate>
-    </BrowserRouter>{" "}
+    <ThemeProvider theme={theme}>
+      <BrowserRouter basename="/petlove">
+        <PersistGate persistor={persistor} loading={<Loader />}>
+          <App />
+        </PersistGate>
+      </BrowserRouter>
+    </ThemeProvider>
   </Provider>
 );

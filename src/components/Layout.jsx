@@ -1,21 +1,27 @@
 import { Outlet } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+
 import { Suspense } from 'react';
 import Loader from './Loader/Loader';
+import Header from './Header/Header';
+import { Box } from '@mui/material';
+import { useLocation } from 'react-router-dom/dist';
 
 
 export const Layout = () => {
+    const location = useLocation();
+    const path = location.pathname;
 
 
-
+    const shouldRenderHeader = path !== '/';
     return (
-        <div className=' bg-emerald-200'  >
-
+        <Box >
             <Suspense fallback={<Loader />}>
-                <Outlet />
-
+                <Box sx={{ p: "20px " }} >
+                    {shouldRenderHeader && <Header backgroundColor={"inherit"} iconColor={"var(--primary-color)"} />}
+                    <Outlet />
+                </Box>
             </Suspense>
-            <Toaster position="top-right" reverseOrder={false} />
-        </div>
+
+        </Box>
     );
 };

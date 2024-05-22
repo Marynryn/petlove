@@ -2,10 +2,14 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './Layout';
 import { lazy } from 'react';
 
-
-const Registration = lazy(() => import('../pages/Registration/Registration'));
-const Participants = lazy(() => import('../pages/Participants/Participants'));
-const Board = lazy(() => import('../pages/Board/Board'));
+const Home = lazy(() => import("../pages/Home/Home"))
+const News = lazy(() => import("../pages/News/News"))
+// const Notices = lazy(() => import("../pages/Notices/Notices"))
+// const Home = lazy(() => import("../pages/Home/Home"))
+// const Home = lazy(() => import("../pages/Home/Home"))
+// const Registration = lazy(() => import('../pages/Registration/Registration'));
+// const Participants = lazy(() => import('../pages/Participants/Participants'));
+// const Board = lazy(() => import('../pages/Board/Board'));
 
 export const App = () => {
 
@@ -13,9 +17,12 @@ export const App = () => {
 
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Board />} />
-        <Route path="/:id/registration" element={<Registration />} />
-        <Route path="/:id/participants" element={<Participants />} />
+
+        <Route index element={<Home />} />
+        <Route path="/news" element={<News />} />
+        {/* <Route path="/notices" element={<Notices />} />
+        <Route path="/friends" element={<Friends />} />
+        <Route path="/add-pet" element={<Notices />} /> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>

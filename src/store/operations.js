@@ -2,7 +2,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const api = axios.create({
-  baseURL: "https://events-node-2.onrender.com/api/events/",
+  baseURL: "https://petlove.b.goit.study/api/",
 });
 
 export const fetchEvents = createAsyncThunk("events", async (_, thunkAPI) => {

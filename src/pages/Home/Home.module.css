@@ -1,0 +1,7 @@
+.image {
+  height: 402px;
+  border-radius: 30px;
+  background-image: url(/src/img/img/bg-home.png);
+  background-size: cover;
+  background-position: center;
+}
