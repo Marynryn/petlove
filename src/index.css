@@ -1,6 +1,5 @@
 @import-normalize; /* bring in normalize.css styles */
 
-
 body,
 html {
   margin: 0;
@@ -13,7 +12,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   overflow-x: hidden;
-  background-color: var(--background-color);
+  background-color: var(--background-grey);
 }
 
 ul {
@@ -36,4 +35,5 @@ h6 {
   --secondary-color: #f6b83d;
   --accent-color: #fff4df;
   --background-color: #ffffff;
+  --background-grey: #f9f9f9;
 }

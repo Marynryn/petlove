@@ -1,6 +1,6 @@
 
 import { AppBar, Toolbar, IconButton } from '@mui/material'
-// import AppBar from 'components/AppBar/AppBar'
+
 import Logo from 'components/Logo/Logo'
 import sprite from '../../img/svg/symbol-defs.svg'
 import React, { useState } from 'react'

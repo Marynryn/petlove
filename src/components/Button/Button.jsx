@@ -1,15 +1,39 @@
 
+import { Button } from '@mui/material';
 import React from 'react';
 
 
-const Button = ({ children, onClick, type }) => {
+const Btn = ({ children, onClick, type, bgColor, textColor }) => {
+    const determineHoverColor = (bgColor) => {
 
+        if (bgColor.toLowerCase() === 'var(--secondary-color)') {
+            return {
+                backgroundColor: " #F9B020",
+
+            };
+        } else {
+            return { backgroundColor: ' #FBE7C1' };
+        }
+    };
+    const hoverBgColor = determineHoverColor(bgColor);
+
+    const style = {
+        backgroundColor: `${bgColor}`,
+        color: `${textColor}`,
+        width: "100%",
+        height: "42px",
+        borderRadius: "30px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        '&:hover': hoverBgColor,
+        '&:focus': hoverBgColor,
+    }
     return (
-        <button type={type} onClick={onClick} className=
-            ' bg-yellow-500 text-white rounded-full hover:bg-white hover:text-teal-900 px-4 py-2' style={{ border: "solid 1px", borderColor: "rgba(251, 251, 251, 0.40)" }}>
+        <Button onClick={onClick} sx={style} >
             {children}
-        </button>
+        </Button>
     );
 };
 
-export default Button;
+export default Btn;

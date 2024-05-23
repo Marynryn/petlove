@@ -5,6 +5,7 @@ import Loader from './Loader/Loader';
 import Header from './Header/Header';
 import { Box } from '@mui/material';
 import { useLocation } from 'react-router-dom/dist';
+import { Toaster } from 'react-hot-toast';
 
 
 export const Layout = () => {
@@ -21,7 +22,7 @@ export const Layout = () => {
                     <Outlet />
                 </Box>
             </Suspense>
-
+            <Toaster position="top-right" reverseOrder={false} />
         </Box>
     );
 };

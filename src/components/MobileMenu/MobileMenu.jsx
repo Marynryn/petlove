@@ -61,11 +61,11 @@ const MobileMenu = ({ isOpen, onClose, isLog }) => {
         >
             <Box sx={style}>
                 <IconButton edge="start" aria-label="menu" sx={{ display: "flex", p: 0, mr: 0, ml: "auto" }} onClick={handleCloseModal}>
-                    <svg width={32} height={32} style={{ stroke: `${iconColor}` }}>
+                    <svg width={32} height={32} style={{ color: `${iconColor}` }}>
                         <use href={`${sprite}#icon-x`}></use>
                     </svg>
                 </IconButton>
-                <AppNav />
+                <Box sx={{ mt: "176px", mb: "280px" }}><AppNav /></Box>
                 {isLog ? <UserMenu /> : <AuthNav />}
             </Box>
         </Modal>

@@ -4,37 +4,72 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const api = axios.create({
   baseURL: "https://petlove.b.goit.study/api/",
 });
+const setAuthHeader = (token) => {
+  api.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
-export const fetchEvents = createAsyncThunk("events", async (_, thunkAPI) => {
-  try {
-    const events = await api.get("/");
-
-    return events.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
-export const eventRegistration = createAsyncThunk(
-  "events/addParticipants",
-  async ({ id, data }, { rejectWithValue }) => {
-    console.log(id, data);
+const clearAuthHeader = () => {
+  api.defaults.headers.common.Authorization = "";
+};
+export const userPost = createAsyncThunk(
+  "users/signup",
+  async (credentials, thunkAPI) => {
     try {
-      const contact = await api.patch(`/${id}/signup`, data);
-      return contact.data;
+      const res = await api.post("users/signup", credentials);
+      // console.log(res.data);
+      // setAuthHeader(res.data.token);
+      return res.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-export const fetchParticipants = createAsyncThunk(
-  "event/participants",
-  async ({ id }, { rejectWithValue }) => {
-    try {
-      const participants = await api.get(`/${id}`);
 
-      return participants.data;
+export const login = createAsyncThunk(
+  "users/signin",
+  async (user, thunkAPI) => {
+    try {
+      const res = await api.post("users/signin", user);
+      // After successful login, add the token to the HTTP header
+      setAuthHeader(res.data.token);
+      console.log(res.data);
+      return res.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk("users/logout", async (_, thunkAPI) => {
+  try {
+    const { data } = await api.post("users/logout");
+
+    clearAuthHeader();
+    return data;
+  } catch (error) {
+    console.log("gfhffjf");
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const refreshUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue("Unable to fetch user");
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+
+      const res = await api.get("users/current");
+      console.log(res);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
