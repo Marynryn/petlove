@@ -5,7 +5,7 @@ export const authSchema = yup.object({
     .string()
     .required(" Name is required")
     .min(2, "Name must be at least 8 characters")
-    .max(15, "Name must be no more than 50 characters")
+
     .matches(
       /^[a-zA-Zа-яА-Я0-9\s]*$/,
       "Name can only contain letters, numbers, and spaces"
@@ -16,37 +16,30 @@ export const authSchema = yup.object({
     .email()
     .required("Email is required")
     .matches(
-      /^[a-zA-Z0-9.-_]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/,
+      /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
       "Invalid email format"
     ),
   password: yup
     .string()
-    .trim()
     .required("Password is required")
-    .matches(
-      /^(?=.*[a-zA-Z0-9])[a-zA-Z0-9!@#$%^&*()-_=+[\]{}|;:',.<>?/~`]+$/,
-      "Invalid password format"
-    )
-    .min(6, "Password must be at least 8 characters")
-    .max(64, "Password must be no more than 64 characters")
-    .test(
-      "no-spaces",
-      "Password cannot contain spaces",
-      (value) => !/\s/.test(value)
-    ),
+    .min(7, "Password must be at least 7 characters"),
   confirmPassword: yup
     .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Confirm Password is required"),
+});
+export const loginSchema = yup.object({
+  email: yup
+    .string()
     .trim()
-    .required("Password is required")
+    .email()
+    .required("Email is required")
     .matches(
-      /^(?=.*[a-zA-Z0-9])[a-zA-Z0-9!@#$%^&*()-_=+[\]{}|;:',.<>?/~`]+$/,
-      "Invalid password format"
-    )
-    .min(6, "Password must be at least 8 characters")
-    .max(64, "Password must be no more than 64 characters")
-    .test(
-      "no-spaces",
-      "Password cannot contain spaces",
-      (value) => !/\s/.test(value)
+      /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+      "Invalid email format"
     ),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(7, "Password must be at least 7 characters"),
 });

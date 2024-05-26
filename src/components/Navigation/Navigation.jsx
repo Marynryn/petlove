@@ -38,12 +38,12 @@ export const Navigation = () => {
                 </ListItem>
                 <ListItem sx={{ justifyContent: "center", p: 0, mb: "10px" }}>
                     <NavLink to="/notices" style={{ textDecoration: 'none' }}>
-                        <Button variant="outlined" sx={buttonStyle}>Notices</Button>
+                        <Button variant="outlined" sx={buttonStyle}>Find pet</Button>
                     </NavLink>
                 </ListItem>
                 <ListItem sx={{ justifyContent: "center", p: 0 }}>
                     <NavLink to="/friends" style={{ textDecoration: 'none' }}>
-                        <Button variant="outlined" sx={buttonStyle}>Friends</Button>
+                        <Button variant="outlined" sx={buttonStyle}>Our friends</Button>
                     </NavLink>
                 </ListItem>
             </List>

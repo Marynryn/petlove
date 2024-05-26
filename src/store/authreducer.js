@@ -17,13 +17,13 @@ const myAuth = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(userPost.pending, (state, action) => {
-        console.log(state, action);
         state.isLoading = true;
       })
       .addCase(userPost.fulfilled, (state, action) => {
+        console.log(action);
         state.isLoading = false;
         state.error = null;
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -32,12 +32,12 @@ const myAuth = createSlice({
         state.error = action.payload;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, token: null };
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -58,7 +58,6 @@ const myAuth = createSlice({
 const persistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
 };
 
 export const persistedReducer = persistReducer(persistConfig, myAuth.reducer);

@@ -29,8 +29,9 @@ export const login = createAsyncThunk(
   "users/signin",
   async (user, thunkAPI) => {
     try {
+      console.log(user);
       const res = await api.post("users/signin", user);
-      // After successful login, add the token to the HTTP header
+
       setAuthHeader(res.data.token);
       console.log(res.data);
       return res.data;
@@ -73,3 +74,12 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+export const getNews = createAsyncThunk("getNews", async (query, thunkAPI) => {
+  try {
+    const { data } = await api.get(`news?${query}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

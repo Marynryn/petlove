@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { authSchema } from 'schema/schema';
+import { authSchema, loginSchema } from 'schema/schema';
 import Btn from 'components/Button/Button';
-import { IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Box } from '@mui/material';
+import { IconButton, InputAdornment, TextField, Box } from '@mui/material';
 
 import sprite from '../../img/svg/symbol-defs.svg'
 import { useDispatch } from 'react-redux';
@@ -23,8 +23,10 @@ const RegistrationForm = ({ type, onClose }) => {
         event.preventDefault();
     };
 
+    const validationSchema = type === 'register' ? authSchema : loginSchema;
+
     const methods = useForm({
-        resolver: yupResolver(authSchema)
+        resolver: yupResolver(validationSchema)
     });
     const { handleSubmit, formState: { errors }, register } = methods;
 
@@ -34,11 +36,11 @@ const RegistrationForm = ({ type, onClose }) => {
 
         try {
             if (type === 'register') {
-                await dispatch(userPost(data));
+                await dispatch(userPost({ email, password, name }));
             } else {
                 await dispatch(login({ email, password }));
 
-                onClose();
+
             }
         } catch (error) {
             toast.error("Invalid email or password");
@@ -112,7 +114,7 @@ const RegistrationForm = ({ type, onClose }) => {
                     <TextField
                         sx={style}
                         id="password"
-
+                        placeholder='Password'
                         type={showPassword ? 'text' : 'password'}
                         fullWidth
                         {...register("password")}
@@ -148,11 +150,12 @@ const RegistrationForm = ({ type, onClose }) => {
                         <TextField
                             sx={style}
                             id="confirmPassword"
-
+                            placeholder='Confirm password'
                             type={showConfirmPassword ? 'text' : 'password'}
                             fullWidth
+                            {...register("confirmPassword")}
                             InputLabelProps={{ shrink: false }}
-                            // {...register("confirmPassword")}
+
                             error={!!errors.confirmPassword}
                             helperText={errors.confirmPassword ? errors.confirmPassword.message : ''}
                             InputProps={{
@@ -181,7 +184,7 @@ const RegistrationForm = ({ type, onClose }) => {
                         />
                     )}
 
-                    <Box sx={{ mt: "14px" }}>
+                    <Box sx={{ mt: type === 'login' ? "40px" : "14px" }}>
                         <Btn type={"submit"} onClick={onSubmit} bgColor={"var(--secondary-color)"} textColor={"var(--background-color)"}>
                             {type === 'login' ? 'Log In' : 'Registration'}
                         </Btn>

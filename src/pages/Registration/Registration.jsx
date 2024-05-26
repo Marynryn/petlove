@@ -1,4 +1,4 @@
-import { Box, Button, Typography, css } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import PetBlock from 'components/PetBlock/PetBlock';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import Title from 'components/Title/Title';
@@ -7,11 +7,12 @@ import { NavLink } from 'react-router-dom/dist';
 
 export const Registration = () => {
     const style = {
-        p: "27px 20px",
+        p: "20px",
         backgroundColor: "var(--background-color)",
         borderRadius: "30px",
         textContent: "center",
-        height: "368px",
+        minHeight: "368px",
+
     }
     return (
         <div>
@@ -23,7 +24,7 @@ export const Registration = () => {
                 </Typography>
                 <RegistrationForm type={"register"} />
                 <Typography sx={{ fontSize: "12px", display: 'flex', alignItems: "center", justifyContent: "center", height: "14px", fontWeight: 500, textAlign: "center", mt: "12px" }}>Already have an account?<NavLink to="/login">
-                    <Button sx={{ color: "var(--secondary-color)", p: 0, minWidth: "15px", textTransform: 'capitalize', fontSize: "12px", height: "14px" }}>Login</Button></NavLink>
+                    <Button sx={{ color: "var(--secondary-color)", p: 0, minWidth: "15px", textTransform: 'capitalize', fontSize: "12px", height: "14px", fontWeight: 700, }}>Login</Button></NavLink>
                 </Typography>
 
             </Box>

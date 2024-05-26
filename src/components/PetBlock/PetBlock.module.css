@@ -1,8 +1,17 @@
-.petblock {
+.catblock {
   height: 280px;
   border-radius: 30px;
   background-color: var(--secondary-color);
   background-image: url(/src/img/img/cat.png);
+  background-size: cover;
+  background-position: center;
+  margin: 20px 0 10px;
+}
+.dogblock {
+  height: 280px;
+  border-radius: 30px;
+  background-color: var(--secondary-color);
+  background-image: url(/src/img/img/dog.png);
   background-size: cover;
   background-position: center;
   margin: 20px 0 10px;

@@ -13,7 +13,7 @@ import {
 } from "redux-persist";
 export const store = configureStore({
   reducer: {
-    // pets: petsReducer,
+    pets: petsReducer,
     auth: persistedReducer,
   },
   middleware: (getDefaultMiddleware) => [
