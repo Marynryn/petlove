@@ -33,7 +33,7 @@ const SearchField = () => {
     return (
         <Box>
             <form onSubmit={handleSubmit}>
-                <Box sx={{ display: 'flex', alignItems: 'center', mt: "4px", borderRadius: "30px", position: "relative" }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mt: "4px", mb: "38px", borderRadius: "30px", position: "relative" }}>
                     <TextField
                         sx={style}
                         id="name"

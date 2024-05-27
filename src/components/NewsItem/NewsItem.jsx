@@ -1,25 +1,19 @@
 
 import React from 'react'
 import { formatDateString } from '../../helpers/formatDate';
-
-
-
-
+import { Box, Typography } from '@mui/material';
 const NewsItem = ({ props }) => {
-    console.log(props)
-
-
-
     return (
-        <div  >
-            <img src={props.imgUrl} alt={props.title} style={{ width: "335px", height: "190px", borderRadius: "15px" }} />
-            <h3 className='text-lg text-lime-600 mb-4 min-h-14'>{props.title}</h3>
-            <p className='text-sm mb-4 min-h-20'>{props.text}</p>
-            <p className='mb-4 text-sm'>{formatDateString(props.date)}</p>
-            <p className='text-sm'>{props.organizer}</p>
+        <Box  >
+            <img src={props.imgUrl} alt={props.title} style={{ width: "335px", marginBottom: "20px", height: "190px", borderRadius: "15px" }} />
+            <Typography sx={{ fontWeight: 700, fontSize: "16px", mb: "12px" }}>{props.title}</Typography>
+            <Typography sx={{ fontWeight: 500, fontSize: "14px", mb: "19px", height: "80px", overflow: "hidden", letterSpacing: "-0.28px" }}>{props.text}</Typography>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography sx={{ fontSize: "14px" }}>{formatDateString(props.date)}</Typography>
+                <a href={props.url} style={{ color: "var(--secondary-color)", textAlign: "center", textDecoration: "none", fontSize: "14px" }}>Read more</a>
+            </Box>
 
-
-        </div>)
+        </Box>)
 }
 
 export default NewsItem;

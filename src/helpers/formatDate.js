@@ -3,10 +3,8 @@ export function formatDateString(dateString) {
 
   const options = {
     year: "numeric",
-    month: "long",
+    month: "numeric",
     day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
   };
   const formattedDate = date.toLocaleDateString("en-US", options);
 

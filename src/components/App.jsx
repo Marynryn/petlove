@@ -8,9 +8,9 @@ const Home = lazy(() => import("../pages/Home/Home"))
 const News = lazy(() => import("../pages/News/News"))
 const Registration = lazy(() => import("../pages/Registration/Registration"))
 const Login = lazy(() => import("../pages/Login/Login"))
-// const Notices = lazy(() => import("../pages/Notices/Notices"))
+const Notices = lazy(() => import("../pages/Notices/Notices"))
 const Profile = lazy(() => import("../pages/Profile/Profile"))
-// const Home = lazy(() => import("../pages/Home/Home"))
+const Friends = lazy(() => import("../pages/Friends/Friends"))
 // const Registration = lazy(() => import('../pages/Registration/Registration'));
 // const Participants = lazy(() => import('../pages/Participants/Participants'));
 // const Board = lazy(() => import('../pages/Board/Board'));
@@ -26,9 +26,9 @@ export const App = () => {
 
         <Route index element={<Home />} />
         <Route path="/news" element={<News />} />
-        {/* <Route path="/notices" element={<Notices />} />
+        <Route path="/notices" element={<Notices />} />
         <Route path="/friends" element={<Friends />} />
-        <Route path="/add-pet" element={<Notices />} /> */}
+        {/* <Route path="/add-pet" element={<Notices />} /> */}
         <Route
           path="/profile"
           element={<PrivateRoute element={<Profile />} redirectTo="/login" />} />

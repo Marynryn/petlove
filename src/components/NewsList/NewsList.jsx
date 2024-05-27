@@ -7,9 +7,9 @@ const NewsList = ({ news }) => {
 
     return (
         <Box>
-            <List >
+            <List sx={{ p: 0 }}>
                 {news.map((el) => (
-                    <ListItem key={el._id}  >
+                    <ListItem key={el._id} sx={{ p: 0, mb: "24px" }}>
                         <EventItem props={el} />
 
                     </ListItem>

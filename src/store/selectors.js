@@ -14,8 +14,9 @@ export const selectError = (state) => state.pets.error;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;
 export const selectIsRefreshing = (state) => state.auth.isRefreshing;
-
+export const selectTotalPages = (state) => state.pets.totalPages;
 export const selectGetNews = (state) => state.pets.news;
+export const selectGetFriends = (state) => state.pets.friends;
 // export const selectGetFilter = (state) => state.events.filter;
 // export const selectGetParticipants = (state) => state.events.participants;
 // export const selectIsLoading = (state) => state.events.isLoading;

@@ -74,12 +74,29 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-export const getNews = createAsyncThunk("getNews", async (query, thunkAPI) => {
-  try {
-    const { data } = await api.get(`news?${query}`);
-    console.log(data);
-    return data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const getNews = createAsyncThunk(
+  "news/getNews",
+  async ({ filter, page, perPage }, thunkAPI) => {
+    try {
+      const { data } = await api.get(
+        `/news?keyword=${filter}&page=${page}&limit=${perPage}`
+      );
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
+export const getFriends = createAsyncThunk(
+  "friends/getFriends",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get("/friends/");
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

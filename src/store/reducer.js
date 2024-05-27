@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getNews } from "./operations";
+import { getFriends, getNews } from "./operations";
 
 const mySlice = createSlice({
   name: "pets",
   initialState: {
     news: [],
+    totalPages: 0,
     isLoading: false,
     error: null,
     filter: null,
+    friends: [],
   },
 
   reducers: {
@@ -29,10 +31,23 @@ const mySlice = createSlice({
       .addCase(getNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
+        state.totalPages = action.payload.totalPages;
         state.news = action.payload.results;
       })
       .addCase(getNews.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(getFriends.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getFriends.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.totalPages = action.payload.totalPages;
+        state.friends = action.payload;
+      })
+      .addCase(getFriends.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
