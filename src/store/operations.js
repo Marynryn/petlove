@@ -92,7 +92,21 @@ export const getFriends = createAsyncThunk(
   "friends/getFriends",
   async (_, thunkAPI) => {
     try {
-      const { data } = await api.get("/friends/");
+      const { data } = await api.get("/friends");
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getNotices = createAsyncThunk(
+  "notices/getNotices",
+  async ({ page, perPage }, thunkAPI) => {
+    try {
+      const { data } = await api.get(
+        `/notices?byDate=true&page=${page}&limit=${perPage}`
+      );
       console.log(data);
       return data;
     } catch (error) {

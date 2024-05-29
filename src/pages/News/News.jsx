@@ -1,12 +1,9 @@
 import { Box } from '@mui/material';
 import NewsList from 'components/NewsList/NewsList';
-
 import SearchField from 'components/SearchField/SearchField';
 import Title from 'components/Title/Title';
-
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-
 import ServerPagination from 'components/ServerPagination/ServerPagination';
 import { getNews } from 'store/operations';
 import { selectGetFilter, selectGetNews, selectTotalPages } from 'store/selectors';

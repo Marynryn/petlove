@@ -1,22 +1,19 @@
-import React from "react";
-import NewsItem from "components/NewsItem/NewsItem";
+import React from 'react'
 import { Box, List, ListItem } from "@mui/material";
+import NoticesItem from 'components/NoticesItem/NoticesItem';
 
-const NewsList = ({ news }) => {
-
-
+export const NoticesList = ({ notices }) => {
     return (
         <Box>
             <List sx={{ p: 0 }}>
-                {news.map((el) => (
+                {notices.map((el) => (
                     <ListItem key={el._id} sx={{ p: 0, mb: "24px" }}>
-                        <NewsItem props={el} />
+                        <NoticesItem props={el} />
 
                     </ListItem>
                 ))}
             </List>
         </Box>
-    );
-};
-
-export default NewsList;
+    )
+}
+export default NoticesList;
