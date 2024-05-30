@@ -19,10 +19,15 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
         border: '1px solid rgba(38, 38, 38, 0.20)',
         width: '38px',
         height: '38px',
+
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         fontWeight: 700,
+        '@media (max-width: 320px)': {
+            width: '34px',
+            height: '34px',
+        },
     };
     const activeButtonStyle = {
         display: 'flex',
@@ -33,6 +38,10 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
         border: '1px solid',
         width: '38px',
         height: '38px',
+        '@media (max-width: 320px)': {
+            width: '34px',
+            height: '34px',
+        },
         borderColor: "var(--secondary-color)",
         backgroundColor: 'var(--secondary-color)',
 
@@ -43,14 +52,19 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
         pageNumbers.push(currentPage + 1);
     }
     return (
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '26px', gap: "6px", width: "334px" }}>
+        <Box sx={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '26px', gap: "6px", width: "334px", '@media (max-width: 320px)': {
+                width: '280px',
+                gap: "4px",
+            },
+        }}>
             <IconButton sx={buttonStyle} onClick={handleFirstPage} disabled={isFirstPage}>
-                <KeyboardDoubleArrowLeftIcon sx={{ p: "8px" }} />
+                <KeyboardDoubleArrowLeftIcon sx={{ p: "8px", minWidth: "18px", '@media (max-width: 320px)': { p: "6px" }, }} />
             </IconButton>
             <IconButton sx={buttonStyle} onClick={handlePreviousPage} disabled={isFirstPage}>
-                <ChevronLeftIcon sx={{ p: "8px" }} />
+                <ChevronLeftIcon sx={{ p: "8px", '@media (max-width: 320px)': { p: "6px" }, }} />
             </IconButton>
-            <Box mx="5px" sx={{ display: "flex", gap: "10px" }}>
+            <Box mx="5px" sx={{ display: "flex", gap: "10px", '@media (max-width: 320px)': { gap: "6px", mx: 0 }, }}>
                 {pageNumbers.map((pageNumber, index) => (
                     <Box key={index} sx={pageNumber === currentPage ? activeButtonStyle : buttonStyle} mx={0} onClick={() => onPageChange(pageNumber)}>
                         {pageNumber}
@@ -60,10 +74,10 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
                     ...
                 </Box></Box>
             <IconButton sx={buttonStyle} onClick={handleNextPage} disabled={isLastPage}>
-                <ChevronRightIcon sx={{ p: "8px" }} />
+                <ChevronRightIcon sx={{ p: "8px", '@media (max-width: 320px)': { p: "6px" }, }} />
             </IconButton>
             <IconButton sx={buttonStyle} onClick={handleLastPage} disabled={isLastPage}>
-                <KeyboardDoubleArrowRightIcon sx={{ p: "8px" }} />
+                <KeyboardDoubleArrowRightIcon sx={{ p: "8px", '@media (max-width: 320px)': { p: "6px" }, }} />
             </IconButton>
         </Box>
     );

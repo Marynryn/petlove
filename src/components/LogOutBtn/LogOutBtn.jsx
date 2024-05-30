@@ -1,5 +1,5 @@
 import Button from 'components/Button/Button'
-import Modal from 'components/Modal/Modal';
+import Modal from 'components/ModalWrap/ModalWrap';
 import React, { useState } from 'react'
 
 

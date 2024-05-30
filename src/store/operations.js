@@ -107,7 +107,55 @@ export const getNotices = createAsyncThunk(
       const { data } = await api.get(
         `/notices?byDate=true&page=${page}&limit=${perPage}`
       );
-      console.log(data);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getCategories = createAsyncThunk(
+  "notices/getCategories",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get("/notices/categories");
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getSex = createAsyncThunk(
+  "notices/getSex",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get("/notices/sex");
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getSpecies = createAsyncThunk(
+  "notices/getSpecies",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get("/notices/species");
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getLocations = createAsyncThunk(
+  "cities/getLocation",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get("/cities/");
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

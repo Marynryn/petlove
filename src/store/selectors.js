@@ -1,6 +1,6 @@
-import { createSelector } from "@reduxjs/toolkit";
+// import { createSelector } from "@reduxjs/toolkit";
 
-export const selectGetFilter = (state) => state.pets.filter;
+export const selectGetFilter = (state) => state.pets.news.filter;
 export const selectIsLoading = (state) => state.pets.isLoading;
 export const selectError = (state) => state.pets.error;
 // export const selectVisibleContacts = createSelector(
@@ -18,6 +18,14 @@ export const selectTotalPages = (state) => state.pets.news.totalPages;
 export const selectGetNews = (state) => state.pets.news.items;
 export const selectGetFriends = (state) => state.pets.friends.items;
 export const selectGetNotices = (state) => state.pets.notices.items;
+export const selectGetNoticesFilter = (state) => state.pets.notices.filter;
+export const selectGetCategories = (state) =>
+  state.pets.notices.selectData.category;
+export const selectGetSex = (state) => state.pets.notices.selectData.sex;
+export const selectGetSpecies = (state) =>
+  state.pets.notices.selectData.species;
+export const selectGetLocations = (state) =>
+  state.pets.notices.selectData.location;
 export const selectTotalPagesNotices = (state) => state.pets.notices.totalPages;
 // export const selectGetFilter = (state) => state.events.filter;
 // export const selectGetParticipants = (state) => state.events.participants;

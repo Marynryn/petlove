@@ -6,7 +6,7 @@ import Title from 'components/Title/Title';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotices } from 'store/operations';
-import { selectGetNotices, selectTotalPagesNotices } from 'store/selectors';
+import { selectGetNotices, selectGetNoticesFilter, selectTotalPagesNotices } from 'store/selectors';
 
 
 export const Notices = () => {
@@ -25,11 +25,15 @@ export const Notices = () => {
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
+    const handleSearch = (searchTerm) => {
 
+        dispatch(getNotices({ page: currentPage, perPage: itemsPerPage, searchTerm }));
+        setCurrentPage(1);
+    };
     return (
         <Box mt="60px">
             <Title>Find your favorite pet</Title>
-            <NoticesFilters />
+            <NoticesFilters onSearch={handleSearch} />
             <NoticesList notices={notices} />
             {totalPages > 1 && (
                 <ServerPagination

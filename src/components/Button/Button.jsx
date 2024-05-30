@@ -18,6 +18,7 @@ const Btn = ({ children, onClick, type, bgColor, textColor }) => {
     const hoverBgColor = determineHoverColor(bgColor);
 
     const style = {
+        textTransform: 'capitalize',
         backgroundColor: `${bgColor}`,
         color: `${textColor}`,
         width: "100%",

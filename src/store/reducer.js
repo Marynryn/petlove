@@ -1,37 +1,72 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getFriends, getNews, getNotices } from "./operations";
+import {
+  getCategories,
+  getFriends,
+  getLocations,
+  getNews,
+  getNotices,
+  getSex,
+  getSpecies,
+} from "./operations";
 
-const mySlice = createSlice({
-  name: "pets",
-  initialState: {
-    news: {
-      items: [],
-      totalPages: 0,
-      isLoading: false,
-      error: null,
-      filter: null,
+const initialState = {
+  news: {
+    items: [],
+    totalPages: 0,
+    isLoading: false,
+    error: null,
+    filter: null,
+  },
+  friends: {
+    items: [],
+    totalPages: 0,
+    isLoading: false,
+    error: null,
+  },
+  notices: {
+    items: [],
+    totalPages: 0,
+    isLoading: false,
+    error: null,
+    selectData: {
+      category: ["show all"],
+      sex: ["show all"],
+      species: ["show all"],
+      location: [],
     },
-    friends: {
-      items: [],
-      totalPages: 0,
-      isLoading: false,
-      error: null,
-    },
-    notices: {
-      items: [],
-      totalPages: 0,
-      isLoading: false,
-      error: null,
-      filter: null,
+    filter: {
+      inputFilter: "",
+      category: "",
+      gender: "",
+      petType: "",
+      location: "",
     },
   },
-
+};
+const mySlice = createSlice({
+  name: "pets",
+  initialState,
   reducers: {
     setFilter: (state, action) => {
       state.news.filter = action.payload;
     },
-    deleteFilter: (state) => {
-      state.news.filter = "";
+    setInputFilter: (state, action) => {
+      state.filter.inputFilter = action.payload;
+    },
+    setCategoryFilter: (state, action) => {
+      state.filter.category = action.payload;
+    },
+    setGenderFilter: (state, action) => {
+      state.filter.gender = action.payload;
+    },
+    setPetTypeFilter: (state, action) => {
+      state.filter.petType = action.payload;
+    },
+    setLocationFilter: (state, action) => {
+      state.filter.location = action.payload;
+    },
+    resetFilters: (state) => {
+      state.filter = initialState.filter;
     },
     //     addFilter: (state, action) => {
     //       state.participantsFilter = action.payload;
@@ -77,6 +112,30 @@ const mySlice = createSlice({
       .addCase(getNotices.rejected, (state, action) => {
         state.notices.isLoading = false;
         state.notices.error = action.payload;
+      })
+      .addCase(getCategories.fulfilled, (state, action) => {
+        state.notices.isLoading = false;
+        state.notices.error = null;
+
+        state.notices.selectData.category = action.payload;
+      })
+      .addCase(getSex.fulfilled, (state, action) => {
+        state.notices.isLoading = false;
+        state.notices.error = null;
+
+        state.notices.selectData.sex = action.payload;
+      })
+      .addCase(getSpecies.fulfilled, (state, action) => {
+        state.notices.isLoading = false;
+        state.notices.error = null;
+
+        state.notices.selectData.species = action.payload;
+      })
+      .addCase(getLocations.fulfilled, (state, action) => {
+        state.notices.isLoading = false;
+        state.notices.error = null;
+
+        state.notices.selectData.location = action.payload.results;
       });
     //       .addCase(eventRegistration.pending, (state, action) => {
     //         state.isLoading = true;
@@ -108,4 +167,12 @@ const mySlice = createSlice({
 });
 
 export const petsReducer = mySlice.reducer;
-export const { setFilter, deleteFilter } = mySlice.actions;
+export const {
+  setFilter,
+  setInputFilter,
+  setCategoryFilter,
+  setGenderFilter,
+  setPetTypeFilter,
+  setLocationFilter,
+  resetFilters,
+} = mySlice.actions;
