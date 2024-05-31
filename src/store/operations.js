@@ -102,18 +102,43 @@ export const getFriends = createAsyncThunk(
 );
 export const getNotices = createAsyncThunk(
   "notices/getNotices",
-  async ({ page, perPage }, thunkAPI) => {
+  async ({ page, perPage, filter }, thunkAPI) => {
     try {
-      const { data } = await api.get(
-        `/notices?byDate=true&page=${page}&limit=${perPage}`
-      );
-
+      const url = constructUrl(page, perPage, filter);
+      const { data } = await api.get(url);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+const constructUrl = (page, perPage, filter) => {
+  const baseUrl = `/notices?byDate=true&page=${page}&limit=${perPage}`;
+
+  const hasFilters = Object.values(filter).some(
+    (value) => value !== "" && value !== null
+  );
+
+  if (!hasFilters) {
+    return baseUrl;
+  }
+
+  const query = new URLSearchParams();
+
+  if (filter.inputFilter) query.append("keyword", filter.inputFilter);
+  if (filter.category) query.append("category", filter.category);
+  if (filter.species) query.append("species", filter.species);
+  if (filter.location) query.append("locationId", filter.location);
+  if (filter.price) query.append("byPrice", filter.price);
+  if (filter.popular) query.append("byPopularity", filter.popular);
+  query.append("byDate", "true");
+  query.append("page", page);
+  query.append("limit", perPage);
+
+  return `/notices?${query.toString()}`;
+};
+
 export const getCategories = createAsyncThunk(
   "notices/getCategories",
   async (_, thunkAPI) => {

@@ -35,11 +35,13 @@ const initialState = {
       location: [],
     },
     filter: {
-      inputFilter: "",
-      category: "",
-      gender: "",
-      petType: "",
-      location: "",
+      inputFilter: null,
+      category: null,
+      gender: null,
+      species: null,
+      location: null,
+      popular: null,
+      price: null,
     },
   },
 };
@@ -51,22 +53,29 @@ const mySlice = createSlice({
       state.news.filter = action.payload;
     },
     setInputFilter: (state, action) => {
-      state.filter.inputFilter = action.payload;
+      state.notices.filter.inputFilter = action.payload;
     },
     setCategoryFilter: (state, action) => {
-      state.filter.category = action.payload;
+      console.log(action.payload);
+      state.notices.filter.category = action.payload;
     },
     setGenderFilter: (state, action) => {
-      state.filter.gender = action.payload;
+      state.notices.filter.gender = action.payload;
     },
     setPetTypeFilter: (state, action) => {
-      state.filter.petType = action.payload;
+      state.notices.filter.species = action.payload;
     },
     setLocationFilter: (state, action) => {
-      state.filter.location = action.payload;
+      state.notices.filter.location = action.payload;
     },
     resetFilters: (state) => {
-      state.filter = initialState.filter;
+      state.notices.filter = initialState.notices.filter;
+    },
+    setPopularFilter: (state, action) => {
+      state.notices.filter.popular = action.payload;
+    },
+    setPriceFilter: (state, action) => {
+      state.notices.filter.price = action.payload;
     },
     //     addFilter: (state, action) => {
     //       state.participantsFilter = action.payload;
@@ -135,7 +144,7 @@ const mySlice = createSlice({
         state.notices.isLoading = false;
         state.notices.error = null;
 
-        state.notices.selectData.location = action.payload.results;
+        state.notices.selectData.location = action.payload;
       });
     //       .addCase(eventRegistration.pending, (state, action) => {
     //         state.isLoading = true;
@@ -175,4 +184,6 @@ export const {
   setPetTypeFilter,
   setLocationFilter,
   resetFilters,
+  setPriceFilter,
+  setPopularFilter,
 } = mySlice.actions;
