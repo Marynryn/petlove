@@ -3,7 +3,7 @@ import { Box, TextField, IconButton, Paper } from '@mui/material';
 
 import sprite from '../../img/svg/symbol-defs.svg';
 
-const SearchField = ({ onSearch, onReset }) => {
+const SearchField = ({ onSearch, bgColor}) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleInputChange = (event) => {
@@ -22,7 +22,9 @@ const SearchField = ({ onSearch, onReset }) => {
     };
 
     const style = {
+        
         '& .MuiOutlinedInput-root': {
+            backgroundColor: `${bgColor}`,
             borderRadius: '30px',
             margin: '0',
         },
@@ -30,7 +32,7 @@ const SearchField = ({ onSearch, onReset }) => {
 
     return (
         <Paper component="div" sx={{ boxShadow: 'none', backgroundColor: 'var(--background-gray)' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', mt: '4px', mb: '38px', borderRadius: '30px', position: 'relative' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mt: '4px', borderRadius: '30px', position: 'relative' }}>
                 <TextField
                     sx={style}
                     id="name"

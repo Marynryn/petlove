@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
@@ -103,46 +103,125 @@ const NoticesFilters = ({ onSearch }) => {
         }));
         callback(options);
     };
+    const style = {
+        control: (provided, state) => ({
+            ...provided,
+            cursor: 'default',
+            width: "100%",
+            color: "var(--primary-color)",
+            height: "42px",
+            borderRadius: '30px',
+            border: 'none',
+
+        }),
+        singleValue: (provided) => ({
+            ...provided,
+            color: "var(--primary-color)",
+            textTransform: 'capitalize',
+            paddingLeft: "2px",
+            fontSize: "14px",
+            fontWeight: 500,
+        }),
+        ValueContainer: (provided) => ({
+            ...provided,
+
+        }),
+        input: (provided) => ({
+            ...provided,
+            display: 'none'
+
+        }),
+        indicatorSeparator: (provided) => ({
+            ...provided,
+            display: 'none'
+
+        }),
+        indicatorContainer: (provided) => ({
+            ...provided,
+            display: 'none'
+
+        }),
+        container: (provided) => ({
+            ...provided,
+            width: "100%"
+
+        }),
+        placeholder: (provided) => ({
+            ...provided,
+            color: "var(--primary-color)",
+            fontSize: "14px",
+            fontWeight: 500,
+
+            paddingLeft: "2px",
+        }),
+        dropdownIndicator: (provided) => ({
+            ...provided,
+            color: "var(--primary-color)"
+        }),
+        menu: (provided) => ({
+            ...provided,
+            borderRadius: "14px",
+            padding: "0 12px ",
+        }),
+        MenuList: (provided) => ({
+            ...provided,
+
+
+        }),
+        option: (provided, state) => ({
+            ...provided,
+            textTransform: 'capitalize',
+            color: state.isFocused ? 'var(--secondary-color)' : "rgba(38, 38, 38, 0.60)",
+            backgroundColor: state.isFocused ? 'transparent' : 'transparent',
+
+        })
+    }
     return (
-        <>
-            <Paper component="form" onReset={handleResetFilters} sx={{ p: "20px", pt: "4px", my: "40px", boxShadow: 'none', backgroundColor: '#FFF4DF', borderRadius: '30px' }}>
-                <SearchField onSearch={onSearch} onReset={handleResetFilters} />
-                <Box sx={{ display: "flex" }}>
-                    <Select
-                        options={createOptions(categories)}
-                        onChange={handleCategoryChange}
-                        value={getSelectedOption(filter.category, createOptions(categories))}
-                        placeholder="Category"
-                        isClearable
-                    />
-                    <Select
-                        options={createOptions(sex)}
-                        onChange={handleGenderChange}
-                        value={getSelectedOption(filter.gender, createOptions(sex))}
-                        placeholder="Gender"
-                        isClearable
-                    /></Box>
+        <Paper component="form" onReset={handleResetFilters} sx={{ color: "var(--primary-color)", p: "20px", pt: "4px", my: "40px", boxShadow: 'none', backgroundColor: '#FFF4DF', borderRadius: '30px', }}>
+            <SearchField onSearch={onSearch} onReset={handleResetFilters} bgColor={"var(--background-color)"} />
+            <Box sx={{ display: "flex", mt: "12px", mb: "12px", gap: "8px", width: "100%" }}>
                 <Select
-                    options={createOptions(species)}
-                    onChange={handlePetTypeChange}
-                    value={getSelectedOption(filter.petType, createOptions(species))}
-                    placeholder="Species"
-                    isClearable
+                    styles={style}
+                    options={createOptions(categories)}
+                    onChange={handleCategoryChange}
+                    value={getSelectedOption(filter.category, createOptions(categories))}
+                    placeholder="Category"
+
                 />
+                <Select
+                    styles={style}
+
+                    options={createOptions(sex)}
+                    onChange={handleGenderChange}
+                    value={getSelectedOption(filter.gender, createOptions(sex))}
+                    placeholder="By gender"
+
+                /></Box>
+            <Select
+                styles={style}
+                options={createOptions(species)}
+                onChange={handlePetTypeChange}
+                value={getSelectedOption(filter.petType, createOptions(species))}
+                placeholder="By type"
+
+            />
+            <Box mt="12px">
                 <AsyncSelect
+                    styles={style}
                     loadOptions={loadLocationOptions}
                     onChange={handleLocationChange}
                     value={selectedLocation}
                     placeholder="Location"
                     isClearable
-                />
-                <SelectedValues
-                    values={selectedValues}
-                    onRemove={handleRemoveFilter}
-                />
-                <button type="reset">Reset</button>
-            </Paper>
-        </>
+                /></Box>
+            <Box sx={{ my: "20px", width: "100%", height: " 1px", backgroundColor: "rgba(38, 38, 38, 0.10)" }}></Box>
+            <SelectedValues
+                values={selectedValues}
+                onRemove={handleRemoveFilter}
+            />
+            <button type="reset">Reset</button>
+        </Paper>
+
     );
 };
 
