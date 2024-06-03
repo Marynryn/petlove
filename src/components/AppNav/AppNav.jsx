@@ -1,6 +1,6 @@
-import { AuthNav } from 'components/AuthNav/AuthNav';
+// import { AuthNav } from 'components/AuthNav/AuthNav';
 import { Navigation } from '../Navigation/Navigation';
-import UserMenu from 'components/UserMenu/UserMenu';
+// import UserMenu from 'components/UserMenu/UserMenu';
 import { Box } from '@mui/material';
 
 export const AppNav = () => {
