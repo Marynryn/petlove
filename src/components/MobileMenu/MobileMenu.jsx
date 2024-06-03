@@ -5,7 +5,7 @@ import React, { useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import sprite from '../../img/svg/symbol-defs.svg'
 import AppNav from 'components/AppNav/AppNav';
-import { Backdrop, Box, Button, IconButton, Modal, } from '@mui/material';
+import { Backdrop, Box,  IconButton, Modal, } from '@mui/material';
 import { useLocation } from 'react-router-dom/dist';
 
 

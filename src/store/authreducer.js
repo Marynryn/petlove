@@ -4,11 +4,16 @@ import storage from "redux-persist/lib/storage";
 import { logOut, login, refreshUser, userPost } from "./operations.js";
 
 const initialState = {
-  user: { name: null, email: null },
+  name: null,
+  email: null,
   token: null,
   isLoggedIn: false,
   isLoading: false,
   error: null,
+  avatar: null,
+  noticesFavorites: [],
+  pets: [],
+  noticesViewed: [],
 };
 
 const myAuth = createSlice({
@@ -23,7 +28,9 @@ const myAuth = createSlice({
         console.log(action);
         state.isLoading = false;
         state.error = null;
-        state.user = action.payload;
+
+        state.name = action.payload.name;
+        state.email = action.payload.email;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -32,12 +39,11 @@ const myAuth = createSlice({
         state.error = action.payload;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.user = { name: null, email: null, token: null };
+        state = initialState;
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -45,7 +51,7 @@ const myAuth = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

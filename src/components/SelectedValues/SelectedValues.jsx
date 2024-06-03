@@ -1,90 +1,135 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { setPopularFilter, setPriceFilter } from 'store/reducer';
-import { selectGetNoticesFilter } from 'store/selectors';
 import { Button, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 
-const SelectedValues = () => {
+const SelectedValues = ({ reset }) => {
     const dispatch = useDispatch();
-    const filter = useSelector(selectGetNoticesFilter);
+    const [selectedFilters, setSelectedFilters] = useState({
+        popular: null,
+        price: null
+    });
 
-    const handlePopularChange = (value) => {
-        dispatch(setPopularFilter(value));
+    useEffect(() => {
+        if (reset) {
+            setSelectedFilters({
+                popular: null,
+                price: null
+            });
+            dispatch(setPopularFilter(''));
+            dispatch(setPriceFilter(''));
+        }
+    }, [reset, dispatch]);
+
+    const handleFilterChange = (filterName, value) => {
+        setSelectedFilters(prevState => ({
+            ...prevState,
+            [filterName]: value
+        }));
+
+        if (filterName === 'popular') {
+            dispatch(setPopularFilter(value));
+        } else if (filterName === 'price') {
+            dispatch(setPriceFilter(value));
+        }
     };
 
-    const handlePriceChange = (value) => {
-        dispatch(setPriceFilter(value));
+    const clearFilter = (filterName) => {
+        setSelectedFilters(prevState => ({
+            ...prevState,
+            [filterName]: null
+        }));
+
+        if (filterName === 'popular') {
+            dispatch(setPopularFilter(''));
+        } else if (filterName === 'price') {
+            dispatch(setPriceFilter(''));
+        }
     };
 
-    const clearPopularFilter = () => {
-        dispatch(setPopularFilter(''));
+    const buttonStyle = {
+        borderRadius: '30px',
+        p: "12px",
+        height: "18px",
+        border: "none",
+        backgroundColor: '#FFFFFF',
+        color: "var(--primary-color)"
     };
 
-    const clearPriceFilter = () => {
-        dispatch(setPriceFilter(''));
+    const selectedButtonStyle = {
+        ...buttonStyle,
+        backgroundColor: 'var(--secondary-color)',
+        color: '#FFFFFF',
     };
+    const getButtonStyle = (isSelected) => ({
+        p: 0,
+        textTransform: 'capitalize',
+        height: "12px",
+        fontSize: '14px',
+        fontWeight: 500,
+        color: isSelected ? '#FFFFFF' : "var(--primary-color)"
+    });
 
     return (
-        <Box display="flex" flexDirection="column" gap={2}>
-            <Box display="flex" alignItems="center">
-                <Button
-                    variant={filter.popular === 'popular' ? 'contained' : 'outlined'}
-                    color="primary"
-                    onClick={() => handlePopularChange(true)}
-                >
-                    Popular
-                </Button>
-                {filter.popular === 'popular' && (
-                    <IconButton onClick={clearPopularFilter} size="small" sx={{ ml: 1 }}>
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                )}
-                <Button
-                    variant={filter.popular === 'unpopular' ? 'contained' : 'outlined'}
-                    color="primary"
-                    onClick={() => handlePopularChange(false)}
-                    sx={{ ml: 2 }}
-                >
-                    Unpopular
-                </Button>
-                {filter.popular === 'unpopular' && (
-                    <IconButton onClick={clearPopularFilter} size="small" sx={{ ml: 1 }}>
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                )}
-            </Box>
-            <Box display="flex" alignItems="center">
-                <Button
-                    variant={filter.price === 'cheap' ? 'contained' : 'outlined'}
-                    color="secondary"
-                    onClick={() => handlePriceChange(true)}
-                >
-                    Cheap
-                </Button>
-                {filter.price === 'cheap' && (
-                    <IconButton onClick={clearPriceFilter} size="small" sx={{ ml: 1 }}>
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                )}
-                <Button
-                    variant={filter.price === 'expensive' ? 'contained' : 'outlined'}
-                    color="secondary"
-                    onClick={() => handlePriceChange(false)}
-                    sx={{ ml: 2 }}
-                >
-                    Expensive
-                </Button>
-                {filter.price === 'expensive' && (
-                    <IconButton onClick={clearPriceFilter} size="small" sx={{ ml: 1 }}>
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                )}
+        <Box display="flex" flexDirection="column" gap={2} mb="20px">
+            <Box display="flex" alignItems="center" flexWrap="wrap" gap="10px">
+                <Box sx={selectedFilters.popular === true ? selectedButtonStyle : buttonStyle}>
+                    <Button
+                        sx={getButtonStyle(selectedFilters.popular === true)}
+                        onClick={() => handleFilterChange('popular', true)}
+                    >
+                        Popular
+                    </Button>
+                    {selectedFilters.popular === true && (
+                        <IconButton onClick={() => clearFilter('popular')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    )}
+                </Box>
+                <Box sx={selectedFilters.popular === false ? selectedButtonStyle : buttonStyle}>
+                    <Button
+                        sx={getButtonStyle(selectedFilters.popular === false)}
+                        onClick={() => handleFilterChange('popular', false)}
+                    >
+                        Unpopular
+                    </Button>
+                    {selectedFilters.popular === false && (
+                        <IconButton onClick={() => clearFilter('popular')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    )}
+                </Box>
+                <Box sx={selectedFilters.price === true ? selectedButtonStyle : buttonStyle}>
+                    <Button
+                        sx={getButtonStyle(selectedFilters.price === true)}
+                        onClick={() => handleFilterChange('price', true)}
+                    >
+                        Cheap
+                    </Button>
+                    {selectedFilters.price === true && (
+                        <IconButton onClick={() => clearFilter('price')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    )}
+                </Box>
+                <Box sx={selectedFilters.price === false ? selectedButtonStyle : buttonStyle}>
+                    <Button
+                        sx={getButtonStyle(selectedFilters.price === false)}
+                        onClick={() => handleFilterChange('price', false)}
+                    >
+                        Expensive
+                    </Button>
+                    {selectedFilters.price === false && (
+                        <IconButton onClick={() => clearFilter('price')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    )}
+                </Box>
             </Box>
         </Box>
     );
 };
 
 export default SelectedValues;
-

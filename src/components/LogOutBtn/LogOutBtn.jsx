@@ -1,4 +1,5 @@
 import Button from 'components/Button/Button'
+import { ModalApproveAction } from 'components/ModalApproveAction/ModalApproveAction';
 import Modal from 'components/ModalWrap/ModalWrap';
 import React, { useState } from 'react'
 
@@ -13,7 +14,7 @@ const LogOutBtn = () => {
         <div>
             <Button type="button" onClick={() => toggleModal()}>Log Out</Button>
             <Modal isOpen={modalOpen} onClose={setModalOpen} >
-                {/* <ModalApproveAction /> */}
+                <ModalApproveAction />
 
             </Modal>
         </div>
