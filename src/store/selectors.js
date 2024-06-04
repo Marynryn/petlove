@@ -11,8 +11,10 @@ export const selectError = (state) => state.pets.error;
 //     );
 //   }
 // );
+export const selectNoticeFavorite = (state) => state.auth.user.noticesFavorites;
+export const selectNoticeById = (state) => state.auth.petById;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
-export const selectUser = (state) => state.auth;
+export const selectUser = (state) => state.auth.user;
 export const selectIsRefreshing = (state) => state.auth.isRefreshing;
 export const selectTotalPages = (state) => state.pets.news.totalPages;
 export const selectGetNews = (state) => state.pets.news.items;

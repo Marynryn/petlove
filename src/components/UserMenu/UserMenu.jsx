@@ -1,13 +1,14 @@
+import { Box } from '@mui/material';
 import LogOutBtn from 'components/LogOutBtn/LogOutBtn';
 import UserBar from 'components/UserBar/UserBar';
 import React from 'react'
 
 export const UserMenu = () => {
     return (
-        <div>
+        <Box sx={{ display: "flex" }}>
             <UserBar />
             <LogOutBtn />
-        </div>
+        </Box>
     )
 }
 export default UserMenu;

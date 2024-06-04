@@ -1,8 +1,13 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './Layout';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { refreshUser } from 'store/operations';
+import Loader from './Loader/Loader';
+import { selectIsRefreshing, selectNoticeFavorite } from 'store/selectors';
 
 const Home = lazy(() => import("../pages/Home/Home"))
 const News = lazy(() => import("../pages/News/News"))
@@ -11,15 +16,27 @@ const Login = lazy(() => import("../pages/Login/Login"))
 const Notices = lazy(() => import("../pages/Notices/Notices"))
 const Profile = lazy(() => import("../pages/Profile/Profile"))
 const Friends = lazy(() => import("../pages/Friends/Friends"))
-// const Registration = lazy(() => import('../pages/Registration/Registration'));
-// const Participants = lazy(() => import('../pages/Participants/Participants'));
-// const Board = lazy(() => import('../pages/Board/Board'));
+
 
 
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const favorites = useSelector(selectNoticeFavorite);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  return (
+  useEffect(() => {
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
 
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -31,7 +48,7 @@ export const App = () => {
         {/* <Route path="/add-pet" element={<Notices />} /> */}
         <Route
           path="/profile"
-          element={<PrivateRoute element={<Profile />} redirectTo="/login" />} />
+          element={<PrivateRoute component={<Profile />} redirectTo="/login" />} />
         <Route
           path="/register"
           element={

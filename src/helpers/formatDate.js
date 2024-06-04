@@ -1,4 +1,7 @@
 export function formatDateString(dateString) {
+  if (dateString === undefined) {
+    return;
+  }
   const date = new Date(dateString);
 
   const options = {

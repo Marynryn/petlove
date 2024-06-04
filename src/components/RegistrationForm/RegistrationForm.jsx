@@ -43,9 +43,11 @@ const RegistrationForm = ({ type, onClose }) => {
 
             }
         } catch (error) {
-            toast.error("Invalid email or password");
+            const errorMessage = error.response?.data?.message || "Invalid email or password";
+            toast.error(errorMessage);
         }
     });
+
     const style = {
         mt: 0,
         mb: "10px",

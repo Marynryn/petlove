@@ -35,12 +35,13 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
             BackdropProps={{
                 timeout: 500,
             }}
+            container={document.getElementById('modal-root')}
             sx={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 minWidth: '320px',
-                zIndex: 40,
+                zIndex: 100
             }}
         >
             <Box
@@ -48,9 +49,9 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
                     position: 'relative',
                     backgroundColor: 'white',
                     borderRadius: '16px',
-                    width: 'calc(565 / 1440 * 100%)',
+
                     minWidth: '300px',
-                    padding: 'calc(64 / 1440 * 100%)',
+                    padding: '20px',
                     maxHeight: '95%',
 
 

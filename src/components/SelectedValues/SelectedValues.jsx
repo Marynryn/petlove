@@ -75,10 +75,10 @@ const SelectedValues = ({ reset }) => {
     return (
         <Box display="flex" flexDirection="column" gap={2} mb="20px">
             <Box display="flex" alignItems="center" flexWrap="wrap" gap="10px">
-                <Box sx={selectedFilters.popular === true ? selectedButtonStyle : buttonStyle}>
+                <Box sx={selectedFilters.popular === 'popular' ? selectedButtonStyle : buttonStyle}>
                     <Button
-                        sx={getButtonStyle(selectedFilters.popular === true)}
-                        onClick={() => handleFilterChange('popular', true)}
+                        sx={getButtonStyle(selectedFilters.popular === 'popular')}
+                        onClick={() => handleFilterChange('popular', 'popular')}
                     >
                         Popular
                     </Button>
@@ -88,10 +88,10 @@ const SelectedValues = ({ reset }) => {
                         </IconButton>
                     )}
                 </Box>
-                <Box sx={selectedFilters.popular === false ? selectedButtonStyle : buttonStyle}>
+                <Box sx={selectedFilters.popular === 'unpopular' ? selectedButtonStyle : buttonStyle}>
                     <Button
-                        sx={getButtonStyle(selectedFilters.popular === false)}
-                        onClick={() => handleFilterChange('popular', false)}
+                        sx={getButtonStyle(selectedFilters.popular === 'unpopular')}
+                        onClick={() => handleFilterChange('popular', 'unpopular')}
                     >
                         Unpopular
                     </Button>
@@ -101,10 +101,10 @@ const SelectedValues = ({ reset }) => {
                         </IconButton>
                     )}
                 </Box>
-                <Box sx={selectedFilters.price === true ? selectedButtonStyle : buttonStyle}>
+                <Box sx={selectedFilters.price === "cheap" ? selectedButtonStyle : buttonStyle}>
                     <Button
-                        sx={getButtonStyle(selectedFilters.price === true)}
-                        onClick={() => handleFilterChange('price', true)}
+                        sx={getButtonStyle(selectedFilters.price === "cheap")}
+                        onClick={() => handleFilterChange('price', "cheap")}
                     >
                         Cheap
                     </Button>
@@ -114,10 +114,10 @@ const SelectedValues = ({ reset }) => {
                         </IconButton>
                     )}
                 </Box>
-                <Box sx={selectedFilters.price === false ? selectedButtonStyle : buttonStyle}>
+                <Box sx={selectedFilters.price === "expensive" ? selectedButtonStyle : buttonStyle}>
                     <Button
-                        sx={getButtonStyle(selectedFilters.price === false)}
-                        onClick={() => handleFilterChange('price', false)}
+                        sx={getButtonStyle(selectedFilters.price === "expensive")}
+                        onClick={() => handleFilterChange('price', "expensive")}
                     >
                         Expensive
                     </Button>

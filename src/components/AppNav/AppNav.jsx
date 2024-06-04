@@ -1,7 +1,8 @@
-// import { AuthNav } from 'components/AuthNav/AuthNav';
+
 import { Navigation } from '../Navigation/Navigation';
-// import UserMenu from 'components/UserMenu/UserMenu';
+
 import { Box } from '@mui/material';
+
 
 export const AppNav = () => {
 
@@ -21,7 +22,7 @@ export const AppNav = () => {
             })}>
 
                 <Navigation />
-                {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
+
             </Box >
         </>
     )

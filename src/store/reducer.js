@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import { toast } from "react-hot-toast";
 import {
   getCategories,
   getFriends,
@@ -146,32 +147,6 @@ const mySlice = createSlice({
 
         state.notices.selectData.location = action.payload;
       });
-    //       .addCase(eventRegistration.pending, (state, action) => {
-    //         state.isLoading = true;
-    //       })
-    //       .addCase(eventRegistration.fulfilled, (state, action) => {
-
-    //         state.isLoading = false;
-    //         state.error = null;
-    //       })
-    //       .addCase(eventRegistration.rejected, (state, action) => {
-    //         state.isLoading = false;
-    //         state.error = action.payload;
-    //       })
-    //       .addCase(fetchParticipants.pending, (state, action) => {
-    //         state.isLoading = true;
-    //       })
-    //       .addCase(fetchParticipants.fulfilled, (state, action) => {
-
-    //         state.isLoading = false;
-    //         state.error = null;
-    //         state.participants = action.payload;
-    //       })
-    //       .addCase(fetchParticipants.rejected, (state, action) => {
-
-    //         state.isLoading = false;
-    //         state.error = action.payload;
-    //       });
   },
 });
 

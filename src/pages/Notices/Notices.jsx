@@ -54,7 +54,7 @@ const Notices = () => {
         <Box mt="60px">
             <Title>Find your favorite pet</Title>
             <NoticesFilters onSearch={handleSearch} />
-            <NoticesList notices={filteredNotices} />
+            <NoticesList props={filteredNotices} />
             {(filteredNotices.length > 6 || totalPages > 1) && (
                 <ServerPagination
                     totalPages={totalPages}
