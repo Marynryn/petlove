@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Tabs, Tab } from '@mui/material';
 
 import NoticesList from 'components/NoticesList/NoticesList';
+import { useDispatch, useSelector } from 'react-redux';
+import { currentUserFull } from 'store/operations';
+import { selectNoticeFavoriteFullInfo, selectUser } from 'store/selectors';
 
 
-const MyNotices = ({ props }) => {
+const MyNotices = () => {
     const [activeTab, setActiveTab] = useState(0);
-    console.log(props.noticesViewed)
+    const [favorite, setFavorite] = useState([]);
+    const dispatch = useDispatch();
+    const noticesFavorites = useSelector(selectNoticeFavoriteFullInfo)
+    const user = useSelector(selectUser)
+    useEffect(() => {
+        dispatch(currentUserFull());
+    }, [dispatch]);
+
+    useEffect(() => {
+        setFavorite(noticesFavorites);
+    }, [noticesFavorites]);
+    console.log(favorite)
     const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
     };
@@ -34,12 +48,18 @@ const MyNotices = ({ props }) => {
     }
     return (
         <Box>
-            <Tabs sx={{ display: "flex", gap: "10px", textDecoration: 'none' }} value={activeTab} onChange={handleTabChange}>
+            <Tabs sx={{
+                textDecoration: 'none', mb: "20px", '& .MuiTabs-indicator': {
+                    display: 'none',
+                }, "& .MuiTabs- flexContainer": {
+                    gap: "10px",
+                }
+            }} value={activeTab} onChange={handleTabChange}>
                 <Tab label="My favorite pets" sx={activeTab === 0 ? activeTabStyles : inactiveTabStyles} />
-                <Tab label="Viewed" sx={activeTab === 1 ? activeTabStyles : inactiveTabStyles} />
+                <Tab label="Viewed" ml={8} sx={activeTab === 1 ? activeTabStyles : inactiveTabStyles} />
             </Tabs>
-            {activeTab === 0 && <NoticesList props={props.noticesFavorites} />}
-            {activeTab === 1 && <NoticesList props={props.noticesViewed} />}
+            {activeTab === 0 && <NoticesList props={favorite} />}
+            {activeTab === 1 && <NoticesList props={user.noticesViewed} />}
         </Box>
     );
 };

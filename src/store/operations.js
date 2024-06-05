@@ -94,6 +94,27 @@ export const currentUserFull = createAsyncThunk(
     }
   }
 );
+export const currentUserEdit = createAsyncThunk(
+  "auth/currentUserEdit",
+  async (filteredData, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.user.token;
+    console.log(filteredData);
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue("Unable to fetch user");
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+
+      const res = await api.patch("users/current/edit", filteredData);
+      console.log(res);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 export const getNews = createAsyncThunk(
   "news/getNews",
   async ({ filter, page, perPage }, thunkAPI) => {
@@ -239,7 +260,7 @@ export const addToFavorite = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await api.post(`/notices/favorites/add/${id}`);
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

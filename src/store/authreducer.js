@@ -3,6 +3,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import {
   addToFavorite,
+  currentUserEdit,
   currentUserFull,
   getNoticesById,
   logOut,
@@ -29,6 +30,7 @@ const initialState = {
   isLoading: false,
   isRefreshing: false,
   petById: null,
+  noticesFavorites: [],
 };
 
 const myAuth = createSlice({
@@ -97,7 +99,7 @@ const myAuth = createSlice({
       })
       .addCase(getNoticesById.fulfilled, (state, action) => {
         state.petById = action.payload;
-        console.log(action.payload);
+
         state.isLoading = false;
       })
       .addCase(getNoticesById.rejected, (state, action) => {
@@ -110,7 +112,7 @@ const myAuth = createSlice({
         state.isLoading = true;
       })
       .addCase(addToFavorite.fulfilled, (state, action) => {
-        state.user.noticesFavorites = action.payload;
+        state.noticesFavorites = action.payload;
 
         state.isLoading = false;
       })
@@ -124,10 +126,14 @@ const myAuth = createSlice({
         state.isLoading = true;
       })
       .addCase(removeFromFavorite.fulfilled, (state, action) => {
-        state.user.noticesFavorites = state.noticesFavorites.filter(
+        state.noticesFavorites = state.noticesFavorites.filter(
           (el) => el !== action.payload
         );
-        console.log(action.payload);
+
+        state.user.noticesFavorites = state.user.noticesFavorites.filter(
+          (el) => el._id !== action.payload
+        );
+
         state.isLoading = false;
       })
       .addCase(removeFromFavorite.rejected, (state, action) => {
@@ -141,11 +147,29 @@ const myAuth = createSlice({
       })
       .addCase(currentUserFull.fulfilled, (state, action) => {
         state.user = action.payload;
-        console.log(state);
+
         console.log(action.payload);
         state.isLoggedIn = true;
       })
       .addCase(currentUserFull.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+
+        toast.error(action.payload);
+      })
+      .addCase(currentUserEdit.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(currentUserEdit.fulfilled, (state, action) => {
+        state.user = {
+          ...state.user,
+          ...action.payload,
+        };
+
+        console.log(state.user);
+        state.isLoggedIn = true;
+      })
+      .addCase(currentUserEdit.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
 

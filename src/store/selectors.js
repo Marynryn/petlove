@@ -11,7 +11,9 @@ export const selectError = (state) => state.pets.error;
 //     );
 //   }
 // );
-export const selectNoticeFavorite = (state) => state.auth.user.noticesFavorites;
+export const selectNoticeFavoriteFullInfo = (state) =>
+  state.auth.user.noticesFavorites;
+export const selectNoticeFavorite = (state) => state.auth.noticesFavorites;
 export const selectNoticeById = (state) => state.auth.petById;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;

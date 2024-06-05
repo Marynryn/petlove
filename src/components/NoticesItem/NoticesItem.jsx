@@ -14,7 +14,6 @@ import { selectNoticeFavorite } from 'store/selectors';
 
 const NoticesItem = ({ props }) => {
     const dispatch = useDispatch();
-
     const [isFavorite, setIsFavorite] = useState(false);
     const [isModalAttentionOpen, setModalAttentionOpen] = useState(false);
     const [isModalNoticeOpen, setModalNoticeOpen] = useState(false);

@@ -21,7 +21,7 @@ const Notices = () => {
         dispatch(getCategories());
         dispatch(getSex());
         dispatch(getSpecies());
-        dispatch(getLocations());
+        // dispatch(getLocations());
     }, [dispatch]);
 
     useEffect(() => {
