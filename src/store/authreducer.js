@@ -31,7 +31,7 @@ const initialState = {
   error: null,
   isLoading: false,
   isRefreshing: false,
-  petById: null,
+  petById: [],
   noticesFavorites: [],
 };
 

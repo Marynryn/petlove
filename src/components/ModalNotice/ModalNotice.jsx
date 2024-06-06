@@ -19,7 +19,7 @@ export const ModalNotice = ({ props }) => {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         setIsFavorite(favorites.includes(props._id));
     }, [dispatch, props._id]);
-
+    console.log(infoPet)
     useEffect(() => {
 
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
