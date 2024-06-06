@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
-import { PhotoCamera } from '@mui/icons-material';
+import { Box, IconButton, TextField, Typography } from '@mui/material';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { profileSchema } from 'schema/schema';
@@ -17,15 +17,16 @@ const ModalEditUser = ({ onClose }) => {
     const dispatch = useDispatch();
     const fileInputRef = useRef(null);
     const [loading, setLoading] = useState(false);
-    const [avatarUrl, setAvatarUrl] = useState('');
+
 
     const { register, handleSubmit, setValue, formState: { errors } } = useForm({
         resolver: yupResolver(profileSchema),
         defaultValues: {
             name: user.name || '',
             email: user.email || '',
-            phone: user.phone || ''
-        }
+            phone: user.phone || '',
+            avatar: user.avatar || ''
+        },
     });
 
     const onSubmit = async (data) => {
@@ -54,7 +55,7 @@ const ModalEditUser = ({ onClose }) => {
                 const imageUrl = await uploadFile(file);
                 console.log(imageUrl);
                 setValue('avatar', imageUrl);
-                setAvatarUrl(imageUrl);
+
             } catch (error) {
                 console.error('Error uploading file:', error.message);
             }
@@ -87,7 +88,7 @@ const ModalEditUser = ({ onClose }) => {
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: "30px",
                                 '& fieldset': {
-                                    border: avatarUrl ? '1px solid var(--secondary-color)' : '1px solid rgba(38, 38, 38, 0.15)',
+                                    border: user.avatar ? '1px solid var(--secondary-color)' : '1px solid rgba(38, 38, 38, 0.15)',
                                 },
                                 '&:hover fieldset': {
                                     borderColor: 'var(--secondary-color)',
@@ -114,8 +115,8 @@ const ModalEditUser = ({ onClose }) => {
                             },
                         }}
                         placeholder="Avatar URL"
-                        value={avatarUrl}
-                        onChange={(e) => setAvatarUrl(e.target.value)}
+                        value={user.avatar}
+                        onChange={(e) => setValue('avatar', e.target.value)}
                         fullWidth
                         margin="normal"
                     />
@@ -265,7 +266,7 @@ const ModalEditUser = ({ onClose }) => {
                 />
                 <Box mt={2} display="flex" justifyContent="flex-end">
 
-                    <Btn bgColor={"var(--secondary-color)"} textColor={"var(--background-color)"} type="submit" variant="contained" color="primary" disabled={loading}>Go to profile</Btn>
+                    <Btn bgColor={"var(--secondary-color)"} textColor={"var(--background-color)"} type="submit" disabled={loading}>Go to profile</Btn>
                 </Box>
             </form>
         </Box>

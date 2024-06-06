@@ -5,6 +5,7 @@ import React from 'react'
 import sprite from '../../img/svg/symbol-defs.svg'
 import { Box, Typography } from '@mui/material';
 import UserBlock from 'components/UserBlock/UserBlock';
+import PetsBlock from 'components/PetsBlock/PetsBlock';
 export const UserCard = ({ props }) => {
 
     const boxStyle = {
@@ -28,8 +29,8 @@ export const UserCard = ({ props }) => {
                 <EditUserBtn />
             </Box>
             <UserBlock props={props} />
-            {/* <PetsBlock/> */}
-            <Box width="114px"><LogOutBtn /></Box>
+            <PetsBlock />
+            <Box width="114px" sx={{ mt: "20px" }}><LogOutBtn /></Box>
 
         </Box>
     )

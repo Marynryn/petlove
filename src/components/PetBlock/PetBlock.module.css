@@ -16,3 +16,12 @@
   background-position: center;
   margin: 20px 0 10px;
 }
+.another_dog_block {
+  height: 280px;
+  border-radius: 30px;
+  background-color: var(--secondary-color);
+  background-image: url(/src/img/img/dog2.png);
+  background-size: cover;
+  background-position: center;
+  margin: 20px 0 10px;
+}

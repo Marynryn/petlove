@@ -5,7 +5,7 @@ import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesList from 'components/NoticesList/NoticesList';
 import ServerPagination from 'components/ServerPagination/ServerPagination';
 import Title from 'components/Title/Title';
-import { getNotices, getCategories, getSex, getSpecies, getLocations } from 'store/operations';
+import { getNotices } from 'store/operations';
 import { setInputFilter } from 'store/reducer';
 import { selectGetNotices, selectGetNoticesFilter, selectTotalPagesNotices } from 'store/selectors';
 
@@ -17,12 +17,7 @@ const Notices = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
     const [filteredNotices, setFilteredNotices] = useState([]);
-    useEffect(() => {
-        dispatch(getCategories());
-        dispatch(getSex());
-        dispatch(getSpecies());
-        // dispatch(getLocations());
-    }, [dispatch]);
+
 
     useEffect(() => {
         dispatch(getNotices({ page: currentPage, perPage: itemsPerPage, filter }));

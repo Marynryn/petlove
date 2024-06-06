@@ -1,7 +1,12 @@
 import React from 'react'
 import { formatDateString } from '../../helpers/formatDate';
 import { Box, Typography } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+
+
 export const PetInfo = ({ props, hidden }) => {
+    const location = useLocation();
+    const profile = location.pathname === "/profile";
 
     const styleCategory = {
         fontWeight: 500, fontSize: "10px", letterSpacing: "-0.2px", opacity: 0.5
@@ -11,8 +16,8 @@ export const PetInfo = ({ props, hidden }) => {
     }
     return (
         <Box sx={{
-            display: "flex", gap: "10px", mt: "8px", mb: "16px", justifyContent: "space-between", minWidth: "232px", overflow: 'hidden',
-            textOverflow: 'ellipsis'
+            display: "flex", gap: "10px", mt: "8px", mb: profile ? 0 : "16px", justifyContent: "space-between", minWidth: profile ? "100px" : "232px", overflow: 'hidden',
+            textOverflow: 'ellipsis', flexWrap: profile ? 'wrap' : 'nowrap',
         }}>
             <Box>
                 <Typography sx={styleCategory}>Name</Typography>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Tabs, Tab } from '@mui/material';
+import { Box, Tabs, Tab, Typography } from '@mui/material';
 
 import NoticesList from 'components/NoticesList/NoticesList';
 import { useDispatch, useSelector } from 'react-redux';
@@ -58,8 +58,26 @@ const MyNotices = () => {
                 <Tab label="My favorite pets" sx={activeTab === 0 ? activeTabStyles : inactiveTabStyles} />
                 <Tab label="Viewed" ml={8} sx={activeTab === 1 ? activeTabStyles : inactiveTabStyles} />
             </Tabs>
-            {activeTab === 0 && <NoticesList props={favorite} />}
-            {activeTab === 1 && <NoticesList props={user.noticesViewed} />}
+            {activeTab === 0 ? (
+                favorite.length > 0 ? (
+                    <NoticesList props={favorite} />
+                ) : (
+                    <Typography sx={{
+                        mt: "80px", mb: "140px",
+                        fontWeight: 500,
+                        fontSize: "14px", textAlign: "center"
+                    }}>
+                        Oops,  <Typography component="span" sx={{
+                            mt: "80px", mb: "140px",
+                            fontWeight: 700,
+                            fontSize: "14px",
+                            color: "var(--secondary-color)",
+                        }}> looks like there aren't any furries </Typography> on our adorable page yet. Do not worry! View your pets on the "find your favorite pet" page and add them to your favorites.
+                    </Typography>
+                )
+            ) : activeTab === 1 ? (
+                <NoticesList props={user.noticesViewed} />
+            ) : null}
         </Box>
     );
 };

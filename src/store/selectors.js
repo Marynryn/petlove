@@ -17,6 +17,7 @@ export const selectNoticeFavorite = (state) => state.auth.noticesFavorites;
 export const selectNoticeById = (state) => state.auth.petById;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;
+export const selectPets = (state) => state.auth.user.pets;
 export const selectIsRefreshing = (state) => state.auth.isRefreshing;
 export const selectTotalPages = (state) => state.pets.news.totalPages;
 export const selectGetNews = (state) => state.pets.news.items;

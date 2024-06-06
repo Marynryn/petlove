@@ -279,3 +279,27 @@ export const removeFromFavorite = createAsyncThunk(
     }
   }
 );
+export const addMyPet = createAsyncThunk(
+  "current/adMyPet",
+  async (PetData, thunkAPI) => {
+    try {
+      const { data } = await api.post("/users/current/pets/add", PetData);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const removeMyPet = createAsyncThunk(
+  "current/removeMyPet",
+  async (id, thunkAPI) => {
+    try {
+      await api.delete(`/users/current/pets/remove/${id}`);
+
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

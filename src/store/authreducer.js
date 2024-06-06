@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import {
+  addMyPet,
   addToFavorite,
   currentUserEdit,
   currentUserFull,
@@ -10,6 +11,7 @@ import {
   login,
   refreshUser,
   removeFromFavorite,
+  removeMyPet,
   userPost,
 } from "./operations.js";
 import { toast } from "react-hot-toast";
@@ -75,7 +77,7 @@ const myAuth = createSlice({
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = initialState;
-        state.user.token = null;
+
         state.isLoggedIn = false;
       })
       .addCase(logOut.rejected, (state, action) => {
@@ -170,6 +172,36 @@ const myAuth = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(currentUserEdit.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+
+        toast.error(action.payload);
+      })
+      .addCase(addMyPet.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addMyPet.fulfilled, (state, action) => {
+        state.user.pets = action.payload.pets;
+
+        state.isLoading = false;
+      })
+      .addCase(addMyPet.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+
+        toast.error(action.payload);
+      })
+      .addCase(removeMyPet.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(removeMyPet.fulfilled, (state, action) => {
+        state.user.pets = state.user.pets.filter(
+          (el) => el._id !== action.payload
+        );
+
+        state.isLoading = false;
+      })
+      .addCase(removeMyPet.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
 
