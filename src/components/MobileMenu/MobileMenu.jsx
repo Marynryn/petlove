@@ -1,8 +1,7 @@
 import { AuthNav } from 'components/AuthNav/AuthNav';
-
 import React, { useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import sprite from '../../img/svg/symbol-defs.svg'
+import sprite from '../../img/svg/symbol-defs.svg';
 import AppNav from 'components/AppNav/AppNav';
 import { Backdrop, Box, IconButton, Modal } from '@mui/material';
 import { useLocation } from 'react-router-dom/dist';
@@ -13,15 +12,21 @@ const MobileMenu = ({ isOpen, onClose }) => {
     const { isLogIn } = IsLoggedIn();
     const location = useLocation();
 
-    const iconColor = location.pathname === '/' ? '-var(--primary-color)' : 'var( --background-color)';
+    const iconColor = location.pathname === '/' ? 'var(--primary-color)' : 'var(--background-color)';
+
     const style = {
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         right: 0,
-        height: "100%",
+        bottom: 0,
         width: 218,
         bgcolor: 'background.paper',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         p: "28px 20px 40px",
+        boxSizing: 'border-box',
+        zIndex: 1000,
     };
 
     const handleCloseModal = useCallback(() => {
@@ -66,8 +71,12 @@ const MobileMenu = ({ isOpen, onClose }) => {
                         <use href={`${sprite}#icon-x`}></use>
                     </svg>
                 </IconButton>
-                <Box sx={{ mt: "176px", mb: "280px" }}><AppNav /></Box>
-                {isLogIn ? <LogOutBtn onClose={handleCloseModal} /> : <AuthNav />}
+                <Box sx={{ mt: "176px" }}>
+                    <AppNav />
+                </Box>
+                <Box sx={{ mt: "auto", display: "flex", justifyContent: "center", width: "100%" }}>
+                    {isLogIn ? <LogOutBtn onClose={handleCloseModal} /> : <AuthNav flex={false} />}
+                </Box>
             </Box>
         </Modal>
         , document.getElementById('modal-root')
@@ -75,3 +84,4 @@ const MobileMenu = ({ isOpen, onClose }) => {
 };
 
 export default MobileMenu;
+

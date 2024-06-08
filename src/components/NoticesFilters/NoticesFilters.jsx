@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
@@ -22,6 +22,7 @@ import {
 import SelectedValues from 'components/SelectedValues/SelectedValues';
 import { Box, IconButton, Paper } from '@mui/material';
 import Btn from 'components/Button/Button';
+import { getCategories, getLocations, getSex, getSpecies } from 'store/operations';
 
 
 const NoticesFilters = ({ onSearch }) => {
@@ -35,6 +36,14 @@ const NoticesFilters = ({ onSearch }) => {
 
     const filter = useSelector(selectGetNoticesFilter);
 
+    useEffect(() => {
+
+        dispatch(getCategories());
+        dispatch(getSex());
+        dispatch(getSpecies());
+        dispatch(getLocations());
+
+    }, [dispatch]);
 
     const handleCategoryChange = (selectedOption) => {
         dispatch(setCategoryFilter(selectedOption ? selectedOption.value : ""));
@@ -133,7 +142,8 @@ const NoticesFilters = ({ onSearch }) => {
         }),
         dropdownIndicator: (provided) => ({
             ...provided,
-            color: "var(--primary-color)"
+            color: "var(--primary-color)",
+            paddingLeft: 0,
         }),
         menu: (provided) => ({
             ...provided,

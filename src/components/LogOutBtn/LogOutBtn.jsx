@@ -15,7 +15,7 @@ const LogOutBtn = ({ onClose }) => {
     };
 
     return (
-        <div>
+        <div style={{ width: "100%" }}>
             <Btn
                 type="button"
                 onClick={handleLogOutClick}

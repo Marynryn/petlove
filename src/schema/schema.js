@@ -71,7 +71,7 @@ export const profileSchema = yup.object().shape({
 export const petSchema = yup.object().shape({
   title: yup.string().required("Title is required"),
   name: yup.string().required("Name is required"),
-  imgUrl: yup
+  imgURL: yup
     .string()
     .matches(
       /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
@@ -81,7 +81,8 @@ export const petSchema = yup.object().shape({
   species: yup.string().required("Species is required"),
   birthday: yup
     .string()
-    .matches(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format")
-    .required("Birthday is required"),
+    .required("Birthday is required")
+    .matches(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format"),
+
   sex: yup.string().required("Sex is required"),
 });

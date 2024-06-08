@@ -8,12 +8,17 @@ import { NavLink } from 'react-router-dom/dist';
 
 export const Login = () => {
     const style = {
-        p: "55px 20px",
+        p: "20px 20px",
         backgroundColor: "var(--background-color)",
         borderRadius: "30px",
         textContent: "center",
         minHeight: "368px",
         my: "auto",
+        display: "flex",
+        flexDirection: "column",
+
+        justifyContent: "center",
+
     }
     return (
         <div>

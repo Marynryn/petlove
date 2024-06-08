@@ -1,17 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import Header from 'components/Header/Header';
-import React, { useEffect } from 'react'
+import React from 'react'
 import css from "./Home.module.css"
-import { getCategories, getSex, getSpecies, getLocations } from 'store/operations';
-import { useDispatch } from 'react-redux';
+
+
 export const Home = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getCategories());
-        dispatch(getSex());
-        dispatch(getSpecies());
-        dispatch(getLocations());
-    }, [dispatch]);
+
+
     return (
         <Box sx={{ my: "-10px", }}>
             <Box sx={{ bgcolor: " var(--secondary-color)", color: "var( --background-color)", p: "10px 20px 50px 20px ", borderRadius: "30px" }}>

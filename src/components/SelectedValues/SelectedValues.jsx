@@ -82,7 +82,7 @@ const SelectedValues = ({ reset }) => {
                     >
                         Popular
                     </Button>
-                    {selectedFilters.popular === true && (
+                    {selectedFilters.popular === 'popular' && (
                         <IconButton onClick={() => clearFilter('popular')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
                             <CloseIcon fontSize="small" />
                         </IconButton>
@@ -95,7 +95,7 @@ const SelectedValues = ({ reset }) => {
                     >
                         Unpopular
                     </Button>
-                    {selectedFilters.popular === false && (
+                    {selectedFilters.popular === 'unpopular' && (
                         <IconButton onClick={() => clearFilter('popular')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
                             <CloseIcon fontSize="small" />
                         </IconButton>
@@ -108,7 +108,7 @@ const SelectedValues = ({ reset }) => {
                     >
                         Cheap
                     </Button>
-                    {selectedFilters.price === true && (
+                    {selectedFilters.price === "cheap" && (
                         <IconButton onClick={() => clearFilter('price')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
                             <CloseIcon fontSize="small" />
                         </IconButton>
@@ -121,7 +121,7 @@ const SelectedValues = ({ reset }) => {
                     >
                         Expensive
                     </Button>
-                    {selectedFilters.price === false && (
+                    {selectedFilters.price === "expensive" && (
                         <IconButton onClick={() => clearFilter('price')} size="small" sx={{ ml: "6px", p: 0, color: '#FFFFFF' }}>
                             <CloseIcon fontSize="small" />
                         </IconButton>

@@ -131,7 +131,7 @@ const RegistrationForm = ({ type, onClose }) => {
                                         onClick={handleClickShowPassword}
                                         onMouseDown={handleMouseDownPassword}
                                         edge="end"
-                                        sx={{ color: 'var(--secondary-color)' }} // Цвет иконки
+                                        sx={{ color: 'var(--secondary-color)' }}
                                     >
                                         {showPassword ? (
                                             <svg width={18} height={18} style={{ stroke: 'var(--secondary-color)', fill: " white" }}>

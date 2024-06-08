@@ -21,7 +21,7 @@ const NoticesItem = ({ props }) => {
     const favorites = useSelector(selectNoticeFavorite);
 
     useEffect(() => {
-        // Загрузка состояния избранного из Redux и LocalStorage
+
         const localFavorites = JSON.parse(localStorage.getItem('favorites')) || favorites;
         setIsFavorite(favorites.includes(props._id) || localFavorites.includes(props._id));
     }, [favorites, props._id]);
@@ -54,7 +54,7 @@ const NoticesItem = ({ props }) => {
         <Box p="24px" width="100%" bgcolor={'var(--background-color)'} sx={{ minWidth: "232px", borderRadius: "16px", height: "430px", position: "relative" }}>
             <img src={props.imgURL} alt={props.title} style={{ width: "100%", objectFit: 'cover', marginBottom: "24px", height: "178px", borderRadius: "16px" }} />
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography sx={{ fontWeight: 700, fontSize: "16px" }}>{props.title}</Typography>
+                <Typography sx={{ fontWeight: 700, fontSize: "16px", textOverflow: 'ellipsis', overflow: "hidden" }}>{props.title}</Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <StarIcon sx={{ color: "var(--secondary-color)", width: "16px", height: "16px" }} />
                     <Typography sx={{ fontSize: "14px" }}>{props.popularity}</Typography>
@@ -62,8 +62,9 @@ const NoticesItem = ({ props }) => {
             </Box>
             <PetInfo props={props} />
             <Typography sx={{ fontWeight: 500, fontSize: "14px", overflow: "hidden", letterSpacing: "-0.28px" }}>{props.comment}</Typography>
-            <Box style={{ display: "flex", gap: "10px", bottom: "24px", position: "absolute", width: "100%" }}>
-                <Button sx={{ backgroundColor: "var(--secondary-color)", color: "var(--background-color)", width: "231px", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500 }} onClick={handleLearnMoreClick}>
+            <Box style={{ display: "flex", gap: "10px", bottom: "25px", position: "absolute", justifyContent: "space-between", minWidth: "232px" }}>
+
+                <Button sx={{ backgroundColor: "var(--secondary-color)", color: "var(--background-color)", minWidth: "180px", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, }} onClick={handleLearnMoreClick}>
                     Learn more
                 </Button>
                 <Box sx={{ borderRadius: "30px", backgroundColor: " #FFF4DF", width: "46px", height: "46px", display: "flex", justifyContent: "center" }}>

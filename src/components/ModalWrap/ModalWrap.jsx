@@ -3,15 +3,12 @@ import sprite from "../../img/svg/symbol-defs.svg";
 import ReactDOM from 'react-dom';
 import { Box, IconButton, Backdrop, Modal } from '@mui/material';
 
-
 const ModalWrap = ({ isOpen, onClose, children }) => {
 
-
     const handleCloseModal = useCallback(() => {
+
         onClose(false);
     }, [onClose]);
-
-
 
     useEffect(() => {
         const handleKeyDown = e => {
@@ -25,6 +22,10 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, [handleCloseModal]);
+
+    useEffect(() => {
+        console.log('isOpen changed:', isOpen);
+    }, [isOpen]);
 
     return isOpen ? ReactDOM.createPortal(
         <Modal
@@ -49,34 +50,35 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
                     position: 'relative',
                     backgroundColor: 'white',
                     borderRadius: '16px',
-
-                    minWidth: '300px',
+                    minWidth: '280px',
                     padding: '20px',
                     maxHeight: '95%',
-
-
                 }}
             >
                 <IconButton
-                    onClick={handleCloseModal}
+                    onClick={() => {
+
+                        handleCloseModal();
+                    }}
                     sx={{
                         p: 0,
                         position: 'absolute',
-                        top: '16px',
-                        right: '16px',
+                        top: '10px',
+                        right: '10px',
+                        width: "30px", height: "30px",
                         '&:hover': {
                             transform: 'scale(1.1)',
                         },
                     }}
                 >
-                    <svg style={{ width: "24px", height: "24px" }}>
+                    <svg style={{ width: "24px", height: "24px" }} >
                         <use href={`${sprite}#icon-x`} width={24} height={24} />
                     </svg>
                 </IconButton>
                 {children}
             </Box>
         </Modal>, document.getElementById('modal-root')
-    ) : null
+    ) : null;
 };
 
 export default ModalWrap;

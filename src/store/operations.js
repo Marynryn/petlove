@@ -99,7 +99,7 @@ export const currentUserEdit = createAsyncThunk(
   async (filteredData, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.user.token;
-    console.log(filteredData);
+
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
@@ -108,7 +108,7 @@ export const currentUserEdit = createAsyncThunk(
       setAuthHeader(persistedToken);
 
       const res = await api.patch("users/current/edit", filteredData);
-      console.log(res);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -154,7 +154,6 @@ const constructUrl = (page, perPage, filter) => {
   }
 
   const query = new URLSearchParams();
-  console.log("Query Initial:", query.toString());
 
   if (filter.inputFilter) query.append("keyword", filter.inputFilter);
 
@@ -176,7 +175,6 @@ const constructUrl = (page, perPage, filter) => {
   query.append("page", page);
   query.append("limit", perPage);
 
-  console.log("Query Final:", query.toString());
   return `/notices?${query.toString()}`;
 };
 
@@ -284,7 +282,7 @@ export const addMyPet = createAsyncThunk(
   async (PetData, thunkAPI) => {
     try {
       const { data } = await api.post("/users/current/pets/add", PetData);
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

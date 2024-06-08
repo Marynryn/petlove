@@ -15,12 +15,10 @@ export function formatDateString(dateString) {
 
   return dateWithDots;
 }
-export function formatDateRevers(dateString) {
-  if (!dateString) {
+export function formatDateRevers(date) {
+  if (!date) {
     return;
   }
-
-  const date = new Date(dateString);
 
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");

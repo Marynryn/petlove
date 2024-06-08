@@ -44,10 +44,10 @@ export const ModalNotice = ({ props }) => {
     };
 
     const style = {
-        backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", width: "100%", textTransform: 'capitalize', fontSize: "16px", borderRadius: "30px", fontWeight: 500, '&:hover': { backgroundColor: "#F9B020" }
+        backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", width: "100%", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, '&:hover': { backgroundColor: "#F9B020" }
     }
     return (
-        <Box sx={{ py: "20px", textAlign: 'center', position: "relative", height: "386px", width: "295px" }}>
+        <Box sx={{ py: "20px", textAlign: 'center', position: "relative", height: "386px", width: "280px", }}>
             <Box>
                 <Box sx={{ position: "absolute", right: "55%", borderRadius: "30px", backgroundColor: " #FFF4DF", }}><Typography sx={{ p: "8px 14px", textTransform: 'capitalize', fontWeight: 500, fontSize: "12px", color: "var(--secondary-color)", }}>{infoPet.category}</Typography></Box>
                 <img src={infoPet.imgURL} alt={infoPet.title} style={{ width: "120px", height: "120px", objectFit: 'cover', marginBottom: "24px", borderRadius: "100%", mx: "auto", }} />
