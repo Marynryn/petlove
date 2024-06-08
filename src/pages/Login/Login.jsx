@@ -2,6 +2,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import PetBlock from 'components/PetBlock/PetBlock';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
+import theme from 'components/Theme';
 import Title from 'components/Title/Title';
 import React from 'react'
 import { NavLink } from 'react-router-dom/dist';
@@ -18,6 +19,11 @@ export const Login = () => {
         flexDirection: "column",
 
         justifyContent: "center",
+        [theme.breakpoints.up("md")]: {
+            p: "71px 140px",
+            height: "418px"
+        },
+
 
     }
     return (
@@ -25,7 +31,11 @@ export const Login = () => {
             <PetBlock />
             <Box sx={style}>
                 <Title>Login</Title>
-                <Typography sx={{ mt: "12px", mb: "20px", fontSize: "14px", lineHeight: 1.28, fontWeight: 500, letterSpacing: "-0.28px" }}>
+                <Typography sx={{
+                    mt: "12px", mb: "20px", fontSize: "14px", lineHeight: 1.28, fontWeight: 500, letterSpacing: "-0.28px", [theme.breakpoints.up("md")]: {
+                        mt: "16px", mb: "32px", fontSize: "18px"
+                    },
+                }}>
                     Welcome! Please enter your credentials to login to the platform:
                 </Typography>
                 <RegistrationForm type={"login"} />

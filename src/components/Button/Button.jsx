@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import theme from 'components/Theme';
 import React from 'react';
 
 
@@ -30,6 +31,10 @@ const Btn = ({ children, onClick, type, bgColor, textColor }) => {
         alignItems: "center",
         '&:hover': hoverBgColor,
         '&:focus': hoverBgColor,
+        [theme.breakpoints.up('md')]: {
+
+            height: "48px"
+        }
     };
 
 

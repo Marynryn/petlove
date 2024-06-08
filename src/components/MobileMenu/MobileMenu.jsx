@@ -7,6 +7,7 @@ import { Backdrop, Box, IconButton, Modal } from '@mui/material';
 import { useLocation } from 'react-router-dom/dist';
 import { IsLoggedIn } from 'helpers/isLoggedIn';
 import LogOutBtn from 'components/LogOutBtn/LogOutBtn';
+import theme from 'components/Theme';
 
 const MobileMenu = ({ isOpen, onClose }) => {
     const { isLogIn } = IsLoggedIn();
@@ -27,6 +28,9 @@ const MobileMenu = ({ isOpen, onClose }) => {
         p: "28px 20px 40px",
         boxSizing: 'border-box',
         zIndex: 1000,
+        [theme.breakpoints.up('md')]: {
+            width: "374px"
+        }
     };
 
     const handleCloseModal = useCallback(() => {
@@ -74,8 +78,19 @@ const MobileMenu = ({ isOpen, onClose }) => {
                 <Box sx={{ mt: "176px" }}>
                     <AppNav />
                 </Box>
-                <Box sx={{ mt: "auto", display: "flex", justifyContent: "center", width: "100%" }}>
-                    {isLogIn ? <LogOutBtn onClose={handleCloseModal} /> : <AuthNav flex={false} />}
+                <Box sx={{
+                    mt: "auto", display: "flex", justifyContent: "center", width: "100%",
+                    [theme.breakpoints.up('md')]: {
+
+                        mx: "auto",
+                    }
+                }}>
+                    {isLogIn ? <Box sx={{
+                        [theme.breakpoints.up('md')]: {
+                            width: "218px",
+                            mx: "auto",
+                        }
+                    }}><LogOutBtn onClose={handleCloseModal} /> </Box> : <AuthNav flex={false} />}
                 </Box>
             </Box>
         </Modal>

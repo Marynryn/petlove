@@ -13,6 +13,7 @@ import AvatarUpload from 'components/AvatarUploader/AvatarUploader';
 import SpeciesSelect from 'components/SpeciesSelect/SpeciesSelect';
 import BirthdayPicker from 'components/BirthdayPicker/BirthdayPicker';
 import SexRadioGroup from 'components/SexRadioGroup/SexRadioGroup';
+import theme from 'components/Theme';
 
 
 const AddPetForm = () => {
@@ -151,7 +152,11 @@ const AddPetForm = () => {
                         error={!!methods.formState.errors.title}
                         helperText={methods.formState.errors.title?.message}
                     />
-                    <Box display="flex" gap="8px">
+                    <Box display="flex" gap="8px" sx={{
+                        [theme.breakpoints.down('sm')]: {
+                            display: 'block',
+                        },
+                    }}>
                         <BirthdayPicker formData={formData} setFormData={setFormData} />
                         <SpeciesSelect species={species} selectedSpecies={selectedSpecies} setSelectedSpecies={setSelectedSpecies} />
                     </Box>
@@ -167,7 +172,7 @@ const AddPetForm = () => {
 
                 </form>
             </FormProvider>
-        </Box>
+        </Box >
     );
 };
 

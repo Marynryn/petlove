@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/selectors';
 import { Box, Typography, Avatar, } from '@mui/material';
 
 const UserBar = () => {
     const user = useSelector(selectUser);
-
-
+    const location = useLocation()
+    const homepage = location.pathname === "/"
     const defaultBgColor = "#FFF4DF";
     const defaultColor = 'var(--secondary-color)';
 
@@ -31,7 +31,7 @@ const UserBar = () => {
                 </Avatar>
                 <Typography variant="h6" color="textPrimary" sx={(theme) => ({
                     display: "flex",
-
+                    color: homepage ? "#fff" : "var(--primary-color)",
                     [theme.breakpoints.down("md")]: {
                         display: "none",
                     },

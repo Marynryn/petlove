@@ -11,8 +11,9 @@ export const Title = ({ children }) => {
             letterSpacing: "-1.12px",
 
             [theme.breakpoints.up("md")]: {
-
                 fontSize: "54px",
+
+
                 letterSpacing: "-1.62px",
             }
         })

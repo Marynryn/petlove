@@ -13,3 +13,14 @@ const theme = createTheme({
 
 })
 export default theme;
+// sx = {{
+//     backgroundColor: 'red',
+//       [theme.breakpoints.up('sm')]: {
+//         backgroundColor: 'blue',
+//             },  
+//     [theme.breakpoints.up('md')]: {
+//         backgroundColor: 'green',
+//             },
+//     [theme.breakpoints.up('lg')]: {
+//         backgroundColor: 'yellow',
+//             },}}

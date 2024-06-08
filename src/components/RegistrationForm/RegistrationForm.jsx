@@ -9,6 +9,7 @@ import { IconButton, InputAdornment, TextField, Box } from '@mui/material';
 import sprite from '../../img/svg/symbol-defs.svg'
 import { useDispatch } from 'react-redux';
 import { login, userPost } from 'store/operations';
+import theme from 'components/Theme';
 
 
 
@@ -49,13 +50,20 @@ const RegistrationForm = ({ type, onClose }) => {
     });
 
     const style = {
+
         mt: 0,
-        mb: "10px",
+        mb: "16px",
+        [theme.breakpoints.up("md")]: {
+            height: "52px"
+        },
         '& .MuiOutlinedInput-input': {
             p: "12px",
             height: "16px",
             fontSize: "14px",
             fontWeight: 500,
+            [theme.breakpoints.up("md")]: {
+                p: "16px"
+            },
         },
         '& .MuiOutlinedInput-root': {
             borderRadius: "30px",
@@ -186,7 +194,11 @@ const RegistrationForm = ({ type, onClose }) => {
                         />
                     )}
 
-                    <Box sx={{ mt: type === 'login' ? "40px" : "14px" }}>
+                    <Box sx={{
+                        mt: type === 'login' ? "40px" : "14px", [theme.breakpoints.up("md")]: {
+                            height: "52px"
+                        },
+                    }}>
                         <Btn type={"submit"} onClick={onSubmit} bgColor={"var(--secondary-color)"} textColor={"var(--background-color)"}>
                             {type === 'login' ? 'Log In' : 'Registration'}
                         </Btn>

@@ -6,6 +6,7 @@ import Header from './Header/Header';
 import { Box } from '@mui/material';
 import { useLocation } from 'react-router-dom/dist';
 import { Toaster } from 'react-hot-toast';
+import theme from './Theme';
 
 
 export const Layout = () => {
@@ -17,7 +18,11 @@ export const Layout = () => {
     return (
         <Box >
             <Suspense fallback={<Loader />}>
-                <Box sx={{ p: "20px " }} >
+                <Box sx={{
+                    p: "20px ", [theme.breakpoints.up('md')]: {
+                        p: '32px',
+                    },
+                }} >
                     {shouldRenderHeader && <Header backgroundColor={"inherit"} iconColor={"var(--primary-color)"} />}
                     <Outlet />
                 </Box>

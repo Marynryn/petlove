@@ -1,6 +1,7 @@
 import React from 'react'
 import sprite from '../../img/svg/symbol-defs.svg'
 import { useLocation } from 'react-router-dom/dist';
+import css from "./Logo.module.css"
 
 
 export const Logo = ({ width, height }) => {
@@ -8,11 +9,11 @@ export const Logo = ({ width, height }) => {
 
     const iconName = location.pathname === '/' ? 'icon-logo-1' : 'icon-logo';
     return (
-        <div className=''>
-            <svg width={width} height={height}>
-                <use href={`${sprite}#${iconName}`} style={{ minWidth: `${width}` }} ></use>
-            </svg>
-        </div>
+
+        <svg className={css.logo}>
+            <use href={`${sprite}#${iconName}`}  ></use>
+        </svg>
+
     )
 }
 export default Logo;

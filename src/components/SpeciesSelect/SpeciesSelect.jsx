@@ -1,6 +1,7 @@
 import Select from 'react-select';
 import { Box, Typography } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
+import theme from 'components/Theme';
 
 const SpeciesSelect = ({ species, selectedSpecies, setSelectedSpecies }) => {
     const { setValue, formState: { errors } } = useFormContext();
@@ -17,7 +18,7 @@ const SpeciesSelect = ({ species, selectedSpecies, setSelectedSpecies }) => {
             height: "42px",
             borderRadius: '30px',
             border: species ? '1px solid var(--secondary-color)' : '1px solid rgba(38, 38, 38, 0.15)',
-
+            minWidth: "143px"
         }),
         singleValue: (provided) => ({
             ...provided,
@@ -95,7 +96,11 @@ const SpeciesSelect = ({ species, selectedSpecies, setSelectedSpecies }) => {
         })
     }
     return (
-        <Box>
+        <Box sx={{
+            [theme.breakpoints.down('sm')]: {
+                mt: '8px',
+            },
+        }}>
             <Select
                 styles={style}
                 options={createOptions(species)}

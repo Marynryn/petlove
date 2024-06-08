@@ -26,15 +26,17 @@ const BirthdayPicker = ({ formData, setFormData }) => {
         setValue('birthday', formattedDate);
     };
 
-    return (<Box sx={{ position: "relative" }}>
+    return (<Box sx={{ position: "relative", }}>
         <DatePicker
             selected={formData.birthday ? new Date(formData.birthday) : null}
             onChange={handleBirthdayChange}
             customInput={<TextField sx={{
+
                 mt: 0,
                 mb: 0,
                 '& .MuiOutlinedInput-root': {
                     borderRadius: "30px",
+
                     '& fieldset': {
                         border: formData.birthday ? '1px solid var(--secondary-color)' : '1px solid rgba(38, 38, 38, 0.15)',
                     },
@@ -53,6 +55,7 @@ const BirthdayPicker = ({ formData, setFormData }) => {
                     height: "18px",
                     fontSize: "14px",
                     fontWeight: 500,
+                    width: '100%',
                 },
                 '& .MuiFormHelperText-root': {
                     height: "12px",
@@ -69,6 +72,7 @@ const BirthdayPicker = ({ formData, setFormData }) => {
             locale="en-GB"
             placeholderText='00.00.0000'
             maxDate={new Date()}
+
             dateFormat="dd/MM/yyyy"
             ref={datePickerRef}
             showMonthDropdown

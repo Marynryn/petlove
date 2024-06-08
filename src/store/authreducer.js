@@ -15,6 +15,7 @@ import {
   userPost,
 } from "./operations.js";
 import { toast } from "react-hot-toast";
+import { errorMessages } from "helpers/errorMessage.js";
 const initialState = {
   user: {
     name: null,
@@ -57,7 +58,9 @@ const myAuth = createSlice({
         state.isLoading = false;
         state.error = action.payload;
 
-        toast.error(action.payload);
+        const errorMessage = errorMessages[action.payload.status];
+
+        toast.error(errorMessage);
       })
       .addCase(login.pending, (state, action) => {
         state.isLoading = true;
@@ -69,22 +72,29 @@ const myAuth = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.user.isLoading = false;
         state.error = action.payload;
-
-        toast.error(action.payload);
+        const errorMessage = errorMessages.signin[action.payload];
+        console.log(action.payload);
+        toast.error(errorMessage);
       })
       .addCase(logOut.pending, (state, action) => {
         state.isLoading = true;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.user = initialState;
-
-        state.isLoggedIn = false;
+        state.user = initialState.user;
+        state.isLoggedIn = initialState.isLoggedIn;
+        state.error = initialState.error;
+        state.isLoading = initialState.isLoading;
+        state.isRefreshing = initialState.isRefreshing;
+        state.petById = initialState.petById;
+        state.noticesFavorites = initialState.noticesFavorites;
       })
+
       .addCase(logOut.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        const errorMessage = errorMessages.logout[action.payload];
 
-        toast.error(action.payload);
+        toast.error(errorMessage);
       })
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
