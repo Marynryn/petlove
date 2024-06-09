@@ -14,7 +14,7 @@
   height: 292px;
   background-color: transparent;
   display: flex;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 396px;
     height: 396px;
   }

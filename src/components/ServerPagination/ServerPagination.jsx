@@ -4,6 +4,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import theme from 'components/Theme';
 
 const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
     const handleFirstPage = () => onPageChange(1);
@@ -24,9 +25,14 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
         alignItems: 'center',
         justifyContent: 'center',
         fontWeight: 700,
-        '@media (max-width: 320px)': {
+        [theme.breakpoints.down("sm")]: {
+
             width: '34px',
             height: '34px',
+        },
+        [theme.breakpoints.up("md")]: {
+            width: '44px',
+            height: '44px',
         },
     };
     const activeButtonStyle = {
@@ -38,10 +44,15 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
         border: '1px solid',
         width: '38px',
         height: '38px',
-        '@media (max-width: 320px)': {
+        [theme.breakpoints.down("sm")]: {
             width: '34px',
             height: '34px',
         },
+        [theme.breakpoints.up("md")]: {
+            width: '44px',
+            height: '44px',
+        },
+
         borderColor: "var(--secondary-color)",
         backgroundColor: 'var(--secondary-color)',
 
@@ -53,18 +64,20 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
     }
     return (
         <Box sx={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '26px', gap: "6px", width: "334px", '@media (max-width: 320px)': {
+            display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '26px', gap: "6px", width: "334px", mb: "20px", [theme.breakpoints.down("sm")]: {
                 width: '280px',
                 gap: "4px",
+
             },
+            [theme.breakpoints.up("md")]: { mx: "auto", width: "440px", gap: "8px", mt: "60px", mb: "48px" },
         }}>
             <IconButton sx={buttonStyle} onClick={handleFirstPage} disabled={isFirstPage}>
-                <KeyboardDoubleArrowLeftIcon sx={{ p: "8px", minWidth: "18px", '@media (max-width: 320px)': { p: "6px" }, }} />
+                <KeyboardDoubleArrowLeftIcon sx={{ p: "8px", minWidth: "18px", [theme.breakpoints.down("sm")]: { p: "6px" }, }} />
             </IconButton>
             <IconButton sx={buttonStyle} onClick={handlePreviousPage} disabled={isFirstPage}>
-                <ChevronLeftIcon sx={{ p: "8px", '@media (max-width: 320px)': { p: "6px" }, }} />
+                <ChevronLeftIcon sx={{ p: "8px", [theme.breakpoints.down("sm")]: { p: "6px" }, }} />
             </IconButton>
-            <Box mx="5px" sx={{ display: "flex", gap: "10px", '@media (max-width: 320px)': { gap: "6px", mx: 0 }, }}>
+            <Box mx="5px" sx={{ display: "flex", gap: "10px", [theme.breakpoints.down("sm")]: { gap: "6px", mx: 0 }, [theme.breakpoints.up("md")]: { mx: "24px" }, }}>
                 {pageNumbers.map((pageNumber, index) => (
                     <Box key={index} sx={pageNumber === currentPage ? activeButtonStyle : buttonStyle} mx={0} onClick={() => onPageChange(pageNumber)}>
                         {pageNumber}
@@ -74,10 +87,10 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
                     ...
                 </Box></Box>
             <IconButton sx={buttonStyle} onClick={handleNextPage} disabled={isLastPage}>
-                <ChevronRightIcon sx={{ p: "8px", '@media (max-width: 320px)': { p: "6px" }, }} />
+                <ChevronRightIcon sx={{ p: "8px", [theme.breakpoints.down("sm")]: { p: "6px" }, }} />
             </IconButton>
             <IconButton sx={buttonStyle} onClick={handleLastPage} disabled={isLastPage}>
-                <KeyboardDoubleArrowRightIcon sx={{ p: "8px", '@media (max-width: 320px)': { p: "6px" }, }} />
+                <KeyboardDoubleArrowRightIcon sx={{ p: "8px", [theme.breakpoints.down("sm")]: { p: "6px" }, }} />
             </IconButton>
         </Box>
     );

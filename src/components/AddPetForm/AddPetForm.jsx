@@ -3,7 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import toast from 'react-hot-toast';
 import { addMyPet, getSpecies } from 'store/operations';
 import { petSchema } from 'schema/schema';
@@ -40,7 +40,7 @@ const AddPetForm = () => {
     useEffect(() => {
         dispatch(getSpecies());
     }, [dispatch]);
-    console.log(methods.formState.errors)
+
     const onSubmit = async (data) => {
         const petData = {
             ...data,
@@ -57,7 +57,7 @@ const AddPetForm = () => {
             toast.error('Failed to add pet');
         }
     };
-    console.log(methods.error)
+
     const handleBack = () => {
         navigate('/my-pets');
     };
@@ -65,12 +65,26 @@ const AddPetForm = () => {
         borderRadius: "30px",
         backgroundColor: "var(--background-color)",
         p: "28px 20px 20px",
-        mt: "18px",
-        mb: "40px"
+
+        [theme.breakpoints.up("md")]: {
+            p: "38px 136px"
+        }
     };
     return (
         <Box sx={boxStyle}>
-            <Title>Add Pet</Title>
+            <Typography sx={{
+                fontSize: "28px",
+                [theme.breakpoints.up("md")]: {
+                    fontSize: "32px", fontWeight: 700,
+                    // display: "none",
+                }
+            }}>Add Pet/ <Typography component="span" sx={{
+                color: "rgba(43, 43, 42, 0.4)",
+                fontSize: "14px", [theme.breakpoints.up("md")]: {
+                    fontSize: "16px",
+                    // display: "none",
+                }
+            }}>Personal details</Typography></Typography>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} >
                     <SexRadioGroup selectedSex={selectedSex} setSelectedSex={setSelectedSex} />
@@ -79,7 +93,9 @@ const AddPetForm = () => {
                     <TextField
                         sx={{
                             mt: 0,
-                            mb: "10px",
+                            mb: "10px", [theme.breakpoints.up("md")]: {
+                                mb: "18px"
+                            },
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: "30px",
                                 '& fieldset': {
@@ -95,6 +111,9 @@ const AddPetForm = () => {
                             },
                             '& .MuiOutlinedInput-input': {
                                 padding: "12px",
+                                [theme.breakpoints.up("md")]: {
+                                    p: "16px"
+                                },
                                 height: "18px",
                                 fontSize: "14px",
                                 fontWeight: 500,
@@ -109,14 +128,16 @@ const AddPetForm = () => {
                         placeholder='Title'
                         fullWidth
                         margin="normal"
-                        {...methods.register('name')}
-                        error={!!methods.formState.errors.name}
-                        helperText={methods.formState.errors.name?.message}
+                        {...methods.register('title')}
+                        error={!!methods.formState.errors.title}
+                        helperText={methods.formState.errors.title?.message}
                     />
                     <TextField
                         sx={{
                             mt: 0,
-                            mb: "10px",
+                            mb: "10px", [theme.breakpoints.up("md")]: {
+                                mb: "18px"
+                            },
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: "30px",
                                 '& fieldset': {
@@ -134,6 +155,9 @@ const AddPetForm = () => {
 
                             '& .MuiOutlinedInput-input': {
                                 padding: "12px",
+                                [theme.breakpoints.up("md")]: {
+                                    p: "16px"
+                                },
                                 height: "18px",
                                 fontSize: "14px",
                                 fontWeight: 500,
@@ -148,9 +172,9 @@ const AddPetForm = () => {
                         placeholder='Pet`s Name'
                         fullWidth
                         margin="normal"
-                        {...methods.register('title')}
-                        error={!!methods.formState.errors.title}
-                        helperText={methods.formState.errors.title?.message}
+                        {...methods.register('name')}
+                        error={!!methods.formState.errors.name}
+                        helperText={methods.formState.errors.name?.message}
                     />
                     <Box display="flex" gap="8px" sx={{
                         [theme.breakpoints.down('sm')]: {
@@ -161,11 +185,23 @@ const AddPetForm = () => {
                         <SpeciesSelect species={species} selectedSpecies={selectedSpecies} setSelectedSpecies={setSelectedSpecies} />
                     </Box>
 
-                    <Box mt="31px" display="flex" justifyContent="end" gap="8px">
-                        <Button type="button" onClick={handleBack} color="secondary" sx={{ borderRadius: "30px", fontWeight: 700, backgroundColor: "rgba(38, 38, 38, 0.05)", color: 'var(--primary-color)', textDecoration: "none", textTransform: "capitalize", p: "12px 26px" }}>
+                    <Box mt="31px" display="flex" justifyContent="end" gap="8px" sx={{
+                        [theme.breakpoints.up("md")]: {
+                            mt: "46px"
+                        },
+                    }}>
+                        <Button type="button" onClick={handleBack} color="secondary" sx={{
+                            borderRadius: "30px", fontWeight: 700, backgroundColor: "rgba(38, 38, 38, 0.05)", color: 'var(--primary-color)', textDecoration: "none", textTransform: "capitalize", p: "12px 26px", [theme.breakpoints.up("md")]: {
+                                p: "12px 67px"
+                            },
+                        }}>
                             Back
                         </Button>
-                        <Button type="submit" sx={{ borderRadius: "30px", backgroundColor: "var(--secondary-color)", fontWeight: 700, color: 'var(--background-color)', textDecoration: "none", textTransform: "capitalize", p: "12px 26px" }}>
+                        <Button type="submit" sx={{
+                            borderRadius: "30px", backgroundColor: "var(--secondary-color)", fontWeight: 700, color: 'var(--background-color)', textDecoration: "none", textTransform: "capitalize", p: "12px 16px", [theme.breakpoints.up("md")]: {
+                                p: "12px 57px"
+                            },
+                        }}>
                             Submit
                         </Button>
                     </Box>

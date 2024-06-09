@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { registerLocale } from 'react-datepicker';
 import enGB from 'date-fns/locale/en-GB';
 import sprite from '../../img/svg/symbol-defs.svg';
+import theme from 'components/Theme';
 registerLocale('en-GB', enGB);
 
 const BirthdayPicker = ({ formData, setFormData }) => {
@@ -52,6 +53,9 @@ const BirthdayPicker = ({ formData, setFormData }) => {
 
                 '& .MuiOutlinedInput-input': {
                     padding: "12px",
+                    [theme.breakpoints.up("md")]: {
+                        p: "16px"
+                    },
                     height: "18px",
                     fontSize: "14px",
                     fontWeight: 500,

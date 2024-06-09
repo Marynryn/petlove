@@ -6,6 +6,7 @@ import sprite from '../../img/svg/symbol-defs.svg'
 import { Box, Typography } from '@mui/material';
 import UserBlock from 'components/UserBlock/UserBlock';
 import PetsBlock from 'components/PetsBlock/PetsBlock';
+import theme from 'components/Theme';
 export const UserCard = ({ props }) => {
 
     const boxStyle = {
@@ -14,7 +15,9 @@ export const UserCard = ({ props }) => {
         backgroundColor: "var(--background-color)",
         p: "18px 20px 40px 20px",
         mt: "18px",
-        mb: "40px"
+        mb: "40px", [theme.breakpoints.up("md")]: {
+            p: "40px"
+        },
     }
     return (
         <Box sx={boxStyle}>

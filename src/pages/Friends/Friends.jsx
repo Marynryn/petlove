@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import FriendsList from 'components/FriendsList/FriendsList';
+import theme from 'components/Theme';
 
 import Title from 'components/Title/Title';
 import React, { useEffect } from 'react'
@@ -19,7 +20,12 @@ export const Friends = () => {
 
 
     return (
-        <Box my="60px">
+        <Box my="60px" sx={{
+            [theme.breakpoints.up("md")]: {
+                mt: "96px",
+                mb: "48px"
+            },
+        }}>
             <Title>Our friends</Title>
             <FriendsList friends={friends} />
 

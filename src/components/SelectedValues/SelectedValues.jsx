@@ -4,6 +4,7 @@ import { setPopularFilter, setPriceFilter } from 'store/reducer';
 import { Button, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
+import theme from 'components/Theme';
 
 const SelectedValues = ({ reset }) => {
     const dispatch = useDispatch();
@@ -55,7 +56,10 @@ const SelectedValues = ({ reset }) => {
         height: "18px",
         border: "none",
         backgroundColor: '#FFFFFF',
-        color: "var(--primary-color)"
+        color: "var(--primary-color)", [theme.breakpoints.up("md")]: {
+            height: "20px",
+            p: "14px"
+        }
     };
 
     const selectedButtonStyle = {
@@ -69,7 +73,9 @@ const SelectedValues = ({ reset }) => {
         height: "12px",
         fontSize: '14px',
         fontWeight: 500,
-        color: isSelected ? '#FFFFFF' : "var(--primary-color)"
+        color: isSelected ? '#FFFFFF' : "var(--primary-color)", [theme.breakpoints.up("md")]: {
+            fontSize: '16px'
+        }
     });
 
     return (

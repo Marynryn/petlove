@@ -8,13 +8,14 @@ import ServerPagination from 'components/ServerPagination/ServerPagination';
 import { getNews } from 'store/operations';
 import { selectGetFilter, selectGetNews, selectTotalPages } from 'store/selectors';
 import { setFilter } from 'store/reducer';
+import theme from 'components/Theme';
 
 export const News = ({ onSearch }) => {
     const dispatch = useDispatch();
     const filter = useSelector(selectGetFilter);
     const news = useSelector(selectGetNews);
     const totalPages = useSelector(selectTotalPages);
-    console.log(filter)
+    console.log(news)
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
@@ -30,9 +31,20 @@ export const News = ({ onSearch }) => {
         setCurrentPage(1);
     };
     return (
-        <Box sx={{ mt: "60px" }}>
-            <Title>News</Title>
-            <SearchField onSearch={handleSearch} />
+        <Box sx={{
+            mt: "60px", [theme.breakpoints.up("md")]: {
+                mt: "96px"
+            },
+        }}>
+            <Box sx={{
+                [theme.breakpoints.up("md")]: {
+                    display: "flex",
+                    justifyContent: "space-between",
+
+                },
+            }}>
+                <Title>News</Title>
+                <SearchField onSearch={handleSearch} /></Box>
             <NewsList news={news} />
             {totalPages > 1 && (
                 <ServerPagination

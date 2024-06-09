@@ -26,7 +26,8 @@ const ContactInfo = ({ props }) => {
         justifyContent: 'start',
         alignItems: 'center',
         mb: '8px',
-
+        height: "18px",
+        lineHeight: "18px"
     };
 
     const containerStyles = {

@@ -8,6 +8,7 @@ import Title from 'components/Title/Title';
 import { getNotices } from 'store/operations';
 import { setInputFilter } from 'store/reducer';
 import { selectGetNotices, selectGetNoticesFilter, selectTotalPagesNotices } from 'store/selectors';
+import theme from 'components/Theme';
 
 const Notices = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Notices = () => {
     const itemsPerPage = 6;
     const [filteredNotices, setFilteredNotices] = useState([]);
 
-
+    console.log(currentPage)
     useEffect(() => {
         dispatch(getNotices({ page: currentPage, perPage: itemsPerPage, filter }));
     }, [dispatch, currentPage, filter]);
@@ -46,7 +47,11 @@ const Notices = () => {
     };
     console.log(filteredNotices)
     return (
-        <Box mt="60px">
+        <Box mt="60px" sx={{
+            [theme.breakpoints.up("md")]: {
+                mt: "96px"
+            },
+        }}>
             <Title>Find your favorite pet</Title>
             <NoticesFilters onSearch={handleSearch} />
             <NoticesList props={filteredNotices} />

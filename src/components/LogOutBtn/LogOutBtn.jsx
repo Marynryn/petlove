@@ -3,7 +3,7 @@ import { ModalApproveAction } from 'components/ModalApproveAction/ModalApproveAc
 import Modal from 'components/ModalWrap/ModalWrap';
 import React, { useState } from 'react';
 
-const LogOutBtn = ({ onClose }) => {
+const LogOutBtn = ({ onClose, props }) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleLogOutClick = () => {
@@ -13,14 +13,15 @@ const LogOutBtn = ({ onClose }) => {
 
         }
     };
-
+    const bgColor = props ? "var(--secondary-color)" : "var(--accent-color)";
+    const textColor = props ? "var(--background-color)" : "var(--secondary-color)";
     return (
         <div style={{ width: "100%" }}>
             <Btn
                 type="button"
                 onClick={handleLogOutClick}
-                bgColor="var(--accent-color)"
-                textColor="var(--secondary-color)"
+                bgColor={bgColor}
+                textColor={textColor}
             >
                 LOG OUT
             </Btn>

@@ -24,7 +24,7 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
     }, [handleCloseModal]);
 
     useEffect(() => {
-        console.log('isOpen changed:', isOpen);
+
     }, [isOpen]);
 
     return isOpen ? ReactDOM.createPortal(

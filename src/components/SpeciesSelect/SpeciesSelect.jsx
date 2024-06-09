@@ -15,7 +15,9 @@ const SpeciesSelect = ({ species, selectedSpecies, setSelectedSpecies }) => {
             cursor: 'default',
             width: "100%",
             color: "var(--primary-color)",
-            height: "42px",
+            height: "42px", [theme.breakpoints.up("md")]: {
+                height: "50px", width: "210px"
+            },
             borderRadius: '30px',
             border: species ? '1px solid var(--secondary-color)' : '1px solid rgba(38, 38, 38, 0.15)',
             minWidth: "143px"

@@ -3,6 +3,7 @@ import React from 'react'
 import sprite from '../../img/svg/symbol-defs.svg'
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/selectors';
+import theme from 'components/Theme';
 
 export const UserBlock = ({ props }) => {
     const user = useSelector(selectUser);
@@ -16,16 +17,32 @@ export const UserBlock = ({ props }) => {
         display: "flex",
         alignItems: "center",
         pl: "12px",
-        mb: "10px"
+        mb: "10px", [theme.breakpoints.up("md")]: {
+            fontSize: "16px",
+            width: "290px"
+        },
 
 
     }
 
     return (
-        <Box mb="30px">
+        <Box mb="30px" sx={{
+            [theme.breakpoints.up("md")]: {
+                mb: "48px"
+            },
+        }}>
             {(user.avatar === "") ? (<>
-                <Box sx={{ width: "94px", height: "94px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px" }}>
-                    <svg width={40} height={40} style={{ padding: "20px", }}>
+                <Box sx={{
+                    width: "94px", height: "94px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px", [theme.breakpoints.up("md")]: {
+
+
+                    },
+                }}>
+                    <svg width={40} height={40} style={{
+
+                        padding: "20px",
+
+                    }}>
                         <use href={`${sprite}#icon-Vector-2`} style={{ fill: "var(--secondary-color)" }} ></use>
                     </svg>
                 </Box>
@@ -36,45 +53,65 @@ export const UserBlock = ({ props }) => {
                 </Box>
             )}
 
-            <Typography sx={{ fontSize: "16px", fontWeight: 700, mb: "20px" }}>My information</Typography>
-            {props.name ?
-                <Typography sx={fieldStyle}>{props.name}</Typography> : <Typography sx={{
-                    border: "1px solid rgba(38, 38, 38, 0.15)",
-                    borderRadius: "30px",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    height: "42px",
-                    display: "flex",
-                    alignItems: "center",
-                    pl: "12px",
-                    mb: "10px"
-                }}>Name</Typography>}
-            {props.email ?
-                <Typography sx={fieldStyle}>{props.email}</Typography> : <Typography sx={{
-                    border: "1px solid rgba(38, 38, 38, 0.15)",
-                    borderRadius: "30px",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    height: "42px",
-                    display: "flex",
-                    alignItems: "center",
-                    pl: "12px",
-                    mb: "10px"
-                }}>Email</Typography>}
-            {props.phone ?
-                <Typography sx={fieldStyle}>{props.phone} </Typography> :
-                <Typography sx={{
-                    border: "1px solid rgba(38, 38, 38, 0.15)",
-                    borderRadius: "30px",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    height: "42px",
-                    display: "flex",
-                    alignItems: "center",
-                    pl: "12px",
-                    mb: "10px"
-                }}>+3805 </Typography>
-            }
+            <Typography sx={{
+                fontSize: "16px", fontWeight: 700, mb: "20px", [theme.breakpoints.up("md")]: {
+                    fontSize: "18px",
+
+                },
+            }}>My information</Typography>
+            <Box sx={{
+                [theme.breakpoints.up("md")]: {
+                    display: "flex", flexWrap: "wrap", gap: "14px"
+
+                },
+            }}>
+                {props.name ?
+                    <Typography sx={fieldStyle}>{props.name}</Typography> : <Typography sx={{
+                        border: "1px solid rgba(38, 38, 38, 0.15)",
+                        borderRadius: "30px",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        height: "42px",
+                        display: "flex",
+                        alignItems: "center",
+                        pl: "12px",
+                        mb: "10px", [theme.breakpoints.up("md")]: {
+                            fontSize: "16px",
+                            width: "290px"
+                        },
+                    }}>Name</Typography>}
+                {props.email ?
+                    <Typography sx={fieldStyle}>{props.email}</Typography> : <Typography sx={{
+                        border: "1px solid rgba(38, 38, 38, 0.15)",
+                        borderRadius: "30px",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        height: "42px",
+                        display: "flex",
+                        alignItems: "center",
+                        pl: "12px",
+                        mb: "10px", [theme.breakpoints.up("md")]: {
+                            fontSize: "16px",
+                            width: "290px"
+                        },
+                    }}>Email</Typography>}
+                {props.phone ?
+                    <Typography sx={fieldStyle}>{props.phone} </Typography> :
+                    <Typography sx={{
+                        border: "1px solid rgba(38, 38, 38, 0.15)",
+                        borderRadius: "30px",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        height: "42px",
+                        display: "flex",
+                        alignItems: "center",
+                        pl: "12px",
+                        mb: "10px", [theme.breakpoints.up("md")]: {
+                            fontSize: "16px",
+                            width: "290px"
+                        },
+                    }}>+3805 </Typography>
+                }</Box>
         </Box >
     )
 }

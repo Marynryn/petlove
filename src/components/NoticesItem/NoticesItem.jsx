@@ -11,6 +11,7 @@ import { IsLoggedIn } from 'helpers/isLoggedIn';
 import PetInfo from 'components/PetInfo/PetInfo';
 import { addToFavorite, removeFromFavorite } from 'store/operations';
 import { selectNoticeFavorite } from 'store/selectors';
+import theme from 'components/Theme';
 
 const NoticesItem = ({ props }) => {
     const dispatch = useDispatch();
@@ -51,20 +52,43 @@ const NoticesItem = ({ props }) => {
     };
 
     return (
-        <Box p="24px" width="100%" bgcolor={'var(--background-color)'} sx={{ minWidth: "232px", borderRadius: "16px", height: "430px", position: "relative" }}>
-            <img src={props.imgURL} alt={props.title} style={{ width: "100%", objectFit: 'cover', marginBottom: "24px", height: "178px", borderRadius: "16px" }} />
+        <Box p="24px" width="100%" bgcolor={'var(--background-color)'} sx={{
+            minWidth: "232px", borderRadius: "16px", height: "430px", position: "relative", [theme.breakpoints.up("md")]: {
+                p: "32px",
+                height: "380px"
+            },
+        }}>
+            <Box component="img" src={props.imgURL} alt={props.title} sx={{ width: "100%", objectFit: 'cover', marginBottom: "24px", height: "178px", borderRadius: "16px" }} />
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography sx={{ fontWeight: 700, fontSize: "16px", textOverflow: 'ellipsis', overflow: "hidden" }}>{props.title}</Typography>
+                <Typography sx={{
+                    fontWeight: 700, fontSize: "16px", textOverflow: 'ellipsis', overflow: "hidden", [theme.breakpoints.up("md")]: {
+                        fontSize: "18px",
+                    },
+                }}>{props.title}</Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <StarIcon sx={{ color: "var(--secondary-color)", width: "16px", height: "16px" }} />
                     <Typography sx={{ fontSize: "14px" }}>{props.popularity}</Typography>
                 </Box>
             </Box>
             <PetInfo props={props} />
-            <Typography sx={{ fontWeight: 500, fontSize: "14px", overflow: "hidden", letterSpacing: "-0.28px" }}>{props.comment}</Typography>
-            <Box style={{ display: "flex", gap: "10px", bottom: "25px", position: "absolute", justifyContent: "space-between", minWidth: "232px" }}>
+            <Typography sx={{
+                fontWeight: 500, fontSize: "14px", overflow: "hidden", letterSpacing: "-0.28px", [theme.breakpoints.up("md")]: {
+                    lineHeight: "18px"
+                },
+            }}>{props.comment}</Typography>
+            <Box sx={{
+                display: "flex", gap: "10px", width: "280px", bottom: "25px", position: "absolute", justifyContent: "space-between", [theme.breakpoints.down("sm")]: {
+                    width: "232px",
+                }, [theme.breakpoints.up("md")]: {
+                    bottom: "32px",
+                },
+            }}>
 
-                <Button sx={{ backgroundColor: "var(--secondary-color)", color: "var(--background-color)", minWidth: "180px", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, }} onClick={handleLearnMoreClick}>
+                <Button sx={{
+                    backgroundColor: "var(--secondary-color)", color: "var(--background-color)", width: "100%", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, [theme.breakpoints.up("md")]: {
+                        width: "230px"
+                    },
+                }} onClick={handleLearnMoreClick}>
                     Learn more
                 </Button>
                 <Box sx={{ borderRadius: "30px", backgroundColor: " #FFF4DF", width: "46px", height: "46px", display: "flex", justifyContent: "center" }}>

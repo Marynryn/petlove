@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/selectors';
 import { Box, Typography, Avatar, } from '@mui/material';
+import theme from 'components/Theme';
 
 const UserBar = () => {
     const user = useSelector(selectUser);
@@ -19,27 +20,31 @@ const UserBar = () => {
                     src={user.avatar || undefined}
                     alt={user.name}
                     sx={{
-                        width: 40,
-                        height: 40,
+                        width: "40px",
+                        height: "40px",
                         mr: 2,
                         bgcolor: user.avatar ? 'transparent' : defaultBgColor,
                         color: user.avatar ? 'inherit' : defaultColor,
                         fontSize: user.avatar ? 'inherit' : 20,
+                        [theme.breakpoints.up("md")]: {
+                            width: "50px",
+                            height: "50px",
+                        },
                     }}
                 >
 
                 </Avatar>
-                <Typography variant="h6" color="textPrimary" sx={(theme) => ({
-                    display: "flex",
+                <Typography variant="h6" color="textPrimary" sx={{
+                    display: "flex", fontWeight: 700, textTransform: "capitalize",
                     color: homepage ? "#fff" : "var(--primary-color)",
                     [theme.breakpoints.down("md")]: {
                         display: "none",
                     },
-                    [theme.breakpoints.down("lg")]: {
-
+                    [theme.breakpoints.up("md")]: {
+                        fontSize: "20px"
                         // display: "none",
                     }
-                })}>
+                }}>
                     {user.name}
                 </Typography>
             </Link>

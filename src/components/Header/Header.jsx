@@ -4,14 +4,13 @@ import { AppBar, Toolbar, IconButton, Box } from '@mui/material'
 import Logo from 'components/Logo/Logo'
 import sprite from '../../img/svg/symbol-defs.svg'
 import React, { useState } from 'react'
-
 import MobileMenu from 'components/MobileMenu/MobileMenu'
 import { IsLoggedIn } from 'helpers/isLoggedIn'
-// import UserMenu from 'components/UserMenu/UserMenu'
 import UserBar from 'components/UserBar/UserBar'
 import theme from 'components/Theme'
 import { AuthNav } from 'components/AuthNav/AuthNav'
-// import { AuthNav } from 'components/AuthNav/AuthNav'
+import LogOutBtn from 'components/LogOutBtn/LogOutBtn'
+
 
 export const Header = ({ backgroundColor, iconColor }) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -32,9 +31,21 @@ export const Header = ({ backgroundColor, iconColor }) => {
 
                     <Logo />
                     <Box sx={{ display: "flex", }}>
-                        {isLogIn ? (<Box sx={(theme) => ({
+                        {isLogIn ? (<Box sx={{
+                            display: "flex", gap: "10px", [theme.breakpoints.up("md")]: {
+
+                                maxWidth: "296px"
+                            },
+                        }}><Box sx={{
+                            display: "none",
+                            [theme.breakpoints.up("md")]: {
+                                display: "block", width: "136px"
+                            },
+
+                        }}><LogOutBtn props={true} /></Box><Box sx={{
                             display: "flex",
                             mr: "16px",
+
                             [theme.breakpoints.down("md")]: {
                                 // display: "none",
                             },
@@ -42,15 +53,15 @@ export const Header = ({ backgroundColor, iconColor }) => {
 
                                 // display: "none",
                             }
-                        })}
-                        ><UserBar /></Box>) : <Box sx={{
+                        }}
+                        ><UserBar /></Box></Box>) : <Box sx={{
                             display: "none",
                             [theme.breakpoints.up("md")]: {
                                 display: "flex",
                                 width: "296px"
                             },
                         }}> <AuthNav
-
+                                flex={true}
                             /></Box>}
                         <IconButton edge="start" aria-label="menu" sx={{ p: 0, mr: 0, ml: "auto" }} onClick={() => toggleModal()}>
                             <svg width={32} height={32} style={{ stroke: `${iconColor}` }}>
@@ -60,7 +71,7 @@ export const Header = ({ backgroundColor, iconColor }) => {
                     </Box>
 
                 </Toolbar>
-            </AppBar>
+            </AppBar >
             <MobileMenu isOpen={modalOpen} onClose={setModalOpen} />
 
 

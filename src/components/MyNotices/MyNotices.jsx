@@ -5,6 +5,7 @@ import NoticesList from 'components/NoticesList/NoticesList';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUserFull } from 'store/operations';
 import { selectNoticeFavoriteFullInfo, selectUser } from 'store/selectors';
+import theme from 'components/Theme';
 
 
 const MyNotices = () => {
@@ -49,6 +50,7 @@ const MyNotices = () => {
     return (
         <Box>
             <Tabs sx={{
+
                 textDecoration: 'none', mb: "20px", '& .MuiTabs-indicator': {
                     display: 'none',
                 }, "& .MuiTabs- flexContainer": {
@@ -56,7 +58,7 @@ const MyNotices = () => {
                 }
             }} value={activeTab} onChange={handleTabChange}>
                 <Tab label="My favorite pets" sx={activeTab === 0 ? activeTabStyles : inactiveTabStyles} />
-                <Tab label="Viewed" ml={8} sx={activeTab === 1 ? activeTabStyles : inactiveTabStyles} />
+                <Tab label="Viewed" ml="8px" sx={activeTab === 1 ? activeTabStyles : inactiveTabStyles} />
             </Tabs>
             {activeTab === 0 ? (
                 favorite.length > 0 ? (
@@ -65,7 +67,9 @@ const MyNotices = () => {
                     <Typography sx={{
                         mt: "80px", mb: "140px",
                         fontWeight: 500,
-                        fontSize: "14px", textAlign: "center"
+                        fontSize: "14px", textAlign: "center", [theme.breakpoints.up("md")]: {
+                            mt: "180px"
+                        },
                     }}>
                         Oops,  <Typography component="span" sx={{
                             mt: "80px", mb: "140px",

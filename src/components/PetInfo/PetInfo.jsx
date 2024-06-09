@@ -9,10 +9,10 @@ export const PetInfo = ({ props, hidden }) => {
     const profile = location.pathname === "/profile";
 
     const styleCategory = {
-        fontWeight: 500, fontSize: "10px", letterSpacing: "-0.2px", opacity: 0.5
+        fontWeight: 500, fontSize: "10px", letterSpacing: "-0.2px", opacity: 0.5, textAlign: "left"
     }
     const styleProps = {
-        fontWeight: 500, fontSize: "12px", letterSpacing: "-0.24px", textTransform: "capitalize",
+        fontWeight: 500, fontSize: "12px", letterSpacing: "-0.24px", textTransform: "capitalize", textAlign: "left"
     }
     return (
         <Box sx={{

@@ -4,6 +4,7 @@ import { Box, Button, Typography } from '@mui/material';
 import PetInfo from 'components/PetInfo/PetInfo';
 import sprite from '../../img/svg/symbol-defs.svg'
 import { removeMyPet } from './../../store/operations';
+import theme from 'components/Theme';
 
 
 export const PetsItem = ({ props }) => {
@@ -20,11 +21,17 @@ export const PetsItem = ({ props }) => {
     }
     return (
         <Box sx={{
-            p: "12px 12px 16px 16px", textAlign: 'center', position: "relative", display: "flex", border: "1px solid rgba(38, 38, 38, 0.10)", borderRadius: "20px", width: "100%"
+            p: "12px 12px 16px 16px", textAlign: 'center', position: "relative", display: "flex", border: "1px solid rgba(38, 38, 38, 0.10)", borderRadius: "20px", width: "100%", [theme.breakpoints.up("md")]: {
+                p: "12px 12px 23px 16px"
+            },
         }}>
             <Box >
 
-                <img src={props.imgURL} alt={props.title} style={{ width: "66px", height: "66px", objectFit: 'cover', borderRadius: "100%", mx: "auto", }} />
+                <Box component="img" src={props.imgURL} alt={props.title} sx={{
+                    width: "66px", height: "66px", objectFit: 'cover', borderRadius: "100%", mx: "auto", [theme.breakpoints.up("md")]: {
+                        width: "75px", height: "75px", gap: "14px"
+                    },
+                }} />
             </Box>
             <Box sx={{ display: "flex", gap: "4px", ml: "14px" }}>
                 <Box  >

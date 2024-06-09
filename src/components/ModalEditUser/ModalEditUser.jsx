@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import { uploadFile } from 'helpers/uploadFile';
 import { selectUser } from 'store/selectors';
 import Btn from 'components/Button/Button';
+import theme from 'components/Theme';
 
 const ModalEditUser = ({ onClose }) => {
     const user = useSelector(selectUser);
@@ -63,28 +64,47 @@ const ModalEditUser = ({ onClose }) => {
     };
 
     return (
-        <Box sx={{ pt: "20px", pb: "20px", width: "295px" }}>
+        <Box sx={{
+            pt: "20px", pb: "20px", width: "295px", [theme.breakpoints.up("md")]: {
+                p: "30px", width: "380px"
+            },
+        }}>
             <Typography sx={{ fontSize: "20px", fontWeight: 700 }}>
                 Edit information
             </Typography>
             {user.avatar === "" ? (
-                <Box sx={{ width: "80px", height: "80px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px" }}>
+                <Box sx={{
+                    width: "80px", height: "80px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px", [theme.breakpoints.up("md")]: {
+                        mb: "16px"
+                    },
+                }}>
                     <svg width={40} height={40} style={{ padding: "20px", }}>
                         <use href={`${sprite}#icon-Vector-2`} style={{ fill: "var(--secondary-color)" }} ></use>
                     </svg>
                 </Box>
             ) : (
-                <Box sx={{ width: "80px", height: "80px", mx: "auto", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px" }}>
+                <Box sx={{
+                    width: "80px", height: "80px", mx: "auto", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px", [theme.breakpoints.up("md")]: {
+                        mb: "16px"
+                    },
+                }}>
                     <img src={user.avatar} alt="Avatar" style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
                 </Box>
             )}
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Box sx={{ display: "flex", gap: "8px", mb: "10px", }}>
+                <Box sx={{
+                    display: "flex", gap: "8px", mb: "10px", [theme.breakpoints.up("md")]: {
+                        mb: "16px",
+                    },
+                }}>
                     <TextField
                         sx={{
                             mt: 0,
                             mb: 0,
                             width: "160px",
+                            [theme.breakpoints.up("md")]: {
+                                width: "226px"
+                            },
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: "30px",
                                 '& fieldset': {
@@ -120,7 +140,9 @@ const ModalEditUser = ({ onClose }) => {
                         fullWidth
                         margin="normal"
                     />
-                    <Box sx={{ height: "42px" }}>
+                    <Box sx={{
+                        height: "42px",
+                    }}>
                         <input
                             type="file"
                             accept="image/*"
@@ -130,7 +152,9 @@ const ModalEditUser = ({ onClose }) => {
                         />
                         <IconButton sx={{
                             display: "flex", borderRadius: "30px",
-                            backgroundColor: "#FFF4DF", height: "42px", '&:hover': {
+                            backgroundColor: "#FFF4DF", height: "42px", [theme.breakpoints.up("md")]: {
+                                p: "12px 18px"
+                            }, '&:hover': {
                                 backgroundColor: 'var(--secondary-color)',
                             },
                             '&:active': {
@@ -148,6 +172,9 @@ const ModalEditUser = ({ onClose }) => {
                     sx={{
                         mt: 0,
                         mb: "10px",
+                        [theme.breakpoints.up("md")]: {
+                            mb: "16px"
+                        },
                         '& .MuiOutlinedInput-root': {
                             borderRadius: "30px",
                             '& fieldset': {
@@ -166,6 +193,9 @@ const ModalEditUser = ({ onClose }) => {
                         },
                         '& .MuiOutlinedInput-input': {
                             padding: "12px",
+                            [theme.breakpoints.up("md")]: {
+                                p: "16px"
+                            },
                             height: "16px",
                             fontSize: "14px",
                             fontWeight: 500,
@@ -188,6 +218,9 @@ const ModalEditUser = ({ onClose }) => {
                     sx={{
                         mt: 0,
                         mb: "10px",
+                        [theme.breakpoints.up("md")]: {
+                            mb: "16px"
+                        },
                         '& .MuiOutlinedInput-root': {
                             borderRadius: "30px",
                             '& fieldset': {
@@ -206,6 +239,9 @@ const ModalEditUser = ({ onClose }) => {
                         },
                         '& .MuiOutlinedInput-input': {
                             padding: "12px",
+                            [theme.breakpoints.up("md")]: {
+                                p: "16px"
+                            },
                             height: "16px",
                             fontSize: "14px",
                             fontWeight: 500,
@@ -227,7 +263,9 @@ const ModalEditUser = ({ onClose }) => {
                 <TextField
                     sx={{
                         mt: 0,
-                        mb: "10px",
+                        mb: "10px", [theme.breakpoints.up("md")]: {
+                            mb: "16px"
+                        },
                         '& .MuiOutlinedInput-root': {
                             borderRadius: "30px",
                             '& fieldset': {
@@ -246,6 +284,9 @@ const ModalEditUser = ({ onClose }) => {
                         },
                         '& .MuiOutlinedInput-input': {
                             padding: "12px",
+                            [theme.breakpoints.up("md")]: {
+                                p: "16px"
+                            },
                             height: "16px",
                             fontSize: "14px",
                             fontWeight: 500,
@@ -264,9 +305,11 @@ const ModalEditUser = ({ onClose }) => {
                     fullWidth
                     margin="normal"
                 />
-                <Box mt={2} display="flex" justifyContent="flex-end">
+                <Box mt={2} display="flex" justifyContent="flex-end" sx={{
 
-                    <Btn bgColor={"var(--secondary-color)"} textColor={"var(--background-color)"} type="submit" disabled={loading}>Go to profile</Btn>
+                }}>
+
+                    <Btn bgColor={"var(--secondary-color)"} textColor={"var(--background-color)"} type="submit" disabled={loading}>Save</Btn>
                 </Box>
             </form>
         </Box>

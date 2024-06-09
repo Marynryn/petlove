@@ -33,7 +33,7 @@
   }
 }
 .another_dog_block {
-  height: 280px;
+  height: 213px;
   border-radius: 30px;
   background-color: var(--secondary-color);
   background-image: url(/src/img/img/dog2.png);
@@ -41,9 +41,10 @@
   background-position: center;
   margin: 20px 0 10px;
   @media screen and (min-width: 768px) {
-    height: 304px;
-    background-size: 364px 302px;
-    background-position: 280px;
+    height: 248px;
+
+    background-size: 364px 248px;
+    background-position: center;
     background-repeat: no-repeat;
     position: relative;
     margin: 30px 0 16px;

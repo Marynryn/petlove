@@ -7,6 +7,7 @@ import PetInfo from 'components/PetInfo/PetInfo';
 import sprite from '../../img/svg/symbol-defs.svg'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Stars from 'components/Stars/Stars';
+import theme from 'components/Theme';
 
 export const ModalNotice = ({ props }) => {
     const dispatch = useDispatch();
@@ -44,25 +45,61 @@ export const ModalNotice = ({ props }) => {
     };
 
     const style = {
-        backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", width: "100%", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, '&:hover': { backgroundColor: "#F9B020" }
+        backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", width: "100%", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, '&:hover': { backgroundColor: "#F9B020" }, [theme.breakpoints.up("md")]: {
+            width: "160px",
+
+        },
     }
     return (
-        <Box sx={{ py: "20px", textAlign: 'center', position: "relative", height: "386px", width: "280px", }}>
+        <Box sx={{
+            py: "20px", textAlign: 'center', position: "relative", height: "386px", width: "280px", [theme.breakpoints.up("md")]: {
+                px: "52px",
+                width: "334px",
+                height: "406px"
+            },
+        }}>
             <Box>
                 <Box sx={{ position: "absolute", right: "55%", borderRadius: "30px", backgroundColor: " #FFF4DF", }}><Typography sx={{ p: "8px 14px", textTransform: 'capitalize', fontWeight: 500, fontSize: "12px", color: "var(--secondary-color)", }}>{infoPet.category}</Typography></Box>
-                <img src={infoPet.imgURL} alt={infoPet.title} style={{ width: "120px", height: "120px", objectFit: 'cover', marginBottom: "24px", borderRadius: "100%", mx: "auto", }} />
+                <Box component="img" src={infoPet.imgURL} alt={infoPet.title} sx={{
+                    width: "120px", height: "120px", objectFit: 'cover', mb: "24px", borderRadius: "100%", mx: "auto", [theme.breakpoints.up("md")]: {
+
+                        width: "150px",
+                        height: "150px",
+                        mb: "16px"
+                    },
+                }} />
             </Box>
             <Box sx={{}}>
-                <Typography sx={{ fontWeight: 700, fontSize: "16px", mb: "10px" }}>{infoPet.title}</Typography>
+                <Typography sx={{
+                    fontWeight: 700, fontSize: "16px", mb: "10px", [theme.breakpoints.up("md")]: {
+
+                        fontSize: "18px"
+                    },
+                }}>{infoPet.title}</Typography>
                 <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", mb: "24px" }} >
                     <Stars popularity={infoPet.popularity} />
                     <Typography sx={{ fontSize: "14px" }}>{infoPet.popularity}</Typography>
                 </Box>
             </Box>
-            <Box px="26px"> <PetInfo props={infoPet} hidden={true} /></Box>
+            <Box px="26px" sx={{
+                [theme.breakpoints.up("md")]: {
 
-            <Typography sx={{ fontWeight: 500, fontSize: "14px", overflow: "hidden", letterSpacing: "-0.28px", mb: "42px" }}>{infoPet.comment}</Typography>
-            <Box style={{ display: "flex", gap: "10px", position: "absolute", bottom: "20px", width: "100%", px: "8px" }}>
+                    px: "43px"
+                },
+            }}> <PetInfo props={infoPet} hidden={true} /></Box>
+
+            <Typography sx={{
+                fontWeight: 500, fontSize: "14px", overflow: "hidden", letterSpacing: "-0.28px", mb: "42px", [theme.breakpoints.up("md")]: {
+
+                    px: "34px"
+                },
+            }}>{infoPet.comment}</Typography>
+            <Box style={{
+                display: "flex", gap: "10px", position: "absolute", bottom: "20px", width: "100%", px: "8px", [theme.breakpoints.up("md")]: {
+                    width: "330px",
+                    p: 0
+                },
+            }}>
 
                 {isFavorite ? (
                     <Button onClick={handleFavoriteClick} sx={style}  >Remove from&nbsp;&nbsp;
@@ -75,10 +112,20 @@ export const ModalNotice = ({ props }) => {
                         <FavoriteBorderIcon pl="8px" sx={{ fontSize: "18px", stroke: "var(--background-color)" }} /></Button>
                 )}
 
-                {infoPet.user && (<Link href={`mailto:${infoPet.user.email}`} target="_blank" rel="noopener" sx={{ textDecoration: 'none', width: "100%" }}>
+                {infoPet.user && (<Link href={`mailto:${infoPet.user.email}`} target="_blank" rel="noopener" sx={{
+                    textDecoration: 'none', width: "100%", [theme.breakpoints.up("md")]: {
+                        width: "160px",
+
+                    },
+                }}>
 
 
-                    <Button sx={{ backgroundColor: " #FFF4DF", color: "var(--secondary-color)", height: "46px", width: "100%", textTransform: 'capitalize', fontSize: "16px", borderRadius: "30px", fontWeight: 500, '&:hover': { backgroundColor: "#FBE7C1" }, }} >Contact</Button>
+                    <Button sx={{
+                        backgroundColor: " #FFF4DF", color: "var(--secondary-color)", height: "46px", width: "100%", textTransform: 'capitalize', fontSize: "16px", borderRadius: "30px", fontWeight: 500, '&:hover': { backgroundColor: "#FBE7C1" }, [theme.breakpoints.up("md")]: {
+                            width: "160px",
+
+                        },
+                    }} >Contact</Button>
                 </Link>)}
             </Box>
         </Box >

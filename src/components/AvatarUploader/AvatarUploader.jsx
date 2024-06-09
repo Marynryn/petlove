@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Box, IconButton, TextField, Typography } from '@mui/material';
 import sprite from '../../img/svg/symbol-defs.svg';
 import { uploadFile } from 'helpers/uploadFile';
+import theme from 'components/Theme';
 
 const AvatarUpload = ({ avatarUrl, setAvatarUrl, setValue, error }) => {
     const fileInputRef = useRef(null);
@@ -22,22 +23,37 @@ const AvatarUpload = ({ avatarUrl, setAvatarUrl, setValue, error }) => {
     return (
         <>
             {avatarUrl === "" ? (
-                <Box sx={{ width: "68px", height: "68px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", textAlign: 'center', marginTop: "8px", marginBottom: "16px" }}>
+                <Box sx={{
+                    width: "68px", height: "68px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", textAlign: 'center', marginTop: "8px", marginBottom: "16px", [theme.breakpoints.up("md")]: {
+                        mt: 0
+                    },
+                }}>
                     <svg width={34} height={34} style={{ padding: "17px" }}>
                         <use href={`${sprite}#icon-icons8_cat-footprint`} style={{ fill: "var(--secondary-color)" }}></use>
                     </svg>
                 </Box>
             ) : (
-                <Box sx={{ width: "68px", height: "68px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", marginTop: "8px", marginBottom: "16px", overflow: "hidden" }}>
+                <Box sx={{
+                    width: "68px", height: "68px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", marginTop: "8px", marginBottom: "16px", overflow: "hidden", [theme.breakpoints.up("md")]: {
+                        mt: 0
+                    },
+                }}>
                     <img src={avatarUrl} alt="pet" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </Box>
             )}
-            <Box sx={{ display: "flex", gap: "8px", mb: "10px", }}>
+            <Box sx={{
+                display: "flex", gap: "8px", mb: "10px", [theme.breakpoints.up("md")]: {
+                    mb: 0
+                },
+            }}>
                 <TextField
                     sx={{
                         mt: 0,
                         mb: 0,
                         width: "160px",
+                        [theme.breakpoints.up("md")]: {
+                            width: "278px"
+                        },
                         '& .MuiOutlinedInput-root': {
                             borderRadius: "30px",
                             '& fieldset': {
@@ -52,6 +68,9 @@ const AvatarUpload = ({ avatarUrl, setAvatarUrl, setValue, error }) => {
                         },
                         '& .MuiOutlinedInput-input': {
                             padding: "12px",
+                            [theme.breakpoints.up("md")]: {
+                                p: "16px"
+                            },
                             height: "16px",
                             fontSize: "14px",
                             fontWeight: 500,
@@ -71,11 +90,17 @@ const AvatarUpload = ({ avatarUrl, setAvatarUrl, setValue, error }) => {
                     error={Boolean(error)}
                     helperText={error}
                 />
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: "8px" }}>
+                <Box sx={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: "8px", [theme.breakpoints.up("md")]: {
+                        mb: "18px"
+                    },
+                }}>
                     <IconButton
                         sx={{
                             display: "flex", borderRadius: "30px",
-                            backgroundColor: "#FFF4DF", height: "42px", '&:hover': {
+                            backgroundColor: "#FFF4DF", height: "42px", [theme.breakpoints.up("md")]: {
+                                height: "50px", width: "146px"
+                            }, '&:hover': {
                                 backgroundColor: 'var(--secondary-color)',
                             },
                             '&:active': {

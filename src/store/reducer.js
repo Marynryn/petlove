@@ -16,7 +16,7 @@ const initialState = {
     totalPages: 0,
     isLoading: false,
     error: null,
-    filter: null,
+    filter: "",
   },
   friends: {
     items: [],
