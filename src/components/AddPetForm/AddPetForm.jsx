@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { addMyPet, getSpecies } from 'store/operations';
 import { petSchema } from 'schema/schema';
 import { selectGetSpecies } from 'store/selectors';
-import Title from 'components/Title/Title';
+
 import AvatarUpload from 'components/AvatarUploader/AvatarUploader';
 import SpeciesSelect from 'components/SpeciesSelect/SpeciesSelect';
 import BirthdayPicker from 'components/BirthdayPicker/BirthdayPicker';
