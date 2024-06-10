@@ -21,6 +21,9 @@ export const UserBlock = ({ props }) => {
             fontSize: "16px",
             width: "290px"
         },
+        [theme.breakpoints.up('lg')]: {
+            width: "428px"
+        },
 
 
     }
@@ -29,6 +32,8 @@ export const UserBlock = ({ props }) => {
         <Box mb="30px" sx={{
             [theme.breakpoints.up("md")]: {
                 mb: "48px"
+            }, [theme.breakpoints.up('lg')]: {
+                width: "440px"
             },
         }}>
             {(user.avatar === "") ? (<>
@@ -36,6 +41,8 @@ export const UserBlock = ({ props }) => {
                     width: "94px", height: "94px", mx: "auto", backgroundColor: "#FFF4DF", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px", [theme.breakpoints.up("md")]: {
 
 
+                    }, [theme.breakpoints.up('lg')]: {
+                        mt: "-30px"
                     },
                 }}>
                     <svg width={40} height={40} style={{
@@ -48,7 +55,11 @@ export const UserBlock = ({ props }) => {
                 </Box>
                 <Typography sx={{ textDecoration: "underline", fontSize: "12px", fontWeight: 500, textAlign: 'center', mt: "8px", mb: "28px" }}> Upload photo</Typography></>
             ) : (
-                <Box sx={{ width: "94px", height: "94px", mx: "auto", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px" }}>
+                <Box sx={{
+                    width: "94px", height: "94px", mx: "auto", borderRadius: "100%", textAlign: 'center', mt: "20px", mb: "12px", [theme.breakpoints.up('lg')]: {
+                        mt: "-30px"
+                    },
+                }}>
                     <img src={user.avatar} alt="Avatar" style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
                 </Box>
             )}
@@ -63,6 +74,8 @@ export const UserBlock = ({ props }) => {
                 [theme.breakpoints.up("md")]: {
                     display: "flex", flexWrap: "wrap", gap: "14px"
 
+                }, [theme.breakpoints.up('lg')]: {
+                    display: "block"
                 },
             }}>
                 {props.name ?
@@ -79,6 +92,10 @@ export const UserBlock = ({ props }) => {
                             fontSize: "16px",
                             width: "290px"
                         },
+                        [theme.breakpoints.up('lg')]: {
+                            width: "428px"
+                        },
+
                     }}>Name</Typography>}
                 {props.email ?
                     <Typography sx={fieldStyle}>{props.email}</Typography> : <Typography sx={{
@@ -94,6 +111,10 @@ export const UserBlock = ({ props }) => {
                             fontSize: "16px",
                             width: "290px"
                         },
+                        [theme.breakpoints.up('lg')]: {
+                            width: "428px"
+                        },
+
                     }}>Email</Typography>}
                 {props.phone ?
                     <Typography sx={fieldStyle}>{props.phone} </Typography> :
@@ -110,6 +131,10 @@ export const UserBlock = ({ props }) => {
                             fontSize: "16px",
                             width: "290px"
                         },
+                        [theme.breakpoints.up('lg')]: {
+                            width: "428px"
+                        },
+
                     }}>+3805 </Typography>
                 }</Box>
         </Box >

@@ -60,6 +60,8 @@ const NoticesItem = ({ props }) => {
             minWidth: "232px", borderRadius: "16px", height: "430px", position: "relative", [theme.breakpoints.up("md")]: {
                 p: "32px",
                 height: "380px"
+            }, [theme.breakpoints.down("md")]: {
+
             },
         }}>
             <Box component="img" src={props.imgURL} alt={props.title} sx={{ width: "100%", objectFit: 'cover', marginBottom: "24px", height: "178px", borderRadius: "16px" }} />
@@ -81,22 +83,24 @@ const NoticesItem = ({ props }) => {
                 },
             }}>{props.comment}</Typography>
             <Box sx={{
-                display: "flex", gap: "10px", width: "280px", bottom: "25px", position: "absolute", justifyContent: "space-between", [theme.breakpoints.down("sm")]: {
-                    width: "100%",
+                display: "flex", gap: "10px", bottom: "25px", position: "absolute", justifyContent: "space-between", [theme.breakpoints.down("sm")]: {
+
                 }, [theme.breakpoints.up("md")]: {
                     bottom: "32px",
                 },
             }}>
 
                 <Button sx={{
-                    backgroundColor: "var(--secondary-color)", color: "var(--background-color)", width: "180px", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, [theme.breakpoints.up("md")]: {
-                        width: "230px"
-                    },
+                    backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, p: "12px 30px", [theme.breakpoints.down("sm")]: {
+
+                    }, [theme.breakpoints.up("sm")]: { p: "12px 59px", }, [theme.breakpoints.up("lg")]: {
+
+                    }
                 }} onClick={handleLearnMoreClick}>
                     Learn more
                 </Button>
-                <Box sx={{ borderRadius: "30px", backgroundColor: " #FFF4DF", width: "46px", height: "46px", display: "flex", justifyContent: "center" }}>
-                    <IconButton onClick={handleFavoriteClick}>
+                <Box sx={{ borderRadius: "30px", backgroundColor: " #FFF4DF", width: "46px", height: "46px", display: "flex", justifyContent: "center", }}>
+                    <IconButton onClick={handleFavoriteClick} sx={{ p: 0, height: "24px", mt: "12px" }}>
                         {isFavorite ? (
                             <Box>
                                 <svg width={18} height={18}>

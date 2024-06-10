@@ -179,171 +179,182 @@ const NoticesFilters = ({ onSearch }) => {
     }
     return (
         <Paper component="form" onReset={handleResetFilters} sx={{
-            color: "var(--primary-color)", p: "20px", pt: "4px", my: "40px", boxShadow: 'none', backgroundColor: '#FFF4DF', borderRadius: '30px', [theme.breakpoints.up("md")]: {
+            color: "var(--primary-color)", p: "20px", my: "40px", boxShadow: 'none', backgroundColor: '#FFF4DF', borderRadius: '30px', [theme.breakpoints.up("md")]: {
                 mt: "44px", mb: "32px", p: "32px 40px"
             },
+        }}> <Box sx={{
+            [theme.breakpoints.up("lg")]: {
+                display: "flex", gap: "16px"
+            }
         }}>
-            <Box sx={{
-                [theme.breakpoints.up("md")]: {
-                    display: "flex", gap: "16px",
-                    width: "100%",
-                    mb: "16px"
-                },
-            }}><Box sx={{
-                [theme.breakpoints.up("md")]: {
-                    width: "265px"
-
-                },
-            }}>
-                    <SearchField onSearch={onSearch} onReset={handleResetFilters} bgColor={"var(--background-color)"} /></Box>
                 <Box sx={{
-                    display: "flex", mt: "4px", mb: "12px", gap: "8px", width: "100%", [theme.breakpoints.up("md")]: {
-                        width: '356px', m: 0
+                    [theme.breakpoints.up("md")]: {
+                        display: "flex", gap: "16px",
+                        width: "100%",
+                        mb: "16px"
+                    }, [theme.breakpoints.up("lg")]: {
+                        m: 0
+                    }
+                }}><Box sx={{
+                    [theme.breakpoints.up("md")]: {
+                        width: "265px",
+                        m: 0
+                    },
+
+                }}>
+                        <SearchField onSearch={onSearch} onReset={handleResetFilters} bgColor={"var(--background-color)"} /></Box>
+                    <Box sx={{
+                        display: "flex", mt: "12px", mb: "12px", gap: "8px", width: "100%", [theme.breakpoints.up("md")]: {
+                            width: '356px', m: 0
+
+                        }, [theme.breakpoints.up("lg")]: {
+                            width: "406px", gap: '16px'
+                        }
+                    }}>
+                        <Select
+                            styles={style}
+                            options={createOptions(categories)}
+                            onChange={handleCategoryChange}
+                            value={getSelectedOption(filter.category, createOptions(categories))}
+                            placeholder="Category"
+
+                        />
+                        <Select
+                            styles={style}
+
+                            options={createOptions(sex)}
+                            onChange={handleGenderChange}
+                            value={getSelectedOption(filter.gender, createOptions(sex))}
+                            placeholder="By gender"
+
+                        /></Box></Box>
+                <Box sx={{
+                    [theme.breakpoints.up("md")]: {
+                        width: "433px", display: "flex",
+                        gap: "16px"
+                    },
+                }}> <Box sx={{
+                    [theme.breakpoints.up("md")]: {
+                        width: "190px", m: 0
 
                     },
                 }}>
-                    <Select
-                        styles={style}
-                        options={createOptions(categories)}
-                        onChange={handleCategoryChange}
-                        value={getSelectedOption(filter.category, createOptions(categories))}
-                        placeholder="Category"
+                        <Select
+                            styles={style}
+                            options={createOptions(species)}
+                            onChange={handlePetTypeChange}
+                            value={getSelectedOption(filter.species, createOptions(species))}
+                            placeholder="By type"
 
-                    />
-                    <Select
-                        styles={style}
+                        /></Box>
+                    <Box mt="12px" sx={{
+                        position: "relative", [theme.breakpoints.up("md")]: {
+                            width: "233px",
+                            mt: 0
+                        }, [theme.breakpoints.up("lg")]: {
+                            width: "227px"
+                        }
+                    }}>
+                        <AsyncSelect
+                            styles={{
+                                control: (provided, state) => ({
+                                    ...provided,
+                                    cursor: 'default',
+                                    width: "100%",
+                                    color: "var(--primary-color)",
+                                    height: "42px",
+                                    borderRadius: '30px',
+                                    border: 'none', [theme.breakpoints.up("md")]: {
+                                        height: "48px",
 
-                        options={createOptions(sex)}
-                        onChange={handleGenderChange}
-                        value={getSelectedOption(filter.gender, createOptions(sex))}
-                        placeholder="By gender"
+                                    },
 
-                    /></Box></Box>
-            <Box sx={{
-                [theme.breakpoints.up("md")]: {
-                    width: "433px", display: "flex",
-                    gap: "16px"
-                },
-            }}> <Box sx={{
-                [theme.breakpoints.up("md")]: {
-                    width: "190px", m: 0
+                                }),
+                                singleValue: (provided) => ({
+                                    ...provided,
+                                    color: "var(--primary-color)",
+                                    textTransform: 'capitalize',
+                                    paddingLeft: "2px",
+                                    fontSize: "14px",
+                                    fontWeight: 500,
+                                }),
+                                ValueContainer: (provided) => ({
+                                    ...provided,
 
-                },
-            }}>
-                    <Select
-                        styles={style}
-                        options={createOptions(species)}
-                        onChange={handlePetTypeChange}
-                        value={getSelectedOption(filter.species, createOptions(species))}
-                        placeholder="By type"
-
-                    /></Box>
-                <Box mt="12px" sx={{
-                    position: "relative", [theme.breakpoints.up("md")]: {
-                        width: "233px",
-                        mt: 0
-                    },
-                }}>
-                    <AsyncSelect
-                        styles={{
-                            control: (provided, state) => ({
-                                ...provided,
-                                cursor: 'default',
-                                width: "100%",
-                                color: "var(--primary-color)",
-                                height: "42px",
-                                borderRadius: '30px',
-                                border: 'none', [theme.breakpoints.up("md")]: {
-                                    height: "48px",
-
-                                },
-
-                            }),
-                            singleValue: (provided) => ({
-                                ...provided,
-                                color: "var(--primary-color)",
-                                textTransform: 'capitalize',
-                                paddingLeft: "2px",
-                                fontSize: "14px",
-                                fontWeight: 500,
-                            }),
-                            ValueContainer: (provided) => ({
-                                ...provided,
-
-                            }),
-                            input: (provided) => ({
-                                ...provided,
+                                }),
+                                input: (provided) => ({
+                                    ...provided,
 
 
-                            }),
-                            indicatorSeparator: (provided) => ({
-                                ...provided,
-                                display: 'none'
+                                }),
+                                indicatorSeparator: (provided) => ({
+                                    ...provided,
+                                    display: 'none'
 
-                            }),
-                            indicatorContainer: (provided) => ({
-                                ...provided,
+                                }),
+                                indicatorContainer: (provided) => ({
+                                    ...provided,
 
 
-                            }),
-                            container: (provided) => ({
-                                ...provided,
-                                width: "100%"
+                                }),
+                                container: (provided) => ({
+                                    ...provided,
+                                    width: "100%"
 
-                            }),
-                            placeholder: (provided) => ({
-                                ...provided,
-                                color: "var(--primary-color)",
-                                fontSize: "14px",
-                                fontWeight: 500,
+                                }),
+                                placeholder: (provided) => ({
+                                    ...provided,
+                                    color: "var(--primary-color)",
+                                    fontSize: "14px",
+                                    fontWeight: 500,
 
-                                paddingLeft: "2px",
-                            }),
-                            dropdownIndicator: (provided) => ({
-                                ...provided,
-                                display: 'none'
-                            }),
-                            menu: (provided) => ({
-                                ...provided,
-                                borderRadius: "14px",
-                                padding: " 12px ",
-                                maxHeight: "216px",
-                            }),
-                            menuList: (provided) => ({
-                                ...provided,
-                                height: '94px ',
-                                "::-webkit-scrollbar": {
-                                    width: '8px',
-                                    height: '100px',
-                                    paddingTop: '10px',
-                                },
-                                "::-webkit-scrollbar-thumb": {
-                                    background: 'rgba(0,0,0,0.2)',
-                                    borderRadius: '10px',
+                                    paddingLeft: "2px",
+                                }),
+                                dropdownIndicator: (provided) => ({
+                                    ...provided,
+                                    display: 'none'
+                                }),
+                                menu: (provided) => ({
+                                    ...provided,
+                                    borderRadius: "14px",
+                                    padding: " 12px ",
+                                    maxHeight: "216px",
+                                }),
+                                menuList: (provided) => ({
+                                    ...provided,
+                                    height: '94px ',
+                                    "::-webkit-scrollbar": {
+                                        width: '8px',
+                                        height: '100px',
+                                        paddingTop: '10px',
+                                    },
+                                    "::-webkit-scrollbar-thumb": {
+                                        background: 'rgba(0,0,0,0.2)',
+                                        borderRadius: '10px',
 
-                                },
-                            }),
-                            option: (provided, state) => ({
-                                ...provided,
-                                textTransform: 'capitalize',
-                                color: state.isFocused ? 'var(--secondary-color)' : "rgba(38, 38, 38, 0.60)",
-                                backgroundColor: state.isFocused ? 'transparent' : 'transparent',
-                                padding: "0 12px 8px 12px",
-                                fontSize: "14px",
-                                fontWeight: 500,
-                            })
-                        }}
-                        loadOptions={loadLocationOptions}
-                        onChange={handleLocationChange}
-                        value={selectedLocation}
-                        placeholder="Location"
-                        isClearable
-                    />
-                    <IconButton type="submit" sx={{ position: 'absolute', right: '12px', p: 0, top: '12px' }}>
-                        <svg width={18} height={18} style={{ stroke: 'var(--primary-color)', fill: 'white' }}>
-                            <use href={`${sprite}#icon-search`}></use>
-                        </svg>
-                    </IconButton></Box></Box>
+                                    },
+                                }),
+                                option: (provided, state) => ({
+                                    ...provided,
+                                    textTransform: 'capitalize',
+                                    color: state.isFocused ? 'var(--secondary-color)' : "rgba(38, 38, 38, 0.60)",
+                                    backgroundColor: state.isFocused ? 'transparent' : 'transparent',
+                                    padding: "0 12px 8px 12px",
+                                    fontSize: "14px",
+                                    fontWeight: 500,
+                                })
+                            }}
+                            loadOptions={loadLocationOptions}
+                            onChange={handleLocationChange}
+                            value={selectedLocation}
+                            placeholder="Location"
+                            isClearable
+                        />
+                        <IconButton type="submit" sx={{ position: 'absolute', right: '12px', p: 0, top: '12px' }}>
+                            <svg width={18} height={18} style={{ stroke: 'var(--primary-color)', fill: 'white' }}>
+                                <use href={`${sprite}#icon-search`}></use>
+                            </svg>
+                        </IconButton></Box></Box></Box>
             <Box sx={{ my: "20px", width: "100%", height: " 1px", backgroundColor: "rgba(38, 38, 38, 0.10)" }}></Box>
             <SelectedValues reset={reset} />
             <Box sx={{

@@ -67,8 +67,11 @@ const AddPetForm = () => {
         p: "28px 20px 20px",
 
         [theme.breakpoints.up("md")]: {
-            p: "38px 136px"
-        }
+            p: "38px 136px",
+            borderRadius: "60px",
+        }, [theme.breakpoints.up("lg")]: {
+            p: "60px 80px", height: '534px'
+        },
     };
     return (
         <Box sx={boxStyle}>

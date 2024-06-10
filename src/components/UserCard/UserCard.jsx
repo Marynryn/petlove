@@ -17,6 +17,9 @@ export const UserCard = ({ props }) => {
         mt: "18px",
         mb: "40px", [theme.breakpoints.up("md")]: {
             p: "40px"
+        }, [theme.breakpoints.up('lg')]: {
+            width: "440px", mt: 0,
+            minHeight: "770px"
         },
     }
     return (

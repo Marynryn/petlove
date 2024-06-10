@@ -22,7 +22,7 @@ const MyNotices = () => {
     useEffect(() => {
         setFavorite(noticesFavorites);
     }, [noticesFavorites]);
-    console.log(favorite)
+
     const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
     };
@@ -49,7 +49,11 @@ const MyNotices = () => {
         },
     }
     return (
-        <Box>
+        <Box sx={{
+            [theme.breakpoints.up('lg')]: {
+                pt: "40px"
+            },
+        }}>
             <Tabs sx={{
 
                 textDecoration: 'none', mb: "20px", '& .MuiTabs-indicator': {
@@ -62,8 +66,12 @@ const MyNotices = () => {
                 <Tab label="Viewed" ml="8px" sx={activeTab === 1 ? activeTabStyles : inactiveTabStyles} />
             </Tabs>
             {activeTab === 0 ? (
-                favorite.length > 0 ? (
-                    <NoticesList props={favorite} />
+                favorite.length > 0 ? (<Box sx={{
+                    [theme.breakpoints.up('lg')]: {
+                        mx: "-32px"
+                    },
+                }}>
+                    <NoticesList props={favorite} /></Box>
                 ) : (
                     <Typography sx={{
                         mt: "80px", mb: "140px",
@@ -80,8 +88,12 @@ const MyNotices = () => {
                         }}> looks like there aren't any furries </Typography> on our adorable page yet. Do not worry! View your pets on the "find your favorite pet" page and add them to your favorites.
                     </Typography>
                 )
-            ) : activeTab === 1 ? (
-                <NoticesList props={user.noticesViewed} />
+            ) : activeTab === 1 ? (<Box sx={{
+                [theme.breakpoints.up('lg')]: {
+                    mx: "-32px"
+                },
+            }}>
+                <NoticesList props={user.noticesViewed} /></Box>
             ) : null}
         </Box>
     );

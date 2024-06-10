@@ -73,14 +73,23 @@ const SpeciesSelect = ({ species, selectedSpecies, setSelectedSpecies }) => {
             padding: "0 12px ",
             maxHeight: "78px",
             m: 0,
+            [theme.breakpoints.up('lg')]: {
+                maxHeight: "126px"
+            },
         }),
         menuList: (provided) => ({
             ...provided,
             maxHeight: '78px ',
+            [theme.breakpoints.up('lg')]: {
+                maxHeight: "126px"
+            },
             "::-webkit-scrollbar": {
                 width: '8px',
                 height: '100px',
                 paddingTop: '10px',
+                [theme.breakpoints.up('lg')]: {
+                    height: "126px"
+                },
             },
             "::-webkit-scrollbar-thumb": {
                 background: 'rgba(0,0,0,0.2)',

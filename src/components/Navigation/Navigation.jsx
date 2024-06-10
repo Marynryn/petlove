@@ -15,11 +15,11 @@ export const Navigation = () => {
         textTransform: 'capitalize',
         '&:hover': {
             borderColor: 'var(--secondary-color)',
-            backgroundColor: 'var(--background-color)'
+
         },
         '&:focus': {
             borderColor: 'var(--secondary-color)',
-            backgroundColor: 'var(--background-color)'
+
         },
         [theme.breakpoints.up("lg")]: {
             border: home ? "1px solid #fff" : isActive ? "1px solid var(--secondary-color)" : "1px solid rgba(38, 38, 38, 0.15)",

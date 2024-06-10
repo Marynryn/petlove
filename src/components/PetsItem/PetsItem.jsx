@@ -33,8 +33,16 @@ export const PetsItem = ({ props }) => {
                     },
                 }} />
             </Box>
-            <Box sx={{ display: "flex", gap: "4px", ml: "14px" }}>
-                <Box  >
+            <Box sx={{
+                display: "flex", gap: "4px", ml: "14px", [theme.breakpoints.up('lg')]: {
+                    width: "320px", justifyContent: "space-between"
+                },
+            }}>
+                <Box sx={{
+                    [theme.breakpoints.up('lg')]: {
+                        width: "243px"
+                    },
+                }} >
                     <Typography sx={{ fontWeight: 700, fontSize: "14px", mb: "2px", textTransform: "capitalize", textOverflow: 'ellipsis' }}>{props.title}</Typography>
 
 

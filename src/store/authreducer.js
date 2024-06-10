@@ -45,7 +45,6 @@ const myAuth = createSlice({
         state.isLoading = true;
       })
       .addCase(userPost.fulfilled, (state, action) => {
-        console.log(action);
         state.isLoading = false;
         state.error = null;
 
@@ -73,7 +72,7 @@ const myAuth = createSlice({
         state.user.isLoading = false;
         state.error = action.payload;
         const errorMessage = errorMessages.signin[action.payload];
-        console.log(action.payload);
+
         toast.error(errorMessage);
       })
       .addCase(logOut.pending, (state, action) => {
@@ -159,7 +158,6 @@ const myAuth = createSlice({
       .addCase(currentUserFull.fulfilled, (state, action) => {
         state.user = action.payload;
 
-        console.log(action.payload);
         state.isLoggedIn = true;
       })
       .addCase(currentUserFull.rejected, (state, action) => {
@@ -177,7 +175,6 @@ const myAuth = createSlice({
           ...action.payload,
         };
 
-        console.log(state.user);
         state.isLoggedIn = true;
       })
       .addCase(currentUserEdit.rejected, (state, action) => {

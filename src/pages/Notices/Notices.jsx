@@ -50,7 +50,9 @@ const Notices = () => {
         <Box mt="60px" sx={{
             [theme.breakpoints.up("md")]: {
                 mt: "96px"
-            },
+            }, [theme.breakpoints.up("lg")]: {
+                mt: "107px"
+            }
         }}>
             <Title>Find your favorite pet</Title>
             <NoticesFilters onSearch={handleSearch} />

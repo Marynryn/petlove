@@ -8,7 +8,7 @@ import theme from 'components/Theme';
 
 export const PetsList = () => {
     const pets = useSelector(selectPets);
-    console.log(pets)
+
     if (pets.length === 0) return <Box height="1px"></Box>;
     return (
         <Box>
@@ -16,6 +16,10 @@ export const PetsList = () => {
                 p: 0, [theme.breakpoints.up("md")]: {
                     display: "flex", flexWrap: "wrap", gap: "14px"
                 },
+                [theme.breakpoints.up('lg')]: {
+                    display: "bloc"
+                },
+
             }}>
                 {pets.map((el) => (
                     <ListItem key={el._id} sx={{
@@ -23,6 +27,10 @@ export const PetsList = () => {
                             width: "305px",
                             mb: 0
                         },
+                        [theme.breakpoints.up('lg')]: {
+                            width: "440px"
+                        },
+
                     }}>
                         <PetsItem props={el} />
 
