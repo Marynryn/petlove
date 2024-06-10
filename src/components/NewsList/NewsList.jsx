@@ -11,6 +11,8 @@ const NewsList = ({ news }) => {
             <List sx={{
                 p: 0, mt: "34px", [theme.breakpoints.up("md")]: {
                     mt: "44px", display: "flex", flexWrap: "wrap", gap: " 32px 24px"
+                }, [theme.breakpoints.up("lg")]: {
+                    gap: "35px 40px"
                 },
             }}>
                 {news.map((el) => (
@@ -18,6 +20,9 @@ const NewsList = ({ news }) => {
                         p: 0, mb: "24px", [theme.breakpoints.up("md")]: {
                             width: "340px",
                             m: "0", height: "476px"
+                        }, [theme.breakpoints.up("lg")]: {
+                            width: "361px",
+
                         },
                     }}>
                         <NewsItem props={el} />

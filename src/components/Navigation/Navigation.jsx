@@ -1,16 +1,18 @@
 import { Button, List, ListItem } from '@mui/material';
 import theme from 'components/Theme';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 
 
 export const Navigation = () => {
+    const location = useLocation();
+    const home = location.pathname === "/"
     const buttonStyle = {
-        color: "var(--primary-color)",
+        color: home ? "#fff" : "var(--primary-color)",
         width: "120px",
         height: "48px",
         borderRadius: "30px",
-        border: "1px solid rgba(38, 38, 38, 0.15)",
+        border: home ? "1px solid  #fff" : "1px solid  rgba(38, 38, 38, 0.15)",
         textTransform: 'capitalize',
         '&:hover': {
             borderColor: 'var(--secondary-color)',

@@ -41,6 +41,7 @@ export const Header = ({ backgroundColor, iconColor }) => {
                     <Logo />
                     <Box sx={{ display: "flex", }}>
                         <Box sx={{
+                            display: "none",
                             [theme.breakpoints.up("lg")]: {
                                 display: "flex",
                                 mr: "142px"

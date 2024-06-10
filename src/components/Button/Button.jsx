@@ -1,10 +1,12 @@
 import { Button } from '@mui/material';
 import theme from 'components/Theme';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 
 const Btn = ({ children, onClick, type, bgColor, textColor }) => {
-
+    const location = useLocation();
+    const home = location.pathname === "/"
     const determineHoverColor = (bgColor) => {
 
         if (bgColor && bgColor.toLowerCase() === 'var(--secondary-color)') {
@@ -31,6 +33,7 @@ const Btn = ({ children, onClick, type, bgColor, textColor }) => {
         alignItems: "center",
         '&:hover': hoverBgColor,
         '&:focus': hoverBgColor,
+        border: home && "1px solid white",
         [theme.breakpoints.up('md')]: {
 
             height: "48px"
