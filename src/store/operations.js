@@ -142,7 +142,6 @@ export const getFriends = createAsyncThunk(
   }
 );
 const constructUrl = (page, perPage, filter) => {
-  console.log(filter);
   const baseUrl = `/notices?byDate=true&page=${page}&limit=${perPage}`;
 
   const hasFilters = Object.values(filter).some(

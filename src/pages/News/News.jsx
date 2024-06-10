@@ -45,8 +45,12 @@ export const News = ({ onSearch }) => {
                     justifyContent: "space-between",
 
                 },
+            }}> <Box sx={{
+                mb: "20px", [theme.breakpoints.up("md")]: {
+                    mb: 0
+                }
             }}>
-                <Title>News</Title>
+                    <Title>News</Title></Box>
                 <SearchField onSearch={handleSearch} /></Box>
             <NewsList news={news} />
             {totalPages > 1 && (

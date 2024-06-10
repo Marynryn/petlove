@@ -19,7 +19,7 @@ const Notices = () => {
     const itemsPerPage = 6;
     const [filteredNotices, setFilteredNotices] = useState([]);
 
-    console.log(currentPage)
+
     useEffect(() => {
         dispatch(getNotices({ page: currentPage, perPage: itemsPerPage, filter }));
     }, [dispatch, currentPage, filter]);
@@ -45,7 +45,7 @@ const Notices = () => {
         dispatch(setInputFilter(searchTerm));
         setCurrentPage(1);
     };
-    console.log(filteredNotices)
+
     return (
         <Box mt="60px" sx={{
             [theme.breakpoints.up("md")]: {

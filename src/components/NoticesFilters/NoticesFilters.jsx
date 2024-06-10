@@ -350,7 +350,12 @@ const NoticesFilters = ({ onSearch }) => {
                             placeholder="Location"
                             isClearable
                         />
-                        <IconButton type="submit" sx={{ position: 'absolute', right: '12px', p: 0, top: '12px' }}>
+                        <IconButton type="submit" sx={{
+                            position: 'absolute', right: '12px', p: 0, top: '12px', [theme.breakpoints.up("md")]: {
+                                top: '16px'
+
+                            }
+                        }}>
                             <svg width={18} height={18} style={{ stroke: 'var(--primary-color)', fill: 'white' }}>
                                 <use href={`${sprite}#icon-search`}></use>
                             </svg>

@@ -83,13 +83,23 @@ const SearchField = ({ onSearch, bgColor }) => {
                     pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-Я]*)*$"
                 />
                 {searchTerm && (
-                    <IconButton onClick={handleClearInput} sx={{ position: 'absolute', right: '32px', p: 0, top: '18px' }} >
+                    <IconButton onClick={handleClearInput} sx={{
+                        position: 'absolute', right: '32px', p: 0, top: '12px', [theme.breakpoints.up("md")]: {
+                            top: '16px'
+
+                        }
+                    }} >
                         <svg width={18} height={18} style={{ stroke: '#EF2447', fill: '#EF2447' }}>
                             <use href={`${sprite}#icon-x`}></use>
                         </svg>
                     </IconButton>
                 )}
-                <IconButton type="submit" onClick={handleSearch} sx={{ position: 'absolute', right: '12px', p: 0, top: '18px' }}>
+                <IconButton type="submit" onClick={handleSearch} sx={{
+                    position: 'absolute', right: '12px', p: 0, top: '12px', [theme.breakpoints.up("md")]: {
+                        top: '16px'
+
+                    }
+                }}>
                     <svg width={18} height={18} style={{ stroke: 'var(--primary-color)', fill: 'white' }}>
                         <use href={`${sprite}#icon-search`}></use>
                     </svg>

@@ -1,6 +1,8 @@
 .loader_bg {
   background-image: url(/src/img/img/bg.png);
-
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url(/src/img/img/bg\ 2x.png);
+  }
   height: 100vh;
   background-repeat: no-repeat;
   display: flex;
@@ -15,6 +17,7 @@
   background-color: transparent;
   display: flex;
   align-items: center;
+  justify-content: center;
   @media screen and (min-width: 768px) {
     width: 396px;
     height: 396px;

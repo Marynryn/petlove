@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { lazy, useEffect } from 'react';
 import { PrivateRoute } from './PrivateRoute';

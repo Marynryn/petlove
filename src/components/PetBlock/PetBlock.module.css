@@ -2,10 +2,14 @@
   height: 280px;
   border-radius: 30px;
   background-color: var(--secondary-color);
-  background-image: url(/src/img/img/cat.png);
+  background-image: url(/src/img/img/mobile/cat.png);
   background-size: cover;
   background-position: center;
   margin: 20px 0 10px;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url(/src/img/img/mobile/cat\ 2x.png);
+  }
   @media screen and (min-width: 768px) {
     height: 304px;
     border-radius: 60px;
@@ -14,13 +18,20 @@
     background-repeat: no-repeat;
     position: relative;
     margin: 30px 0 16px;
+    background-image: url(/src/img/img/tablet/cat_tablet.png);
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(/src/img/img/tablet/cat_tablet\ 2x.png);
+    }
   }
   @media screen and (min-width: 1280px) {
     width: 592px;
     height: 654px;
     background-size: 536px 632px;
     background-position: 22px 22px;
-    background-image: url(/src/img/img/cat_desctop.png);
+    background-image: url(/src/img/img/desktop/cat_desktop.png);
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(/src/img/img/desktop/cat_desktop\ 2x.png);
+    }
     margin: 0;
   }
 }
@@ -28,13 +39,19 @@
   height: 280px;
   border-radius: 30px;
   background-color: var(--secondary-color);
-  background-image: url(/src/img/img/dog.png);
+  background-image: url(/src/img/img/mobile/dog.png);
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url(/src/img/img/mobile/dog\ 2x.png);
+  }
   background-size: cover;
   background-position: center;
   margin: 20px 0 10px;
   @media screen and (min-width: 768px) {
     height: 304px;
-   
+    background-image: url(/src/img/img/tablet/dog_tablet.png);
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(/src/img/img/tablet/dog_tablet\ 2x.png);
+    }
     border-radius: 60px;
     background-size: 364px 302px;
     background-position: 280px;
@@ -47,7 +64,11 @@
     height: 654px;
     background-size: 536px 632px;
     background-position: 40px 20px;
-    background-image: url(/src/img/img/dog_desctop.png);
+    background-image: url(/src/img/img/desktop/dog_desktop.png);
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(/src/img/img/desktop/dog_desktop\ 2x.png);
+    }
+
     margin: 0;
   }
 }
@@ -55,7 +76,10 @@
   height: 213px;
   border-radius: 30px;
   background-color: var(--secondary-color);
-  background-image: url(/src/img/img/dog2.png);
+  background-image: url(/src/img/img/mobile/dog2.png);
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url(/src/img/img/mobile/dog2\ 2x.png);
+  }
   background-size: cover;
   background-position: center;
   margin: 20px 0 10px;
@@ -67,13 +91,20 @@
     background-repeat: no-repeat;
     position: relative;
     margin: 30px 0 16px;
+    background-image: url(/src/img/img/tablet/dog2_tablet.png);
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(/src/img/img/tablet/dog2_tablet\ 2x.png);
+    }
   }
   @media screen and (min-width: 1280px) {
     width: 592px;
     height: 654px;
     background-size: 536px 632px;
     background-position: 20px 45px;
-    background-image: url(/src/img/img/dog2_desctop.png);
+    background-image: url(/src/img/img/desktop/dog2_desktop.png);
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(/src/img/img/desktop/dog2_decktop\ 2x.png);
+    }
     margin: 0;
   }
 }

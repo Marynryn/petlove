@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { toast } from "react-hot-toast";
+
 import {
   getCategories,
   getFriends,
@@ -78,9 +78,7 @@ const mySlice = createSlice({
     setPriceFilter: (state, action) => {
       state.notices.filter.price = action.payload;
     },
-    //     addFilter: (state, action) => {
-    //       state.participantsFilter = action.payload;
-    //     },
+  
   },
   extraReducers: (builder) => {
     builder

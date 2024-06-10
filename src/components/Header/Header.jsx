@@ -63,13 +63,7 @@ export const Header = ({ backgroundColor, iconColor }) => {
                             display: "flex",
                             mr: "16px",
 
-                            [theme.breakpoints.down("md")]: {
-                                // display: "none",
-                            },
-                            [theme.breakpoints.down("lg")]: {
 
-                                // display: "none",
-                            }
                         }}
                         ><UserBar /></Box></Box></>) : <Box sx={{
                             display: "none",
