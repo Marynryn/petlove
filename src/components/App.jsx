@@ -9,6 +9,7 @@ import { refreshUser } from 'store/operations';
 import Loader from './Loader/Loader';
 import { selectIsRefreshing, selectNoticeFavorite } from 'store/selectors';
 
+
 const Home = lazy(() => import("../pages/Home/Home"))
 const News = lazy(() => import("../pages/News/News"))
 const Registration = lazy(() => import("../pages/Registration/Registration"))
@@ -17,7 +18,7 @@ const Notices = lazy(() => import("../pages/Notices/Notices"))
 const Profile = lazy(() => import("../pages/Profile/Profile"))
 const Friends = lazy(() => import("../pages/Friends/Friends"))
 const AddPetPage = lazy(() => import('./../pages/AddPetPage/AddPetPage'))
-
+const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
 
 
 
@@ -67,7 +68,7 @@ export const App = () => {
         />
 
 
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
