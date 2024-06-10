@@ -32,7 +32,7 @@ export const Login = () => {
     }
     return (
         <Box sx={{
-            [theme.breakpoints.up("md")]: {
+            [theme.breakpoints.up("lg")]: {
                 display: "flex", gap: "32px",
                 mt: "32px"
             },

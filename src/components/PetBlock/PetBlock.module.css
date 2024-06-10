@@ -34,6 +34,7 @@
   margin: 20px 0 10px;
   @media screen and (min-width: 768px) {
     height: 304px;
+   
     border-radius: 60px;
     background-size: 364px 302px;
     background-position: 280px;
