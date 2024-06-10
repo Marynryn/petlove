@@ -12,7 +12,7 @@ const NewsList = ({ news }) => {
                 p: 0, mt: "34px", [theme.breakpoints.up("md")]: {
                     mt: "44px", display: "flex", flexWrap: "wrap", gap: " 32px 24px"
                 }, [theme.breakpoints.up("lg")]: {
-                    gap: "35px 40px"
+                    gap: "40px 35px"
                 },
             }}>
                 {news.map((el) => (
@@ -21,7 +21,7 @@ const NewsList = ({ news }) => {
                             width: "340px",
                             m: "0", height: "476px"
                         }, [theme.breakpoints.up("lg")]: {
-                            width: "361px",
+                            width: "360px",
 
                         },
                     }}>

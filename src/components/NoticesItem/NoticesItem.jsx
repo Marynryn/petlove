@@ -10,7 +10,7 @@ import ModalNotice from 'components/ModalNotice/ModalNotice';
 import { IsLoggedIn } from 'helpers/isLoggedIn';
 import PetInfo from 'components/PetInfo/PetInfo';
 import { addToFavorite, removeFromFavorite } from 'store/operations';
-import { selectNoticeFavorite, selectNoticeFavoriteFullInfo } from 'store/selectors';
+import { selectNoticeFavoriteFullInfo } from 'store/selectors';
 import theme from 'components/Theme';
 
 const NoticesItem = ({ props }) => {

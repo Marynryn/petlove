@@ -10,6 +10,9 @@ const NewsItem = ({ props }) => {
                 width: "335px", mb: "20px", height: "190px", borderRadius: "15px", [theme.breakpoints.up("md")]: {
                     height: "226px", width: "340px", mb: "28px"
                 },
+                [theme.breakpoints.up("md")]: {
+                    width: "360px"
+                }
             }}>
             </Box>
             <Typography sx={{
