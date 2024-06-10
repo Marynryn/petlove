@@ -10,7 +10,7 @@ const NewsItem = ({ props }) => {
                 width: "335px", mb: "20px", height: "190px", borderRadius: "15px", [theme.breakpoints.up("md")]: {
                     height: "226px", width: "340px", mb: "28px"
                 },
-                [theme.breakpoints.up("md")]: {
+                [theme.breakpoints.up("lg")]: {
                     width: "360px"
                 }
             }}>
@@ -22,7 +22,9 @@ const NewsItem = ({ props }) => {
                     WebkitBoxOrient: 'vertical',
                     WebkitLineClamp: 2,
                     overflow: 'hidden',
-                    textOverflow: 'ellipsis', lineHeight: "26px"
+                    textOverflow: 'ellipsis', lineHeight: "26px", [theme.breakpoints.up("lg")]: {
+                        width: "360px"
+                    }
                 },
             }}>{props.title}</Typography>
             <Typography sx={{
@@ -31,7 +33,9 @@ const NewsItem = ({ props }) => {
                     WebkitBoxOrient: 'vertical',
                     WebkitLineClamp: 4,
                     overflow: 'hidden',
-                    textOverflow: 'ellipsis', lineHeight: "20px"
+                    textOverflow: 'ellipsis', lineHeight: "20px", [theme.breakpoints.up("lg")]: {
+                        width: "360px"
+                    }
                 },
             }}>{props.text}</Typography>
             <Box sx={{

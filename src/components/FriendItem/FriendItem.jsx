@@ -48,7 +48,9 @@ const FriendItem = ({ props }) => {
                 <Box sx={{ minWidth: "135px" }}>
                     <Typography sx={{
                         fontWeight: 700, fontSize: "16px", mb: "14px", [theme.breakpoints.up("md")]: {
-                            mb: "20px", fontSize: "18px",
+                            mb: "20px", fontSize: "18px", [theme.breakpoints.up("lg")]: {
+                                fontSize: "20px"
+                            }
                         },
                     }}>{props.title}</Typography>
                     <ContactInfo props={props} />

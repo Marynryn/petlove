@@ -11,12 +11,16 @@ export const FriendsList = ({ friends }) => {
                 p: 0, mt: "40px", [theme.breakpoints.up("md")]: {
                     display: "flex", flexWrap: "wrap",
                     mt: "44px", gap: "25px 20px"
-                },
+                }, [theme.breakpoints.up("lg")]: {
+                    gap: "28px 20px"
+                }
             }}>
                 {friends.map((el) => (
                     <ListItem key={el._id} sx={{
                         p: 0, mb: "20px", [theme.breakpoints.up("md")]: {
                             width: "342px", height: "196px", mb: 0
+                        }, [theme.breakpoints.up("lg")]: {
+                            width: "370px"
                         }
                     }}>
                         <FriendItem props={el} />
