@@ -42,7 +42,7 @@ PetLove is a web application designed for pet enthusiasts. The application allow
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/your-username/PetLove.git
+   git clone https://github.com/Marynryn/PetLove.git
    ```
 
 2. **Frontend Setup:**
