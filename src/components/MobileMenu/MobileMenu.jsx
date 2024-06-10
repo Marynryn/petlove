@@ -55,7 +55,9 @@ const MobileMenu = ({ isOpen, onClose }) => {
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, [handleCloseModal]);
-
+    useEffect(() => {
+        handleCloseModal();
+    }, [location, handleCloseModal]);
     return isOpen ? ReactDOM.createPortal(
         <Modal
             open={Boolean(isOpen)}

@@ -86,7 +86,6 @@ const myAuth = createSlice({
         state.isLoading = initialState.isLoading;
         state.isRefreshing = initialState.isRefreshing;
         state.petById = initialState.petById;
-        state.noticesFavorites = initialState.noticesFavorites;
       })
 
       .addCase(logOut.rejected, (state, action) => {

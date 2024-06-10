@@ -38,7 +38,7 @@ export const PetsItem = ({ props }) => {
                     <Typography sx={{ fontWeight: 700, fontSize: "14px", mb: "2px", textTransform: "capitalize", textOverflow: 'ellipsis' }}>{props.title}</Typography>
 
 
-                    <PetInfo props={props} hidden={true} />
+                    <PetInfo props={props} hidden={true} addPet={true} />
 
                 </Box>
 

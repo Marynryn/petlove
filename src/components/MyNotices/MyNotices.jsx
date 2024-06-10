@@ -16,6 +16,7 @@ const MyNotices = () => {
     const user = useSelector(selectUser)
     useEffect(() => {
         dispatch(currentUserFull());
+
     }, [dispatch]);
 
     useEffect(() => {

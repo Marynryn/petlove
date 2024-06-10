@@ -94,7 +94,7 @@ export const ModalNotice = ({ props }) => {
                     px: "34px"
                 },
             }}>{infoPet.comment}</Typography>
-            <Box style={{
+            <Box sx={{
                 display: "flex", gap: "10px", position: "absolute", bottom: "20px", width: "100%", px: "8px", [theme.breakpoints.up("md")]: {
                     width: "330px",
                     p: 0

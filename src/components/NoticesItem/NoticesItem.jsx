@@ -21,11 +21,15 @@ const NoticesItem = ({ props }) => {
     const { isLogIn } = IsLoggedIn();
     const favorites = useSelector(selectNoticeFavorite);
 
-    useEffect(() => {
 
-        const localFavorites = JSON.parse(localStorage.getItem('favorites')) || favorites;
+    useEffect(() => {
+        const localFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
         setIsFavorite(favorites.includes(props._id) || localFavorites.includes(props._id));
     }, [favorites, props._id]);
+
+    useEffect(() => {
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }, [favorites]);
 
     const handleFavoriteClick = () => {
         if (!isLogIn) {
