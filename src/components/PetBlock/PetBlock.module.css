@@ -8,11 +8,20 @@
   margin: 20px 0 10px;
   @media screen and (min-width: 768px) {
     height: 304px;
+    border-radius: 60px;
     background-size: 364px 302px;
     background-position: 280px;
     background-repeat: no-repeat;
     position: relative;
     margin: 30px 0 16px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 592px;
+    height: 654px;
+    background-size: 536px 632px;
+    background-position: 22px 22px;
+    background-image: url(/src/img/img/cat_desctop.png);
+    margin: 0;
   }
 }
 .dogblock {
@@ -25,11 +34,20 @@
   margin: 20px 0 10px;
   @media screen and (min-width: 768px) {
     height: 304px;
+    border-radius: 60px;
     background-size: 364px 302px;
     background-position: 280px;
     background-repeat: no-repeat;
     position: relative;
     margin: 30px 0 16px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 592px;
+    height: 654px;
+    background-size: 536px 632px;
+    background-position: 40px 20px;
+    background-image: url(/src/img/img/dog_desctop.png);
+    margin: 0;
   }
 }
 .another_dog_block {
@@ -42,7 +60,7 @@
   margin: 20px 0 10px;
   @media screen and (min-width: 768px) {
     height: 248px;
-
+    border-radius: 60px;
     background-size: 364px 248px;
     background-position: center;
     background-repeat: no-repeat;

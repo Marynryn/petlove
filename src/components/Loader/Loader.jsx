@@ -4,6 +4,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import css from "./Loader.module.css"
 import { Logo } from 'components/Logo/Logo';
 
+
 const Loader = () => {
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -36,9 +37,12 @@ const Loader = () => {
     return (
         <div className={css.loader_bg}>
             <div className={css.container}>
-                {loading ? (
-                    <Logo width={190} height={50} />
-                ) : (
+                {loading ?
+                    <Logo loader={true} />
+
+
+
+                    :
                     <CircularProgressbar
                         value={progress}
                         text={`${progress}%`}
@@ -51,7 +55,8 @@ const Loader = () => {
 
 
                         })} strokeWidth={0.5} backgroundColor={"transparent"}
-                    />)}
+                    />
+                }
             </div>
         </div>
     );

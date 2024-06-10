@@ -4,14 +4,15 @@ import { useLocation } from 'react-router-dom/dist';
 import css from "./Logo.module.css"
 
 
-export const Logo = ({ width, height }) => {
+export const Logo = ({ loader }) => {
     const location = useLocation();
-
-    const iconName = location.pathname === '/' ? 'icon-logo-1' : 'icon-logo';
+    const iconName = () => {
+        return location.pathname === '/' ? 'icon-logo-1' : loader === true ? 'icon-logo-2' : 'icon-logo';
+    };
     return (
 
-        <svg className={css.logo}>
-            <use href={`${sprite}#${iconName}`}  ></use>
+        <svg className={loader ? css.loaderLogo : css.logo}>
+            <use href={`${sprite}#${iconName()}`} style={{ color: loader && " var(--background-color)" }} ></use>
         </svg>
 
     )

@@ -14,17 +14,24 @@ export const Registration = () => {
         textContent: "center",
         minHeight: "368px",
         [theme.breakpoints.up("md")]: {
-            p: "27px 140px"
+            p: "27px 140px",
+            borderRadius: "60px"
         },
-
+        [theme.breakpoints.up("lg")]: {
+            p: "77px 84px"
+        },
 
     }
     return (
         <Box sx={{
             [theme.breakpoints.up("md")]: {
 
+            }
+            , [theme.breakpoints.up("lg")]: {
+                display: "flex",
+                gap: "32px",
+                mt: "32px"
             },
-
         }}>
             <PetBlock />
             <Box sx={style}>
@@ -33,6 +40,9 @@ export const Registration = () => {
                         width: "424px",
                         textContent: "center",
                         height: "506px"
+                    },
+                    [theme.breakpoints.up("lg")]: {
+                        height: "500px"
                     },
                 }}>
                     <Title>Registration</Title>

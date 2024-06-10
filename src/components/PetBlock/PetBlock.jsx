@@ -28,6 +28,10 @@ export const PetBlock = () => {
                         height: "89px", gap: "8px", position: "absolute",
                         bottom: "32px",
                         left: "32px",
+                        [theme.breakpoints.up("lg")]: {
+                            bottom: "97px",
+                            left: "61px"
+                        },
                     }
 
                 }}>  <Box sx={{ width: "60px", height: "60px", backgroundColor: "#FFF4DF", borderRadius: "100%" }}>
@@ -50,6 +54,10 @@ export const PetBlock = () => {
                         height: "89px", gap: "8px", position: "absolute",
                         bottom: "32px",
                         left: "32px",
+                        [theme.breakpoints.up("lg")]: {
+                            bottom: "97px",
+                            left: "61px"
+                        },
                     }
 
                 }}>  <Box sx={{ width: "60px", height: "60px", backgroundColor: "#FFF4DF", borderRadius: "100%" }}>

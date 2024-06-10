@@ -1,4 +1,5 @@
 import { Button, List, ListItem } from '@mui/material';
+import theme from 'components/Theme';
 import { NavLink } from 'react-router-dom';
 
 
@@ -29,14 +30,29 @@ export const Navigation = () => {
                 '&.MuiList-dense': {
                     paddingTop: 0,
                     paddingBottom: 0
-                }
+                },
+                [theme.breakpoints.up("lg")]: {
+                    display: "flex", gap: "10px"
+
+                },
+
             }} >
-                <ListItem sx={{ justifyContent: "center", p: 0, mb: "10px" }} >
+                <ListItem sx={{
+                    justifyContent: "center", p: 0, mb: "10px", [theme.breakpoints.up("lg")]: {
+                        mb: 0
+
+                    },
+                }} >
                     <NavLink to="/news" style={{ textDecoration: 'none' }}>
                         <Button variant="outlined" sx={buttonStyle}>News</Button>
                     </NavLink>
                 </ListItem>
-                <ListItem sx={{ justifyContent: "center", p: 0, mb: "10px" }}>
+                <ListItem sx={{
+                    justifyContent: "center", p: 0, mb: "10px", [theme.breakpoints.up("lg")]: {
+                        mb: 0
+
+                    },
+                }}>
                     <NavLink to="/notices" style={{ textDecoration: 'none' }}>
                         <Button variant="outlined" sx={buttonStyle}>Find pet</Button>
                     </NavLink>

@@ -21,16 +21,25 @@ export const Login = () => {
         justifyContent: "center",
         [theme.breakpoints.up("md")]: {
             p: "71px 140px",
-            height: "418px"
+            height: "418px",
+            borderRadius: "60px"
         },
-
+        [theme.breakpoints.up("lg")]: {
+            p: "118px 84px",
+            width: "424px"
+        },
 
     }
     return (
-        <div>
+        <Box sx={{
+            [theme.breakpoints.up("md")]: {
+                display: "flex", gap: "32px",
+                mt: "32px"
+            },
+        }}>
             <PetBlock />
             <Box sx={style}>
-                <Title>Login</Title>
+                <Title>Log in</Title>
                 <Typography sx={{
                     mt: "12px", mb: "20px", fontSize: "14px", lineHeight: 1.28, fontWeight: 500, letterSpacing: "-0.28px", [theme.breakpoints.up("md")]: {
                         mt: "16px", mb: "32px", fontSize: "18px"
@@ -45,7 +54,7 @@ export const Login = () => {
 
             </Box>
 
-        </div>
+        </Box>
     )
 }
 export default Login;

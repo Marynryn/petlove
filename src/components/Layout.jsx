@@ -17,6 +17,7 @@ export const Layout = () => {
     const shouldRenderHeader = path !== '/';
     return (
         <Box >
+
             <Suspense fallback={<Loader />}>
                 <Box sx={{
                     p: "20px ", [theme.breakpoints.up('md')]: {

@@ -12,7 +12,10 @@ export const AuthNav = ({ flex }) => {
             p: 0, display: flex ? "flex" : "block", gap: "8px", width: "100%", [theme.breakpoints.up('md')]: {
                 display: "flex",
                 px: "30px"
-            }
+            }, [theme.breakpoints.up("lg")]: {
+                px: 0
+
+            },
         }}>
             <ListItem sx={{ p: 0, mb: flex ? 0 : "8px", }}>
                 <NavLink to="/login" style={{ textDecoration: "none", width: "100%" }}>
