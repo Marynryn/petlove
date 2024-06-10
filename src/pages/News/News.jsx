@@ -35,6 +35,9 @@ export const News = ({ onSearch }) => {
             mt: "60px", [theme.breakpoints.up("md")]: {
                 mt: "96px"
             },
+            [theme.breakpoints.up("lg")]: {
+                px: "32px"
+            },
         }}>
             <Box sx={{
                 [theme.breakpoints.up("md")]: {

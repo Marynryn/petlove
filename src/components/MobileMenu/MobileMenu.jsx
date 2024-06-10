@@ -89,8 +89,8 @@ const MobileMenu = ({ isOpen, onClose }) => {
                 }}>
                     {isLogIn ? <Box sx={{
                         [theme.breakpoints.up('md')]: {
-                            width: "218px",
-                            mx: "auto",
+                            width: "100%",
+                            mx: '20px'
                         }
                     }}><LogOutBtn onClose={handleCloseModal} /> </Box> : <AuthNav flex={false} />}
                 </Box>

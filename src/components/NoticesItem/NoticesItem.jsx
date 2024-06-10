@@ -10,7 +10,7 @@ import ModalNotice from 'components/ModalNotice/ModalNotice';
 import { IsLoggedIn } from 'helpers/isLoggedIn';
 import PetInfo from 'components/PetInfo/PetInfo';
 import { addToFavorite, removeFromFavorite } from 'store/operations';
-import { selectNoticeFavorite } from 'store/selectors';
+import { selectNoticeFavorite, selectNoticeFavoriteFullInfo } from 'store/selectors';
 import theme from 'components/Theme';
 
 const NoticesItem = ({ props }) => {
@@ -19,17 +19,17 @@ const NoticesItem = ({ props }) => {
     const [isModalAttentionOpen, setModalAttentionOpen] = useState(false);
     const [isModalNoticeOpen, setModalNoticeOpen] = useState(false);
     const { isLogIn } = IsLoggedIn();
-    const favorites = useSelector(selectNoticeFavorite);
-
+    const favorites = useSelector(selectNoticeFavoriteFullInfo);
+    const ids = favorites.map(item => item._id);
 
     useEffect(() => {
         const localFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        setIsFavorite(favorites.includes(props._id) || localFavorites.includes(props._id));
-    }, [favorites, props._id]);
+        setIsFavorite(ids.includes(props._id) || localFavorites.includes(props._id));
+    }, [ids, props._id]);
 
     useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-    }, [favorites]);
+        localStorage.setItem('favorites', JSON.stringify(ids));
+    }, [ids]);
 
     const handleFavoriteClick = () => {
         if (!isLogIn) {
@@ -82,14 +82,14 @@ const NoticesItem = ({ props }) => {
             }}>{props.comment}</Typography>
             <Box sx={{
                 display: "flex", gap: "10px", width: "280px", bottom: "25px", position: "absolute", justifyContent: "space-between", [theme.breakpoints.down("sm")]: {
-                    width: "232px",
+                    width: "100%",
                 }, [theme.breakpoints.up("md")]: {
                     bottom: "32px",
                 },
             }}>
 
                 <Button sx={{
-                    backgroundColor: "var(--secondary-color)", color: "var(--background-color)", width: "100%", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, [theme.breakpoints.up("md")]: {
+                    backgroundColor: "var(--secondary-color)", color: "var(--background-color)", width: "180px", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, [theme.breakpoints.up("md")]: {
                         width: "230px"
                     },
                 }} onClick={handleLearnMoreClick}>
