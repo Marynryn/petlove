@@ -41,8 +41,8 @@ const UserBar = () => {
                         display: "none",
                     },
                     [theme.breakpoints.up("md")]: {
-                        fontSize: "20px"
-                        // display: "none",
+                        fontSize: "20px",
+                        lineHeight: "18px"
                     }
                 }}>
                     {user.name}
