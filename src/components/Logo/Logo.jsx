@@ -9,7 +9,7 @@ export const Logo = ({ loader }) => {
     const iconName = () => {
         return location.pathname === '/' ? 'icon-logo-1' : loader === true ? 'icon-logo-2' : 'icon-logo';
     };
-    console.log(iconName())
+
     return (
         <Link to="/">
             <svg className={loader ? css.loaderLogo : css.logo}>
