@@ -1,6 +1,6 @@
 import React from "react";
 import NewsItem from "components/NewsItem/NewsItem";
-import { Box, List, ListItem } from "@mui/material";
+import { List, ListItem } from "@mui/material";
 import theme from "components/Theme";
 
 const NewsList = ({ news }) => {
