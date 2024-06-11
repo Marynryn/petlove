@@ -27,7 +27,7 @@ export const Friends = () => {
             },
             [theme.breakpoints.up("lg")]: {
                 mt: "107px",
-                mb: "60px", px: "32px"
+                mb: "60px",
             }
         }}>
             <Title>Our friends</Title>

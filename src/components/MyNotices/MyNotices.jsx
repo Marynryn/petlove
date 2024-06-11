@@ -27,6 +27,8 @@ const MyNotices = () => {
         setActiveTab(newValue);
     };
     const activeTabStyles = {
+        mr: activeTab === 0 ? "10px" : 0,
+        ml: activeTab === 1 ? "10px" : 0,
         backgroundColor: "var(--secondary-color)", textDecoration: "none", height: "46px", textTransform: 'capitalize', borderRadius: "30px", '&:hover': { backgroundColor: "#F9B020" },
         '&.MuiTab-root': {
             color: "var(--background-color)",
@@ -55,13 +57,14 @@ const MyNotices = () => {
             },
         }}>
             <Tabs sx={{
-
+                gap: "10px",
                 textDecoration: 'none', mb: "20px", '& .MuiTabs-indicator': {
                     display: 'none',
                 }, "& .MuiTabs- flexContainer": {
-                    gap: "10px",
+
                 }
             }} value={activeTab} onChange={handleTabChange}>
+
                 <Tab label="My favorite pets" sx={activeTab === 0 ? activeTabStyles : inactiveTabStyles} />
                 <Tab label="Viewed" ml="8px" sx={activeTab === 1 ? activeTabStyles : inactiveTabStyles} />
             </Tabs>

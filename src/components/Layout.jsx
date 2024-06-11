@@ -15,20 +15,35 @@ export const Layout = () => {
 
 
     const shouldRenderHeader = path !== '/';
+    const profile = path === "/profile"
     return (
-        <Box >
+        <>
 
             <Suspense fallback={<Loader />}>
                 <Box sx={{
                     p: "20px ", [theme.breakpoints.up('md')]: {
                         p: '32px',
                     },
-                }} >
+
+                }}
+                >
                     {shouldRenderHeader && <Header backgroundColor={"inherit"} iconColor={"var(--primary-color)"} />}
-                    <Outlet />
+                    <Box sx={{
+                        mx: "auto",
+                        [theme.breakpoints.up("sm")]: {
+                            mx: "auto", width: "340px",
+                        },
+                        [theme.breakpoints.up("md")]: {
+                            mx: "auto", width: "704px"
+                        },
+                        [theme.breakpoints.up("lg")]: {
+                            mx: "auto", width: profile ? "1216px" : "1153px"
+                        }
+                    }}>
+                        <Outlet /></Box>
                 </Box>
             </Suspense>
             <Toaster position="top-right" reverseOrder={false} />
-        </Box>
+        </>
     );
 };
