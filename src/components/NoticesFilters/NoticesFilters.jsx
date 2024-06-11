@@ -187,7 +187,7 @@ const NoticesFilters = ({ onSearch }) => {
         <Paper component="form" onReset={handleResetFilters} sx={{
             color: "var(--primary-color)", p: "20px", my: "40px", boxShadow: 'none', backgroundColor: '#FFF4DF', borderRadius: '30px', [theme.breakpoints.up("md")]: {
                 mt: "44px", mb: "32px", p: "32px 32px", mx: 'auto'
-            }, [theme.breakpoints.up("lg")]: { p: "40px" }
+            }, [theme.breakpoints.up("lg")]: { p: "40px", mx: "-32px" }
         }}> <Box sx={{
             width: '100%',
             [theme.breakpoints.up("sm")]: {
