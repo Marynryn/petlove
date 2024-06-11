@@ -57,7 +57,7 @@ const mySlice = createSlice({
       state.notices.filter.inputFilter = action.payload;
     },
     setCategoryFilter: (state, action) => {
-      console.log(action.payload);
+   
       state.notices.filter.category = action.payload;
     },
     setGenderFilter: (state, action) => {

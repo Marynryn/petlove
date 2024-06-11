@@ -47,8 +47,7 @@ const AddPetForm = () => {
             sex: selectedSex,
             species: selectedSpecies,
         };
-        console.log(petData);
-        console.log(data)
+
         try {
             await dispatch(addMyPet(petData)).unwrap();
             toast.success('Pet added successfully');

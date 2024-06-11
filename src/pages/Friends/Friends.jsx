@@ -13,7 +13,7 @@ export const Friends = () => {
 
     const friends = useSelector(selectGetFriends);
 
-    console.log(friends)
+
     useEffect(() => {
         dispatch(getFriends());
     }, [dispatch]);

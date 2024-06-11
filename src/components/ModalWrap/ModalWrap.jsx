@@ -6,7 +6,6 @@ import { Box, IconButton, Backdrop, Modal } from '@mui/material';
 const ModalWrap = ({ isOpen, onClose, children }) => {
 
     const handleCloseModal = useCallback(() => {
-
         onClose(false);
     }, [onClose]);
 
@@ -23,10 +22,6 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
         };
     }, [handleCloseModal]);
 
-    useEffect(() => {
-
-    }, [isOpen]);
-
     return isOpen ? ReactDOM.createPortal(
         <Modal
             open={isOpen}
@@ -36,12 +31,11 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
             BackdropProps={{
                 timeout: 500,
             }}
-            container={document.getElementById('modal-root')}
+            container={() => document.getElementById('modal-root')} // Передаем функцию для определения контейнера
             sx={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minWidth: '320px',
                 zIndex: 100
             }}
         >
@@ -53,19 +47,18 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
                     minWidth: '280px',
                     padding: '20px',
                     maxHeight: '95%',
+                    outline: 'none',
                 }}
             >
                 <IconButton
-                    onClick={() => {
-
-                        handleCloseModal();
-                    }}
+                    onClick={handleCloseModal}
                     sx={{
                         p: 0,
                         position: 'absolute',
                         top: '10px',
                         right: '10px',
-                        width: "30px", height: "30px",
+                        width: "30px",
+                        height: "30px",
                         '&:hover': {
                             transform: 'scale(1.1)',
                         },

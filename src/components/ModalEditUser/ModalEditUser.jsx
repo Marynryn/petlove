@@ -54,7 +54,7 @@ const ModalEditUser = ({ onClose }) => {
         if (file) {
             try {
                 const imageUrl = await uploadFile(file);
-                console.log(imageUrl);
+
                 setValue('avatar', imageUrl);
 
             } catch (error) {

@@ -195,7 +195,7 @@ export const getNoticesById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await api.get(`/notices/${id}`);
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

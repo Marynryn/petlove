@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, IconButton, Typography } from '@mui/material';
 import sprite from '../../img/svg/symbol-defs.svg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ModalWrap from 'components/ModalWrap/ModalWrap';
+
 import ModalAttention from 'components/ModalAttention/ModalAttention';
 import ModalNotice from 'components/ModalNotice/ModalNotice';
 import { IsLoggedIn } from 'helpers/isLoggedIn';
@@ -12,6 +12,7 @@ import PetInfo from 'components/PetInfo/PetInfo';
 import { addToFavorite, removeFromFavorite } from 'store/operations';
 import { selectNoticeFavoriteFullInfo } from 'store/selectors';
 import theme from 'components/Theme';
+import ModalWrap from 'components/ModalWrap/ModalWrap';
 
 const NoticesItem = ({ props }) => {
     const dispatch = useDispatch();
@@ -27,10 +28,6 @@ const NoticesItem = ({ props }) => {
         setIsFavorite(ids.includes(props._id) || localFavorites.includes(props._id));
     }, [ids, props._id]);
 
-    useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(ids));
-    }, [ids]);
-
     const handleFavoriteClick = () => {
         if (!isLogIn) {
             setModalAttentionOpen(true);
@@ -38,12 +35,14 @@ const NoticesItem = ({ props }) => {
             const localFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
             if (isFavorite) {
                 dispatch(removeFromFavorite(props._id));
-                localStorage.setItem('favorites', JSON.stringify(localFavorites.filter(id => id !== props._id)));
+                const updatedFavorites = localFavorites.filter(id => id !== props._id);
+                localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+                setIsFavorite(false);
             } else {
                 dispatch(addToFavorite(props._id));
                 localStorage.setItem('favorites', JSON.stringify([...localFavorites, props._id]));
+                setIsFavorite(true);
             }
-            setIsFavorite(!isFavorite);
         }
     };
 
@@ -53,6 +52,10 @@ const NoticesItem = ({ props }) => {
         } else {
             setModalNoticeOpen(true);
         }
+    };
+
+    const handleToggleFavoriteFromModal = () => {
+        handleFavoriteClick();
     };
 
     return (
@@ -89,7 +92,6 @@ const NoticesItem = ({ props }) => {
                     bottom: "32px",
                 },
             }}>
-
                 <Button sx={{
                     backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, p: "12px 30px", [theme.breakpoints.down("sm")]: {
 
@@ -117,7 +119,7 @@ const NoticesItem = ({ props }) => {
                 <ModalAttention />
             </ModalWrap>
             <ModalWrap isOpen={isModalNoticeOpen} onClose={() => setModalNoticeOpen(false)}>
-                <ModalNotice props={props} />
+                <ModalNotice props={props} handleToggleFavorite={handleToggleFavoriteFromModal} isFavorite={isFavorite} />
             </ModalWrap>
         </Box>
     );

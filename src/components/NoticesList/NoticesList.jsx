@@ -9,13 +9,24 @@ export const NoticesList = ({ props }) => {
     const profile = location.pathname === "/profile"
     if (props.length === 0) return null;
     return (
-        <Box>
+        <Box sx={{
+            [theme.breakpoints.up("sm")]: {
+                mx: "auto", width: "335px"
+            },
+            [theme.breakpoints.up("md")]: {
+                mx: "auto", width: "704px"
+            },
+            [theme.breakpoints.up("lg")]: {
+                mx: "auto", width: profile ? "664px" : "1153px"
+            }
+        }}>
             <List sx={{
                 p: 0, [theme.breakpoints.up("md")]: {
                     display: "flex", flexWrap: "wrap", gap: "20px 20px"
                 },
                 [theme.breakpoints.up("lg")]: {
-                    gap: profile ? "24px" : "40px 32px", px: "31px"
+                    gap: profile ? "24px 24px" : "40px 32px",
+                    display: "flex", flexWrap: "wrap",
                 }
             }}>
                 {props.map((el) => (

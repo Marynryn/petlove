@@ -17,7 +17,7 @@ const MyNotices = () => {
     useEffect(() => {
         dispatch(currentUserFull());
 
-    }, [dispatch]);
+    }, [dispatch, activeTab]);
 
     useEffect(() => {
         setFavorite(noticesFavorites);
@@ -68,7 +68,7 @@ const MyNotices = () => {
             {activeTab === 0 ? (
                 favorite.length > 0 ? (<Box sx={{
                     [theme.breakpoints.up('lg')]: {
-                        mx: "-32px"
+
                     },
                 }}>
                     <NoticesList props={favorite} /></Box>
@@ -90,7 +90,7 @@ const MyNotices = () => {
                 )
             ) : activeTab === 1 ? (<Box sx={{
                 [theme.breakpoints.up('lg')]: {
-                    mx: "-32px"
+
                 },
             }}>
                 <NoticesList props={user.noticesViewed} /></Box>

@@ -13,7 +13,7 @@ export const uploadFile = async (file) => {
 
     if (response.status === 200) {
       const imageUrl = response.data.secure_url;
-      console.log("Image URL:", imageUrl);
+
       return imageUrl;
     } else {
       console.error("Failed to upload image:", response.statusText);

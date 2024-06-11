@@ -15,7 +15,7 @@ export const News = ({ onSearch }) => {
     const filter = useSelector(selectGetFilter);
     const news = useSelector(selectGetNews);
     const totalPages = useSelector(selectTotalPages);
-    console.log(news)
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 

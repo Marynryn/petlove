@@ -7,7 +7,9 @@ const NewsItem = ({ props }) => {
     return (
         <Box  >
             <Box component="img" src={props.imgUrl} alt={props.title} sx={{
-                width: "335px", mb: "20px", height: "190px", borderRadius: "15px", [theme.breakpoints.up("md")]: {
+                width: "100%",
+                [theme.breakpoints.up("md")]: { width: "335px", },
+                mb: "20px", height: "190px", borderRadius: "15px", [theme.breakpoints.up("md")]: {
                     height: "226px", width: "340px", mb: "28px"
                 },
                 [theme.breakpoints.up("lg")]: {

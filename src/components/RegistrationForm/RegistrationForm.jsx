@@ -32,7 +32,7 @@ const RegistrationForm = ({ type, onClose }) => {
     const { handleSubmit, formState: { errors }, register } = methods;
 
     const onSubmit = methods.handleSubmit(async (data) => {
-        console.log(data);
+
         const { email, password, name } = data;
 
         try {
