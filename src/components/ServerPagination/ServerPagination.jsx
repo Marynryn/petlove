@@ -83,7 +83,7 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
                         {pageNumber}
                     </Box>
                 ))}
-                <Box sx={buttonStyle} >
+                <Box sx={{ ...buttonStyle, display: isLastPage ? "none" : 'flex', }} >
                     ...
                 </Box></Box>
             <IconButton sx={buttonStyle} onClick={handleNextPage} disabled={isLastPage}>

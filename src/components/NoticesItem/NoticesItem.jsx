@@ -81,7 +81,7 @@ const NoticesItem = ({ props }) => {
             </Box>
             <PetInfo props={props} />
             <Typography sx={{
-                fontWeight: 500, fontSize: "14px", overflow: "hidden", letterSpacing: "-0.28px", [theme.breakpoints.up("md")]: {
+                fontWeight: 500, fontSize: "14px", overflow: "hidden", textOverflow: 'ellipsis', letterSpacing: "-0.28px", [theme.breakpoints.up("md")]: {
                     lineHeight: "18px"
                 },
             }}>{props.comment}</Typography>
