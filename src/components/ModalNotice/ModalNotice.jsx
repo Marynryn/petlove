@@ -89,7 +89,7 @@ export const ModalNotice = ({ props, handleToggleFavorite, isFavorite }) => {
                 fontSize: "14px",
                 overflow: "hidden",
                 letterSpacing: "-0.28px",
-                mb: "42px",
+                mb: "40px",
                 [theme.breakpoints.up("md")]: {
                     px: "34px"
                 },
@@ -100,9 +100,9 @@ export const ModalNotice = ({ props, handleToggleFavorite, isFavorite }) => {
                 display: "flex",
                 gap: "10px",
                 position: "absolute",
-                bottom: "20px",
+                bottom: 0,
                 width: "100%",
-                px: "8px",
+
                 [theme.breakpoints.up("md")]: {
                     width: "330px",
                     p: 0
