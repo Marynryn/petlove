@@ -4,6 +4,7 @@ import Btn from 'components/Button/Button'
 import React from 'react'
 import css from "./NotFound.module.css"
 import theme from 'components/Theme'
+import { Link } from 'react-router-dom'
 export const NotFound = () => {
   return (
     <div>
@@ -41,8 +42,9 @@ export const NotFound = () => {
             mt: "-20px"
           },
         }} >Ooops! This page not found :(</Typography>
-        <Box sx={{ width: "150px", mx: "auto" }}>
-          <Btn bgColor={"#FFF4DF"} textColor={"var(--secondary-color)"}>To home page</Btn></Box>
+        <Link to="/">
+          <Box sx={{ width: "150px", mx: "auto" }}>
+            <Btn bgColor={"#FFF4DF"} textColor={"var(--secondary-color)"}>To home page</Btn></Box></Link>
       </Box>
     </div>
   )

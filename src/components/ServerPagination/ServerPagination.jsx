@@ -20,7 +20,9 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
         border: '1px solid rgba(38, 38, 38, 0.20)',
         width: '38px',
         height: '38px',
-
+        ":hover": {
+            scale: "1.05"
+        },
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -44,6 +46,10 @@ const ServerPagination = ({ totalPages, currentPage, onPageChange }) => {
         border: '1px solid',
         width: '38px',
         height: '38px',
+        ":hover": {
+            scale: "1.05"
+        },
+
         [theme.breakpoints.down("sm")]: {
             width: '34px',
             height: '34px',

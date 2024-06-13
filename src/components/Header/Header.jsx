@@ -75,7 +75,9 @@ export const Header = ({ backgroundColor, iconColor }) => {
                                 flex={true}
                             /></Box>}
                         <IconButton edge="start" aria-label="menu" sx={{
-                            p: 0, mr: 0, ml: "auto", [theme.breakpoints.up("lg")]: {
+                            p: 0, mr: 0, ml: "auto", ":hover": {
+                                backgroundColor: "transparent", scale: "1.05"
+                            }, [theme.breakpoints.up("lg")]: {
                                 display: "none",
 
                             },

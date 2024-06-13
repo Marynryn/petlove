@@ -93,7 +93,9 @@ const NoticesItem = ({ props }) => {
                 },
             }}>
                 <Button sx={{
-                    backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, p: "12px 30px", [theme.breakpoints.down("sm")]: {
+                    backgroundColor: "var(--secondary-color)", color: "var(--background-color)", height: "46px", textTransform: 'capitalize', fontSize: "14px", borderRadius: "30px", fontWeight: 500, p: "12px 30px", ":hover": {
+                        backgroundColor: "var(--secondary-color)", scale: "1.05"
+                    }, [theme.breakpoints.down("sm")]: {
 
                     }, [theme.breakpoints.up("sm")]: { p: "12px 59px", }, [theme.breakpoints.up("lg")]: {
 
@@ -101,27 +103,33 @@ const NoticesItem = ({ props }) => {
                 }} onClick={handleLearnMoreClick}>
                     Learn more
                 </Button>
-                <Box sx={{ borderRadius: "30px", backgroundColor: " #FFF4DF", width: "46px", height: "46px", display: "flex", justifyContent: "center", }}>
-                    <IconButton onClick={handleFavoriteClick} sx={{ p: 0, height: "24px", mt: "12px" }}>
-                        {isFavorite ? (
-                            <Box>
-                                <svg width={18} height={18}>
-                                    <use href={`${sprite}#icon-trash-01`} style={{ fill: "var(--secondary-color)" }}></use>
-                                </svg>
-                            </Box>
-                        ) : (
-                            <FavoriteBorderIcon sx={{ fill: "var(--secondary-color)" }} />
-                        )}
-                    </IconButton>
-                </Box>
+
+                <Button onClick={handleFavoriteClick} sx={{
+                    p: 0, borderRadius: "30px", backgroundColor: " #FFF4DF", width: "46px", height: "46px", display: "flex", justifyContent: "center", minWidth: "46px", ":hover": {
+                        scale: "1.08", backgroundColor: "rgba(251, 231, 193, 1)",
+                    }
+                }}>
+
+
+
+                    {isFavorite ? (<svg width={18} height={18}>
+                        <use href={`${sprite}#icon-trash-01`} style={{ fill: "var(--secondary-color)" }}></use>
+                    </svg>) : (
+                        <FavoriteBorderIcon sx={{ fill: "var(--secondary-color)" }} />
+                    )}
+
+
+                </Button>
             </Box>
+
+
             <ModalWrap isOpen={isModalAttentionOpen} onClose={() => setModalAttentionOpen(false)}>
                 <ModalAttention />
             </ModalWrap>
             <ModalWrap isOpen={isModalNoticeOpen} onClose={() => setModalNoticeOpen(false)}>
                 <ModalNotice props={props} handleToggleFavorite={handleToggleFavoriteFromModal} isFavorite={isFavorite} />
             </ModalWrap>
-        </Box>
+        </Box >
     );
 };
 

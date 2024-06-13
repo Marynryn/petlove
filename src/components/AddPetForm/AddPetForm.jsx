@@ -193,14 +193,18 @@ const AddPetForm = () => {
                         },
                     }}>
                         <Button type="button" onClick={handleBack} color="secondary" sx={{
-                            borderRadius: "30px", fontWeight: 700, backgroundColor: "rgba(38, 38, 38, 0.05)", color: 'var(--primary-color)', textDecoration: "none", textTransform: "capitalize", p: "12px 26px", [theme.breakpoints.up("md")]: {
+                            borderRadius: "30px", fontWeight: 700, backgroundColor: "rgba(38, 38, 38, 0.05)", color: 'var(--primary-color)', ":hover": {
+                                scale: "1.05", backgroundColor: "rgba(38, 38, 38, 0.08)"
+                            }, textDecoration: "none", textTransform: "capitalize", p: "12px 26px", [theme.breakpoints.up("md")]: {
                                 p: "12px 67px"
                             },
                         }}>
                             Back
                         </Button>
                         <Button type="submit" sx={{
-                            borderRadius: "30px", backgroundColor: "var(--secondary-color)", fontWeight: 700, color: 'var(--background-color)', textDecoration: "none", textTransform: "capitalize", p: "12px 16px", [theme.breakpoints.up("md")]: {
+                            borderRadius: "30px", backgroundColor: "var(--secondary-color)", fontWeight: 700, color: 'var(--background-color)', textDecoration: "none", textTransform: "capitalize", p: "12px 16px", ":hover": {
+                                scale: "1.05", backgroundColor: "#F9B020"
+                            }, [theme.breakpoints.up("md")]: {
                                 p: "12px 57px"
                             },
                         }}>

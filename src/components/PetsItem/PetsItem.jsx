@@ -16,7 +16,7 @@ export const PetsItem = ({ props }) => {
 
     const style = {
         backgroundColor: "#FFF4DF", height: "30px", width: "30px", borderRadius: "100%", '&:hover': {
-            backgroundColor: "#F9B020"
+            backgroundColor: "rgba(251, 231, 193, 1)", scale: "1.05"
         }, minWidth: "30px", p: 0
     }
     return (

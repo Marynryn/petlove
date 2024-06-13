@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
@@ -27,6 +27,7 @@ import theme from 'components/Theme';
 
 
 const NoticesFilters = ({ onSearch }) => {
+
     const [reset, setReset] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
     const dispatch = useDispatch();
@@ -36,6 +37,8 @@ const NoticesFilters = ({ onSearch }) => {
     const locations = useSelector(selectGetLocations);
 
     const filter = useSelector(selectGetNoticesFilter);
+
+
 
     useEffect(() => {
 
@@ -48,6 +51,7 @@ const NoticesFilters = ({ onSearch }) => {
 
     const handleCategoryChange = (selectedOption) => {
         dispatch(setCategoryFilter(selectedOption ? selectedOption.value : ""));
+
     };
 
     const handleGenderChange = (selectedOption) => {
@@ -90,6 +94,7 @@ const NoticesFilters = ({ onSearch }) => {
         }));
         callback(options);
     };
+
     const style = {
         control: (provided, state) => ({
             ...provided,
@@ -200,15 +205,6 @@ const NoticesFilters = ({ onSearch }) => {
                 display: "flex", gap: "16px", flexWrap: "wrap",
             }
         }}>
-                {/* <Box sx={{
-                    [theme.breakpoints.up("md")]: {
-                        display: "flex", gap: "16px",
-                        width: "100%",
-                        mb: "16px"
-                    }, [theme.breakpoints.up("lg")]: {
-                        m: 0
-                    }
-                }}> */}
                 <Box sx={{
                     [theme.breakpoints.up("md")]: {
                         width: "265px",
@@ -241,6 +237,7 @@ const NoticesFilters = ({ onSearch }) => {
                             onChange={handleCategoryChange}
                             value={getSelectedOption(filter.category, createOptions(categories))}
                             placeholder="Category"
+
 
                         />
                     </Box>
@@ -319,6 +316,7 @@ const NoticesFilters = ({ onSearch }) => {
 
                             },
                         }}
+                        blurInputOnSelect={true}
                         options={createOptions(species)}
                         onChange={handlePetTypeChange}
                         value={getSelectedOption(filter.species, createOptions(species))}
