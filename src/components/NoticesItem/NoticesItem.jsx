@@ -1,7 +1,7 @@
 import StarIcon from '@mui/icons-material/Star';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, IconButton, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import sprite from '../../img/svg/symbol-defs.svg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 

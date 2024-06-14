@@ -20,7 +20,7 @@ const CustomRadio = ({ selected, value, color, iconColor, icon, onChange, ...pro
                 justifyContent: 'center',
                 marginRight: 1,
                 '&:hover': {
-
+                    scale: "1.07"
                 }
             }}
             onClick={handleClick}
