@@ -27,6 +27,10 @@ export const ModalAttention = () => {
                     width: "280px",
                     p: 0
                 },
+                [theme.breakpoints.up("lg")]: {
+                    width: "100%",
+                    p: 0
+                },
             }}> <AuthNav /></Box>
 
         </Box>
