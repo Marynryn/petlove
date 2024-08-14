@@ -31,7 +31,7 @@ const ModalWrap = ({ isOpen, onClose, children }) => {
             BackdropProps={{
                 timeout: 500,
             }}
-            container={() => document.getElementById('modal-root')} // Передаем функцию для определения контейнера
+            container={() => document.getElementById('modal-root')}
             sx={{
                 display: 'flex',
                 alignItems: 'center',

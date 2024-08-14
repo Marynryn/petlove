@@ -7,7 +7,10 @@
   }
   background-size: cover;
   background-position: center;
-  @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 768px) {
+  .image {
     height: 496px;
     border-radius: 60px;
     background-image: url(/src/img/img/tablet/bg_home_tablet.png);
@@ -15,7 +18,9 @@
       background-image: url(/src/img/img/tablet/bg_home_tablet\ 2x.png);
     }
   }
-  @media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 768px) {
+  .image {
     height: 384px;
     background-image: url(/src/img/img/desktop/bg_home_desktop.png);
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
